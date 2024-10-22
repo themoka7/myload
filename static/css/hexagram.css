@@ -7,6 +7,7 @@
         /* 고정된 네비게이션 바 */
         .navbar {
             margin-bottom: 0;
+            padding-left: 50px;
         }
 
         /* 콘텐츠 영역을 화면의 높이로 채움 */

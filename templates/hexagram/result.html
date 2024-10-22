@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexagram Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hexagram.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+<!-- 20241021 -->
+    <div class="page-container">
+        <!-- 상단 고정 네비게이션 바 -->
+        <header>
+          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">점쾌</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/hexagram">점괘</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">사주</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">타로</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+        <!-- 콘텐츠 영역 -->
+        <div class="content">
+            <div class="intro">
+                <!-- JSON 데이터 출력 -->
+                <h1>주역 점괘 결과</h1>
+
+                <p>뽑힌 괘: <span id="hexagram_value"></span> </p>
+                <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
+                <p></p>
+                <p><span id="desc"></span> </p>
+                <p class="pretation"></p>
+            </div>
+
+        </div>
+
+        <!-- 하단 고정 푸터 -->
+        <footer class="footer" style="z-index:3">
+            <div class="container">
+                <span>후원 : 신한 110-202-740922 (김정목)</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 공통 모달이 여기에 동적으로 삽입됩니다 -->
+    <div id="commonModalContainer"></div>
+
+    <!-- Bootstrap 및 JavaScript 파일 -->
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/myFunction.js') }}"></script>
+
+
+    <script >
+        $(document).ready(function() {
+            showLoadingModal();
+
+            // 10초 후 모달을 닫는 함수
+            setTimeout(function() {
+                closeLoadingModal();
+                typeWriter();
+
+
+            }, 1000); // 10000ms = 10초
+
+
+        })
+
+
+
+
+
+      const text = `{{ data['interpretation']|safe }}`;
+      let index = 0;
+      function typeWriter() {
+
+            var type_1_value = "{{ data['type_1'] }}";
+            $('#type_1').text(type_1_value);
+            var type_2_value = "{{ data['type_2'] }}";
+            $('#type_2').text(type_2_value);
+
+
+            var hexagram_value = "{{ data['hexagram'] }}";
+            $('#hexagram_value').text(hexagram_value);
+
+            var desc_value = "{{ data['desc'] }}";
+            $('#desc').text(desc_value);
+
+
+
+
+
+             if (index < text.length) {
+                 if (text.substring(index, index + 4) === '<br>') {  // <br> 태그가 있으면 줄바꿈 적용
+                    document.querySelector(".pretation").innerHTML += '<br>';
+                    index += 4;  // <br> 태그를 4글자로 처리
+                } else {
+                    document.querySelector(".pretation").innerHTML += text.charAt(index);
+                    index++;
+                }
+                setTimeout(typeWriter, 100);  // 글자 나오는 속도 조정 (50ms)
+            }
+        }
+    </script>
+</body>
+</html>
