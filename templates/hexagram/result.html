@@ -128,10 +128,12 @@
                     document.querySelector(".pretation").innerHTML += '<br>';
                     index += 4;  // <br> 태그를 4글자로 처리
                 } else {
+
                     document.querySelector(".pretation").innerHTML += text.charAt(index);
                     index++;
+
                 }
-                setTimeout(typeWriter, 100);  // 글자 나오는 속도 조정 (50ms)
+
             }
         }
     </script>
