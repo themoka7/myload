@@ -13,12 +13,19 @@ body {
     color: #333;
     }
 
-
+.contain {
+    padding-top: 100px; /* 상단 여백 추가 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 화면 전체 높이를 기준으로 중앙 정렬 */
+    background: url('../../static/img/hexagram.webp') no-repeat center center;
+}
 
 .content {
     text-align: center;
     /*padding: 50px;*/
-    background: url('../../static/img/hexagram.webp') no-repeat center center;
+
 
 
     border-radius: 12px;
@@ -26,12 +33,12 @@ body {
     /*#max-width: 700px;
     #margin: 80px auto;*/
     transition: transform 0.3s;
-    padding-top: 100px;  /* 여백을 추가하여 아래로 내림 */
+
     padding-left: 15px;
     padding-right: 15px;
 
 }
-.content.intropage {
+.contain.intropage {
     text-align: center;
     /*padding: 50px;*/
     background: url('../../static/img/intro.webp') no-repeat center center;
@@ -50,7 +57,7 @@ body {
 
 
    /* 배경을 흐리게 처리 */
-.content::before {
+.contain::before {
     content: "";
     position: absolute;
     top: 0;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세상의 모든 점 올·점</title>
+    <title>Hexagram Page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/hexagram.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
@@ -23,7 +23,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto">
-                 <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="/intro">올·점이란?</a>
                 </li>
                 <li class="nav-item">
@@ -41,21 +41,23 @@
           </nav>
         </header>
 
-        <!-- 콘텐츠 영역 -->
-        <div class="content" >
-            <div class="intro" style="margin-bottom: 100px;">
-                <!-- JSON 데이터 출력 -->
-                <h1 class="intro_title">주역 점괘 결과</h1>
 
-                <!--<p>뽑힌 괘: <span id="hexagram_value"></span> </p>-->
-                <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
-                <p></p>
-                <p><span id="desc_1"></span> <span id="desc_2"></span> </p>
-                <p id="pretation" class="pretation"></p>
+        <div class="contain">
+
+            <div class="content" >
+                <div class="intro" style="margin-bottom: 100px;">
+                    <!-- JSON 데이터 출력 -->
+                    <h1 class="intro_title">주역 점괘 결과</h1>
+
+                    <!--<p>뽑힌 괘: <span id="hexagram_value"></span> </p>-->
+                    <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
+                    <p></p>
+                    <p><span id="desc_1"></span> <span id="desc_2"></span> </p>
+                    <p id="pretation" class="pretation"></p>
+                </div>
+
             </div>
-
         </div>
-
         <!-- 하단 고정 푸터 -->
         <footer class="footer" style="z-index:3">
             <div class="container">
@@ -131,12 +133,10 @@
                     document.querySelector(".pretation").innerHTML += '<br>';
                     index += 4;  // <br> 태그를 4글자로 처리
                 } else {
-
                     document.querySelector(".pretation").innerHTML += text.charAt(index);
                     index++;
-
                 }
-
+                setTimeout(typeWriter, 100);  // 글자 나오는 속도 조정 (50ms)
             }
         }
     </script>
