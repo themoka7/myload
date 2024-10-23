@@ -81,6 +81,7 @@ body {
 #startBtn {
     margin-top: 30px;
     z-index: 2; /* 글자가 배경 위로 올라오도록 설정 */
+    margin-bottom: 30px;
 }
 
 .ghost-button {
@@ -132,11 +133,10 @@ body {
     font-weight: 500;  /* 글꼴의 두께를 적당히 설정 */
 }
 
-
-/* 숨겨진 div 스타일 */
+/* 기본 스타일 (PC용) */
 #hidden {
     display: none; /* 처음엔 숨겨진 상태 */
-    background-color: rgb(244 244 244);
+    background-color: rgb(244, 244, 244);
     padding: 20px;
     border-radius: 10px;
     width: 500px;
@@ -144,7 +144,15 @@ body {
     font-size: 18px;
     font-family: Arial, sans-serif;
     white-space: pre-wrap; /* 줄바꿈 유지 */
-    z-index:5;
+    z-index: 5;
+}
+
+/* 모바일용 스타일 (화면 너비가 600px 이하인 경우) */
+@media (max-width: 600px) {
+    #hidden {
+        max-width: 90%; /* 화면의 90% 크기로 설정 */
+        font-size: 16px; /* 글자 크기 조정 */
+    }
 }
 /* 모달....*/
 .modal-main{
