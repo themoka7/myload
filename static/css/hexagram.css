@@ -34,6 +34,15 @@
             background-color: #9c0d0d
         }
 
+        .footer a {
+            color: inherit; /* 부모 요소의 텍스트 색상을 따름 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+
+        .footer a:hover {
+            color: inherit; /* 링크 위에 마우스를 올려도 색상 변화 없음 */
+        }
+
         /* 기본 페이지 레이아웃 */
         .page-container {
             display: flex;
