@@ -13,50 +13,66 @@ body {
     color: #333;
     }
 
+
 .contain {
     padding-top: 100px; /* 상단 여백 추가 */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* 화면 전체 높이를 기준으로 중앙 정렬 */
-    background: url('../../static/img/hexagram.webp') no-repeat center center;
+    background: url('../../static/img/tarot.webp') no-repeat center center;
+    background-size: cover; /* 배경 이미지가 화면을 꽉 채우도록 */
+    position: relative; /* 부모 요소를 기준으로 ::before의 위치를 설정 */
+    overflow: hidden; /* 가상 요소가 부모 영역을 벗어나지 않도록 */
 }
+
 
 .content {
     text-align: center;
-    /*padding: 50px;*/
-
-
-
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    /*#max-width: 700px;
-    #margin: 80px auto;*/
     transition: transform 0.3s;
-
     padding-left: 15px;
     padding-right: 15px;
-
+    z-index: 10; /* content가 흐림 효과 위에 배치되도록 */
 }
+
 .contain.intropage {
     text-align: center;
-    /*padding: 50px;*/
     background: url('../../static/img/intro.webp') no-repeat center center;
-
-
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    /*#max-width: 700px;
-    #margin: 80px auto;*/
     transition: transform 0.3s;
-    padding-top: 100px;  /* 여백을 추가하여 아래로 내림 */
+    padding-top: 100px;
     padding-left: 15px;
     padding-right: 15px;
-
 }
 
 
-   /* 배경을 흐리게 처리 */
+.contain.hexagram {
+    text-align: center;
+    background: url('../../static/img/hexagram.webp') repeat center center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.contain.tarot {
+    text-align: center;
+    background: url('../../static/img/tarot.webp') repeat center center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
 .contain::before {
     content: "";
     position: absolute;
@@ -64,11 +80,12 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: inherit;
+    background: inherit; /* 부모의 배경을 그대로 가져옴 */
     filter: blur(50px); /* 흐림 효과 */
-    background-size: cover; /* 이미지가 화면을 꽉 채우도록 */
-    z-index: 1;
-    opacity: 0.9; /* 흐릿한 투명도 설정 */
+    background-size: cover; /* 배경 이미지를 확장 */
+    z-index: 1; /* 흐림 효과가 콘텐츠 뒤로 배치되도록 */
+    opacity: 0.9; /* 흐림 효과에 약간의 투명도 추가 */
+    height: 100%;
 }
 
 
@@ -84,7 +101,7 @@ body {
 .content .intro .intro_title{
     font-size: 36px;
     color: #741414;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    /*text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);*/
     transition: text-shadow 0.3s ease;
 
     font-family: 'Playfair Display', serif;
@@ -92,6 +109,8 @@ body {
     font-weight: 700;
 
     margin-bottom: 20px;
+
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 .intro p {
@@ -126,7 +145,7 @@ body {
     display: inline-block;
     width: 150px; /* 버튼 이미지 크기 설정 */
     height: 150px;
-    background: url('../../static/img/go.png') no-repeat center center;
+    background: url('../../static/img/go.png') repeat center center;
     background-size: contain; /* 이미지가 컨테이너에 맞춰질 수 있도록 설정 */
     text-indent: -9999px; /* 텍스트를 숨기기 */
     border: none;
@@ -137,6 +156,26 @@ body {
     background-color: transparent;  /* 마우스 올렸을 때도 투명 */
     text-decoration: none;  /* 밑줄 제거 */
 }
+
+/*타로 버튼*/
+
+
+.tarot-button {
+    display: inline-block;
+    width: 150px; /* 버튼 이미지 크기 설정 */
+    height: 150px;
+    background: url('../../static/img/tarot_go.png') no-repeat center center;
+    background-size: contain; /* 이미지가 컨테이너에 맞춰질 수 있도록 설정 */
+    text-indent: -9999px; /* 텍스트를 숨기기 */
+    border: none;
+    cursor: pointer;
+}
+
+.tarot-button:hover {
+    background-color: transparent;  /* 마우스 올렸을 때도 투명 */
+    text-decoration: none;  /* 밑줄 제거 */
+}
+
 
 /*버튼*/
 

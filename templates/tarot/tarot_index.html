@@ -26,6 +26,7 @@
             transform: translateY(-100px);
             opacity: 0;
             transition: transform 0.5s ease, opacity 0.5s ease;
+            z-index:5;
         }
 
         /* 카드가 순차적으로 나타나는 애니메이션 효과 */
@@ -33,12 +34,26 @@
             transform: translateY(0);
             opacity: 1;
         }
+        .card:hover {
+            transform: scale(1.1); /* 마우스가 hover 되었을 때 10% 확대 */
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg); /* 카드가 180도 회전 */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* 뒷면 보이지 않도록 */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
         /* 버튼 스타일 */
         button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
+
             font-size: 16px;
             cursor: pointer;
         }
@@ -47,15 +62,22 @@
 
     {% block content %}
     <!-- 콘텐츠 영역 -->
-    <div class="contain">
+    <div class="contain tarot">
         <div class="content">
-          <!-- 카드 나누기 버튼 -->
-                <button id="deal-cards" style="z-index:5">카드 나누기</button>
-
-                <!-- 6x13 배열의 카드 그리드 -->
-                <div class="card-container"></div>
+            <div class="intro">
+                <div id="hi" class="intro_title">타로 카드를 통해 당신의 미래를 발견하세요</div>
+                <p>미래를 예측하고 인생의 중요한 순간에 현명한 결정을 내릴 수 있도록 돕는 타로 카드의 지혜.<br>타로 카드는 단순한 점이 아니라, 우리의 삶을 이끌어주는 깊은 통찰을 제공합니다.</p>
+                <p>이제, 마음을 열고 타로 카드의 안내를 받아보세요. 카드가 당신의 길을 밝혀 줄 것입니다.</p>
+                <p>타로와 함께 운명을 탐구하고, 삶의 새로운 가능성을 발견하세요. <br>지금, 당신의 운명이 기다리고 있습니다.</p>
+            </div>
+            <div id="hidden" class="hidden">
+            </div>
+            <div id="startBtn" class="lastBtn">
+                <a href="javascript:void(0);" class="tarot-button ui-link">시작하기</a>
+            </div>
         </div>
     </div>
+
     {% endblock %}
 
 
@@ -72,25 +94,111 @@
             }, 1000); // 10000ms = 10초
 
 
-            const cardContainer = $(".card-container");
+            $('.tarot-button').on('click', function() {
+               const displayStyle = $('#hidden').css('display');
+                    if (displayStyle === "none") {
+                    showDiv();
+                    return;
+                }
+                tarotSetting();
+            });
+
+
+
+            $('.card').on('click', function() {
+                console.log('card');
+                var card = $(this);
+
+                // 카드가 이미 뒤집혔는지 확인
+                if (!card.hasClass('flipped')) {
+                    // 카드 뒤집기
+                    card.addClass('flipped');
+
+                    // 일정 시간 후에 이미지 변경 (애니메이션 시간 고려)
+                    setTimeout(function() {
+                        card.css('background-image', 'url("../../static/img/tarot/1.png")');
+                    }, 300); // 0.3초 뒤에 이미지 변경
+                } else {
+                    // 카드가 다시 눌리면 원래 상태로 돌아가게
+                    card.removeClass('flipped');
+
+                    // 다시 원래 이미지로
+                    setTimeout(function() {
+                        card.css('background-image', 'url("../../static/img/tarot_go.png")');
+                    }, 300);
+                }
+            });
+
+        })
+
+    const warningMessage = `1. 명확한 질문을 준비하라
+    타로 카드는 구체적이고 진심 어린 질문에 더 정확한 인사이트를 제공합니다.
+    2. 열린 마음으로 진행하라
+    타로 리딩을 할 때는 마음을 열고, 카드가 전하는 메시지에 귀를 기울이는 것이 중요합니다.
+    3. 결과를 고정된 해석으로 여기지 말라
+    타로는 당신에게 지침을 제공할 뿐, 모든 것은 당신의 선택에 달려있습니다. 점괘를 유연하게 받아들이고 자신의 내면을 탐구하세요.
+
+    아래 버튼을 클릭하세요.`;
+
+
+        // 한 글자씩 표시하는 함수
+        function typeText(element, text, delay = 80) {
+            let index = 0;
+            const interval = setInterval(() => {
+                if (index < text.length) {
+                    element.textContent += text[index]; // 한 글자씩 추가
+                    index++;
+                } else {
+                    clearInterval(interval); // 모든 글자가 표시되면 타이머 종료
+                }
+            }, delay);
+        }
+
+        // 숨겨진 div를 나타내고 타이핑 애니메이션 실행
+        function showDiv() {
+            const hiddenDiv = document.getElementById('hidden');
+            hiddenDiv.style.display = 'block'; // div를 보이게 함
+            hiddenDiv.textContent = ''; // 초기화
+            typeText(hiddenDiv, warningMessage); // 타이핑 애니메이션 실행
+        }
+
+
+        function tarotSetting(){
+
+           $.when.apply($, $('.content').children().map(function() {
+                return $(this).fadeOut(500).promise();
+            })).done(function() {
+                $('.content').children().remove(); // 모든 요소가 숨겨진 후 제거
+                cardSetting(); // 모든 요소가 제거된 후 한 번만 호출
+            });
+
+        }
+
+        function cardSetting(){
+
+
+
+            $('.content').append(`<div class="intro"><div id="hi" class="intro_title" style='color: #402574'>78장의 카드중에 3장을 고르세요</div></div>`)
+
+            $('.content').append(`<div class="card-container"></div>`)
+
+             const cardContainer = $(".card-container");
             // 78개의 카드를 동적으로 생성하여 card-container에 추가
             for (let i = 1; i <= 78; i++) {
                 const card = $('<div class="card"></div>');
-                card.css('background-image', "url('https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/71bcbff8-cfa9-4442-9666-063f4d944150/16-the-tower.jpg?format=1500w')");
+                card.css('background-image', "url('../../static/img/tarot_go.png')");
                 cardContainer.append(card);
             }
 
             // 카드 나누기 버튼 클릭 시 카드들이 순차적으로 나타나는 효과
-            $("#deal-cards").on("click", function() {
-                const cards = $(".card");
-                cards.each(function(index, card) {
-                    setTimeout(function() {
-                        $(card).addClass('show');
-                    }, index * 100);  // 100ms 간격으로 카드가 채워지는 효과
-                });
-            });
-        })
 
+            const cards = $(".card");
+            cards.each(function(index, card) {
+                setTimeout(function() {
+                    $(card).addClass('show');
+                }, index * 100);  // 100ms 간격으로 카드가 채워지는 효과
+            });
+        }
 
     </script>
 
