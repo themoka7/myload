@@ -1,47 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세상의 모든 점 올·점</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/hexagram.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    {% extends 'base.html' %}
 
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
 
-</head>
-<body>
-<!-- 20241021 -->
-    <div class="page-container">
-        <!-- 상단 고정 네비게이션 바 -->
-        <header>
-          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="/">올·점</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/intro">올·점이란?</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="/hexagram">점괘</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">사주</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">타로</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </header>
-
-        <!-- 콘텐츠 영역 -->
         <div class="contain">
             <div class="content">
                 <div class="intro">
@@ -57,22 +18,11 @@
                 </div>
             </div>
         </div>
-        <!-- 하단 고정 푸터 -->
-        <footer class="footer" style="z-index:7">
-            <div class="container">
-                <span>후원 : 신한 110-217-858099 (손혜진)</span>
-            </div>
-        </footer>
-    </div>
+    {% endblock %}
 
-    <!-- 공통 모달이 여기에 동적으로 삽입됩니다 -->
-    <div id="commonModalContainer"></div>
 
-    <!-- Bootstrap 및 JavaScript 파일 -->
-    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/myFunction.js') }}"></script>
 
+    {% block scripts %}
     <script >
         $(document).ready(function() {
             showLoadingModal();
@@ -144,5 +94,4 @@
         typeText(hiddenDiv, warningMessage); // 타이핑 애니메이션 실행
     }
     </script>
-</body>
-</html>
+     {% endblock %}

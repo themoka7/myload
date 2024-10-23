@@ -13,7 +13,7 @@ app.secret_key = '1qa2ws3ed4rf5tg&&'  # 세션을 사용하려면 필요합니�
 
 @app.route('/')
 def index():
-    return render_template('hexagram/index.html')
+    return render_template('hexagram/hexagram_index.html')
 
 @app.route('/intro')
 def intro():
@@ -21,13 +21,13 @@ def intro():
 
 @app.route('/hexagram')
 def hexagram():
-    return render_template('hexagram/index.html')
+    return render_template('hexagram/hexagram_index.html')
 
 @app.route('/hexagram/result')
 def hexagram_result():
     # 세션에 저장된 처리된 데이터 불러오기
     data = session.get('data', {})
-    return render_template('hexagram/result.html', data=data)  # 결과 페이지에서 데이터 표시
+    return render_template('hexagram/hexagram_result.html', data=data)  # 결과 페이지에서 데이터 표시
 
 @app.route('/hexagram_process', methods=['POST'])
 def hexagram_process():
@@ -41,6 +41,14 @@ def hexagram_process():
 
     # 처리된 데이터를 JSON으로 반환하고, 리디렉션 URL 포함
     return jsonify({'redirect': url_for('hexagram_result')})  # 리디렉션 URL을 AJAX로 반환
+
+
+@app.route('/tarot')
+def tarot():
+    return render_template('tarot/tarot_index.html')
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)

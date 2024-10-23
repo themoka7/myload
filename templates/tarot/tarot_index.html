@@ -1,0 +1,97 @@
+    {% extends 'base.html' %}
+
+    {% block styles %}
+    <style>
+        /* 카드 컨테이너 스타일 */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6개의 열 */
+            grid-template-rows: repeat(13, 1fr);  /* 13개의 행 */
+            gap: 10px;
+            width: 90%;
+            margin: 50px auto;
+            max-width: 1000px;
+        }
+
+        /* 각 카드 스타일 */
+        .card {
+            width: 100%;
+            padding-top: 150%; /* 정사각형 카드 */
+            position: relative;
+            background-color: #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        /* 카드가 순차적으로 나타나는 애니메이션 효과 */
+        .card.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* 버튼 스타일 */
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+    <div class="contain">
+        <div class="content">
+          <!-- 카드 나누기 버튼 -->
+                <button id="deal-cards" style="z-index:5">카드 나누기</button>
+
+                <!-- 6x13 배열의 카드 그리드 -->
+                <div class="card-container"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script >
+        $(document).ready(function() {
+            console.log('1');
+            showLoadingModal();
+
+            // 10초 후 모달을 닫는 함수
+            setTimeout(function() {
+                closeLoadingModal();
+            }, 1000); // 10000ms = 10초
+
+
+            const cardContainer = $(".card-container");
+            // 78개의 카드를 동적으로 생성하여 card-container에 추가
+            for (let i = 1; i <= 78; i++) {
+                const card = $('<div class="card"></div>');
+                card.css('background-image', "url('https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/71bcbff8-cfa9-4442-9666-063f4d944150/16-the-tower.jpg?format=1500w')");
+                cardContainer.append(card);
+            }
+
+            // 카드 나누기 버튼 클릭 시 카드들이 순차적으로 나타나는 효과
+            $("#deal-cards").on("click", function() {
+                const cards = $(".card");
+                cards.each(function(index, card) {
+                    setTimeout(function() {
+                        $(card).addClass('show');
+                    }, index * 100);  // 100ms 간격으로 카드가 채워지는 효과
+                });
+            });
+        })
+
+
+    </script>
+
+    {% endblock %}

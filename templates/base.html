@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세상의 모든 점 올·점</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hexagram.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 및 JavaScript 파일 -->
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/myFunction.js') }}"></script>
+
+
+    {% block styles %}{% endblock %}
+
+</head>
+<body>
+    <!-- 20241021 -->
+    <div class="page-container">
+        <!-- 상단 고정 네비게이션 바 -->
+        <header>
+            {% include 'nav.html' %}
+        </header>
+
+
+         {% block content %}
+            <!-- 각 페이지에서 이 블록을 채우게 됨 -->
+         {% endblock %}
+
+
+
+        <!-- 푸터 -->
+        {% include 'footer.html' %}
+    </div>
+
+    <!-- 공통 모달이 여기에 동적으로 삽입됩니다 -->
+    <div id="commonModalContainer"></div>
+
+
+     {% block scripts %}{% endblock %}
+
+
+</body>
+</html>
