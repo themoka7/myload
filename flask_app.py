@@ -15,6 +15,10 @@ app.secret_key = '1qa2ws3ed4rf5tg&&'  # 세션을 사용하려면 필요합니�
 def index():
     return render_template('hexagram/index.html')
 
+@app.route('/intro')
+def intro():
+    return render_template('intro/intro.html')
+
 @app.route('/hexagram')
 def hexagram():
     return render_template('hexagram/index.html')
