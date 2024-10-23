@@ -42,5 +42,13 @@ def hexagram_process():
     # 처리된 데이터를 JSON으로 반환하고, 리디렉션 URL 포함
     return jsonify({'redirect': url_for('hexagram_result')})  # 리디렉션 URL을 AJAX로 반환
 
+
+@app.route('/tarot')
+def tarot():
+    return render_template('tarot/tarot_index.html')
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)
