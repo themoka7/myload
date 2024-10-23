@@ -39,15 +39,15 @@
         </header>
 
         <!-- 콘텐츠 영역 -->
-        <div class="content">
-            <div class="intro">
+        <div class="content" >
+            <div class="intro" style="margin-bottom: 100px;">
                 <!-- JSON 데이터 출력 -->
                 <h1>주역 점괘 결과</h1>
 
                 <p>뽑힌 괘: <span id="hexagram_value"></span> </p>
                 <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
                 <p></p>
-                <p><span id="desc"></span> </p>
+                <p><span id="desc_1"></span> <span id="desc_2"></span> </p>
                 <p id="pretation" class="pretation"></p>
             </div>
 
@@ -109,7 +109,15 @@
             $('#hexagram_value').text(hexagram_value);
 
             var desc_value = "{{ data['desc'] }}";
-            $('#desc').text(desc_value);
+            //$('#desc').text(desc_value);
+
+            // 정규식을 사용하여 한글과 한자를 분리
+            var hanja = desc_value.match(/\(([^)]+)\)/)[1];  // 괄호 안의 한자를 추출
+            var hangeul = desc_value.split('(')[0];  // 괄호 앞의 한글 부분 추출
+
+            // 한글과 한자를 각각 요소에 설정
+            $('#desc_1').text(hangeul);  // 한글 텍스트
+            $('#desc_2').text(hanja);    // 한자 텍스트
 
 
 
