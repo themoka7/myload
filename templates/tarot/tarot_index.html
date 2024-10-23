@@ -2,6 +2,29 @@
 
     {% block styles %}
     <style>
+
+         .shake_title {
+            background: linear-gradient(270deg, #6a11cb, #2575fc); /* 보라색 계열 그라데이션 */
+            background-size: 400% 400%;
+            -webkit-background-clip: text; /* 텍스트에 그라데이션 클립 적용 */
+            background-clip: text;
+            color: transparent; /* 텍스트의 기본 색상을 투명하게 */
+            animation: gradientText 5s ease infinite; /* 2초 동안 색상이 변하는 애니메이션 */
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        @keyframes gradientText {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
         /* 카드 컨테이너 스타일 */
         .card-container {
             display: grid;
@@ -19,7 +42,7 @@
             padding-top: 150%; /* 정사각형 카드 */
             position: relative;
             background-color: #ccc;
-            border-radius: 10px;
+            border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-size: cover;
             background-position: center;
@@ -27,6 +50,8 @@
             opacity: 0;
             transition: transform 0.5s ease, opacity 0.5s ease;
             z-index:5;
+            border: 2px solid #c4c16a;
+
         }
 
         /* 카드가 순차적으로 나타나는 애니메이션 효과 */
@@ -78,12 +103,41 @@
         </div>
     </div>
 
+
+
+        <!-- 모달 HTML 구조 -->
+        <div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cardModalLabel">모달 제목</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        여기에 모달 내용이 들어갑니다.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     {% endblock %}
 
 
 
     {% block scripts %}
     <script >
+
+
+    // Bootstrap 모달 객체 생성
+    const cardModal = new bootstrap.Modal(document.getElementById('cardModal'));
+
+    cardSettingValue = false;
+
+
         $(document).ready(function() {
             console.log('1');
             showLoadingModal();
@@ -105,29 +159,7 @@
 
 
 
-            $('.card').on('click', function() {
-                console.log('card');
-                var card = $(this);
 
-                // 카드가 이미 뒤집혔는지 확인
-                if (!card.hasClass('flipped')) {
-                    // 카드 뒤집기
-                    card.addClass('flipped');
-
-                    // 일정 시간 후에 이미지 변경 (애니메이션 시간 고려)
-                    setTimeout(function() {
-                        card.css('background-image', 'url("../../static/img/tarot/1.png")');
-                    }, 300); // 0.3초 뒤에 이미지 변경
-                } else {
-                    // 카드가 다시 눌리면 원래 상태로 돌아가게
-                    card.removeClass('flipped');
-
-                    // 다시 원래 이미지로
-                    setTimeout(function() {
-                        card.css('background-image', 'url("../../static/img/tarot_go.png")');
-                    }, 300);
-                }
-            });
 
         })
 
@@ -174,31 +206,111 @@
 
         }
 
-        function cardSetting(){
+        function cardSetting() {
+            // 콘텐츠에 소개 메시지 추가
+            $('.content').append(`<div class="intro"><div id="hi" class="shake_title" >카드를 섞는중입니다.</div></div>`);
 
+            // 카드 컨테이너 추가
+            $('.content').append(`<div class="card-container"></div>`);
 
+            const cardContainer = $(".card-container");
 
-            $('.content').append(`<div class="intro"><div id="hi" class="intro_title" style='color: #402574'>78장의 카드중에 3장을 고르세요</div></div>`)
-
-            $('.content').append(`<div class="card-container"></div>`)
-
-             const cardContainer = $(".card-container");
             // 78개의 카드를 동적으로 생성하여 card-container에 추가
             for (let i = 1; i <= 78; i++) {
-                const card = $('<div class="card"></div>');
+                const direction = Math.random() < 0.5 ? 'Forward' : 'Reverse';
+                const card = $(`<div class="card" idx="${i}" direction="${direction}"></div>`);
                 card.css('background-image', "url('../../static/img/tarot_go.png')");
                 cardContainer.append(card);
             }
 
-            // 카드 나누기 버튼 클릭 시 카드들이 순차적으로 나타나는 효과
-
+            // 카드 나누기 버튼 클릭 시 카드들이 랜덤하게 나타나는 효과
             const cards = $(".card");
-            cards.each(function(index, card) {
+
+            // 카드 인덱스 배열을 생성하고 랜덤하게 섞기
+            const indices = [...Array(cards.length).keys()];  // 0부터 77까지의 배열 생성
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];  // Fisher-Yates 알고리즘을 이용해 배열 섞기
+            }
+
+            // 한 번에 7개씩 랜덤한 순서로 카드 보여주기
+            const groupSize = 7;  // 한 번에 보여줄 카드 개수
+            for (let i = 0; i < indices.length; i += groupSize) {
                 setTimeout(function() {
-                    $(card).addClass('show');
-                }, index * 100);  // 100ms 간격으로 카드가 채워지는 효과
-            });
+                    // 7개씩 동시에 나타내기
+                    indices.slice(i, i + groupSize).forEach(index => {
+                        $(cards[index]).addClass('show');
+                    });
+                }, (i / groupSize) * 500);  // 각 그룹 간의 간격을 500ms로 설정
+            }
+
+            // 카드 배열이 끝난 후 cardSettingValue를 true로 설정하고 텍스트 업데이트
+            setTimeout(function() {
+                cardSettingValue = true;  // 카드 배열이 끝났음을 알림
+
+                // #hi 요소의 텍스트를 변경
+                $('#hi').text('78장의 카드중에 3장을 고르세요');
+            }, (Math.ceil(indices.length / groupSize)) * 500);  // 모든 카드가 나타난 후 설정
         }
+
+
+
+        let flippedCount = 0;  // 뒤집힌 카드의 수를 추적하는 변수
+
+        // 클릭 이벤트 핸들러 (카드 배열 완료 후에만 동작)
+        $('.content').on('click', '.card', function() {
+            // 카드 배열이 완료되었는지 확인
+            if (!cardSettingValue) {
+                return;  // 아직 카드 배열이 끝나지 않았다면 클릭 이벤트 무시
+            }
+
+            var card = $(this);
+
+            // 이미 3개의 카드가 뒤집힌 경우 더 이상 뒤집지 않음
+            if (flippedCount >= 3) {
+                return;
+            }
+
+            // 카드가 이미 뒤집혔는지 확인
+            if (!card.hasClass('flipped')) {
+                // 카드 뒤집기
+                card.addClass('flipped');
+
+                var idx = card.attr('idx');
+                var direction = card.attr('direction');  // direction 속성에서 값 가져오기
+
+                setTimeout(function() {
+                    card.css('background-image', `url("../../static/img/tarot/${idx}.jpg")`);
+
+                    // Reverse인 경우 180도 회전
+                    if (direction === 'Reverse') {
+                        card.css('transform', 'rotateX(180deg)');
+                    } else {
+                        card.css('transform', 'rotateX(0deg)'); // 정방향일 경우 정상 상태
+                    }
+                }, 300);
+
+                // 뒤집힌 카드 수 증가
+                flippedCount++;
+
+                // 카드가 3개 모두 뒤집혔을 때 버튼 추가 및 스크롤
+                if (flippedCount === 3) {
+                    // 버튼 추가
+                    $('.content').append(`
+                        <div id="startBtn" class="lastBtn">
+                            <a href="javascript:void(0);" class="tarot-result-button ui-link">시작하기</a>
+                        </div>
+                    `);
+
+                    // 스크롤을 마지막으로 내리기
+                    $('html, body').animate({
+                        scrollTop: $(document).height() // 페이지 맨 아래로 스크롤
+                    }, 500);  // 0.5초 동안 부드럽게 스크롤
+                }
+            }
+        });
+
+
 
     </script>
 

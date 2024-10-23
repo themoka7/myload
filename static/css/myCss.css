@@ -177,6 +177,27 @@ body {
 }
 
 
+/*타로 결과 버튼*/
+
+
+.tarot-result-button {
+    display: inline-block;
+    width: 150px; /* 버튼 이미지 크기 설정 */
+    height: 150px;
+    background: url('../../static/img/tarot_result.png') no-repeat center center;
+    background-size: contain; /* 이미지가 컨테이너에 맞춰질 수 있도록 설정 */
+    text-indent: -9999px; /* 텍스트를 숨기기 */
+    border: none;
+    cursor: pointer;
+}
+
+.tarot-result-button:hover {
+    background-color: transparent;  /* 마우스 올렸을 때도 투명 */
+    text-decoration: none;  /* 밑줄 제거 */
+}
+
+
+
 /*버튼*/
 
 
