@@ -192,7 +192,7 @@ body {
     background-color: rgb(255 255 255 / 80%);
     padding: 20px;
     border-radius: 10px;
-    width: 500px;
+    max-width: 500px;
     margin: 20px auto;
     font-size: 18px;
     font-family: Arial, sans-serif;
