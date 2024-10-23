@@ -24,7 +24,9 @@
         /* 고정된 푸터 */
         .footer {
             color: #eae3e3;
-            padding: 10px;
+            /*padding: 10px;*/
+            line-height: 30px;
+            height: 30px;
             position: fixed;
             bottom: 0;
             width: 100%;

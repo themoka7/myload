@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hexagram Page</title>
+    <title>세상의 모든 점 올·점</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/hexagram.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
@@ -17,14 +17,17 @@
         <!-- 상단 고정 네비게이션 바 -->
         <header>
           <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="#">점쾌</a>
+            <a class="navbar-brand" href="/">올·점</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto">
+                 <li class="nav-item">
+                  <a class="nav-link" href="/intro">올·점이란?</a>
+                </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/hexagram">점괘</a>
+                  <a class="nav-link active" href="/hexagram">점괘</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link disabled" href="#">사주</a>
