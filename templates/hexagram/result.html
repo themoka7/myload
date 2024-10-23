@@ -48,7 +48,7 @@
                 <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
                 <p></p>
                 <p><span id="desc"></span> </p>
-                <p class="pretation"></p>
+                <p id="pretation" class="pretation"></p>
             </div>
 
         </div>
@@ -89,8 +89,14 @@
 
 
 
-      const text = `{{ data['interpretation']|safe }}`;
-      let index = 0;
+    const text = `{{ data['interpretation']|safe }}`;
+    let index = 0;
+
+    const pretationDiv = document.getElementById('pretation');
+    pretationDiv.style.display = 'block'; // div를 보이게 함
+    pretationDiv.textContent = ''; // 초기화
+
+
       function typeWriter() {
 
             var type_1_value = "{{ data['type_1'] }}";

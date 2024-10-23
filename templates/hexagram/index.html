@@ -46,7 +46,7 @@
                 <p>이제, 마음을 열고 주역의 안내를 받아보세요. 하늘의 뜻은 몰라도 당신의 선택을 빛으로 이끌어 줄 것입니다.</p>
                 <p>주역과 함께 운명을 탐구하고, 삶의 새로운 가능성을 발견하세요. <br>지금, 당신의 운명이 기다리고 있습니다.</p>
             </div>
-            <div id="hidden">
+            <div id="hidden" class="hidden">
             </div>
             <div id="startBtn" class="lastBtn">
                 <a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>
@@ -54,7 +54,7 @@
         </div>
 
         <!-- 하단 고정 푸터 -->
-        <footer class="footer" style="z-index:3">
+        <footer class="footer" style="z-index:7">
             <div class="container">
                 <span>후원 : 신한 110-202-740922 (김정목)</span>
             </div>
@@ -84,6 +84,8 @@
                 const displayStyle = $('#hidden').css('display');
                     if (displayStyle === "none") {
                     showDiv();
+
+
                     return;
                 }
 
@@ -113,7 +115,10 @@
     2. 심리적으로 안정된 상태에서 진행하라
     주역 점괘를 할 때는 마음을 차분히 하고, 집중하는 것이 중요합니다.
     3. 해석을 주관적으로 왜곡하지 말라
-    있는 그대로의 점괘를 받아들이고, 그 안에서 자신이 해야 할 역할을 찾는 것이 중요합니다.`;
+    있는 그대로의 점괘를 받아들이고, 그 안에서 자신이 해야 할 역할을 찾는 것이 중요합니다.
+
+    아래 버튼을 클릭하세요.`;
+
     // 한 글자씩 표시하는 함수
     function typeText(element, text, delay = 80) {
         let index = 0;
