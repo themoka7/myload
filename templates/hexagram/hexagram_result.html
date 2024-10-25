@@ -1,5 +1,33 @@
     {% extends 'base.html' %}
 
+      {% block styles %}
+
+      <style>
+.hexa {
+    all: unset;
+    display: flex;
+    flex-direction: column; /* 요소를 위아래로 배치 */
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: #2c3e50;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scaleX(2.5);
+}
+
+.hexa span {
+    display: inline-block;
+}
+
+
+    </style>
+
+
+    {% endblock %}
+
+
     {% block content %}
 
 

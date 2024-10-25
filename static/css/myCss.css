@@ -203,23 +203,6 @@ body {
 
 
 
-.hexa {
-    all: unset; /* 상속된 모든 스타일을 초기화 */
-    display: inline-block;
-    line-height: 1;
-    font-family: 'Playfair Display', serif; /* 고급스러운 서체 적용 */
-    font-size: 80px; /* 크기 조정 */
-    color: #2c3e50; /* 다크 블루 톤으로 색상 변경 */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 추가 */
-    display: inline-block;
-    transform: scaleX(2.5); /* X축으로 늘리기 */
-
-}
-
-.hexa span {
-    display: block;
-}
-
 .pretation {
     display: none;
     font-size: 18px;
