@@ -1,0 +1,156 @@
+    {% extends 'base.html' %}
+
+    {% block styles %}
+    <style>
+/* 부모 요소 설정: 가운데 정렬 */
+.contain.tarot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.intro_result {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* 가로로 가운데 정렬 */
+    align-items: center;     /* 세로로 가운데 정렬 */
+}
+
+/* 이미지와 설명 컨테이너 */
+.tarot-card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* 이미지와 설명 사이 간격 */
+}
+
+.tarot-image img {
+    max-width: 300px;  /* 이미지 크기 */
+    height: auto;
+    border: 2px solid #ccc;
+}
+
+.tarot-description {
+    max-width: 800px;
+}
+
+/* 반응형 스타일: 모바일 화면에서 이미지와 텍스트가 세로로 배치되도록 */
+@media screen and (max-width: 768px) {
+    .tarot-card-container {
+        flex-direction: column;
+    }
+
+    .tarot-image img {
+        max-width: 100%;  /* 모바일에서 이미지를 화면에 맞춤 */
+    }
+
+    .tarot-description {
+        max-width: 100%;
+    }
+}
+
+
+    </style>
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+    <div class="contain tarot">
+        <div class="content">
+            <div class="intro">
+                <div id="hi" class="intro_title">타로 카드를 통해 당신의 미래를 발견하세요</div>
+
+                <div class="intro_result">
+                            <div class="tarot-card-container">
+                                <!-- 왼쪽 카드 이미지 -->
+                                <div class="tarot-image">
+                                    <img src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
+                                </div>
+
+                                <!-- 오른쪽 설명 -->
+                                <div class="tarot-description">
+                                    <h3>힘 타로 (Strength)</h3>
+                                    <p>
+                                        힘은 성격의 힘을 통해 중요한 삶의 문제, 상황 또는 유혹에 대한 승리의 결론을 예측합니다. 질병과 싸우거나 부상에서 회복 중이라면 매우 행복한 카드입니다.
+                                    </p>
+                                    <ul>
+                                        <li>점성학: 태양</li>
+                                        <li>조디악: 사자자리</li>
+                                        <li>요소: 불</li>
+                                        <li>차크라: 태양신경총</li>
+                                        <li>예 또는 아니오: 예, 강도</li>
+                                    </ul>
+                                    <p>
+                                        여성이 사자를 차분하게 길들이는 모습은 당신이 어려운 상황에 인내심과 우아함으로 접근하고, 그 상황을 헤쳐나갈 능력이 있다는 것을 의미합니다.
+                                    </p>
+                                </div>
+                            </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+            <div id="startBtn" class="lastBtn">
+                <a href="javascript:void(0);" class="tarot-button ui-link">시작하기</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script >
+
+
+        $(document).ready(function() {
+            showLoadingModal();
+            var tarotResult = {{ tarot_result | tojson | safe }};
+
+            setTimeout(function() {
+                closeLoadingModal();
+                tarotResultSetting(tarotResult);
+            }, 3000); // 10000ms = 10초
+        })
+
+
+        function tarotResultSetting(tarotResult){
+            console.log(tarotResult);
+
+
+            // 배열의 각 항목을 순회
+            tarotResult.forEach((item, index) => {
+                if(index == 0){
+                    console.log('1');
+                }
+
+            });
+
+
+        }
+
+
+
+    </script>
+
+    {% endblock %}

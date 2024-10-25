@@ -15,4 +15,27 @@
         </div>
     </div>
 
+
+    {% endblock %}
+
+    {% block scripts %}
+    <script >
+
+
+        $(document).ready(function() {
+
+            showLoadingModal();
+
+             setTimeout(function() {
+                closeLoadingModal();
+            }, 1000); // 10000ms = 10초
+
+
+
+        })
+
+
+
+    </script>
+
     {% endblock %}

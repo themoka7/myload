@@ -136,6 +136,8 @@
     const cardModal = new bootstrap.Modal(document.getElementById('cardModal'));
 
     cardSettingValue = false;
+    // 카드 정보를 담을 배열 선언
+    var cardData = [];
 
 
         $(document).ready(function() {
@@ -215,23 +217,23 @@
 
             const cardContainer = $(".card-container");
 
+            // 78개의 인덱스 배열을 랜덤하게 섞기
+            const indices = [...Array(78).keys()];  // 0부터 77까지의 배열 생성
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];  // Fisher-Yates 알고리즘으로 배열 섞기
+            }
+
             // 78개의 카드를 동적으로 생성하여 card-container에 추가
-            for (let i = 1; i <= 78; i++) {
+            for (let i = 0; i < 78; i++) {
                 const direction = Math.random() < 0.5 ? 'Forward' : 'Reverse';
-                const card = $(`<div class="card" idx="${i}" direction="${direction}"></div>`);
+                const card = $(`<div class="card" data-idx="${indices[i] + 1}" data-direction="${direction}"></div>`);
                 card.css('background-image', "url('../../static/img/tarot_go.png')");
                 cardContainer.append(card);
             }
 
             // 카드 나누기 버튼 클릭 시 카드들이 랜덤하게 나타나는 효과
             const cards = $(".card");
-
-            // 카드 인덱스 배열을 생성하고 랜덤하게 섞기
-            const indices = [...Array(cards.length).keys()];  // 0부터 77까지의 배열 생성
-            for (let i = indices.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [indices[i], indices[j]] = [indices[j], indices[i]];  // Fisher-Yates 알고리즘을 이용해 배열 섞기
-            }
 
             // 한 번에 7개씩 랜덤한 순서로 카드 보여주기
             const groupSize = 7;  // 한 번에 보여줄 카드 개수
@@ -255,8 +257,11 @@
 
 
 
+
         let flippedCount = 0;  // 뒤집힌 카드의 수를 추적하는 변수
 
+        // 카드 정보를 담을 배열 선언
+        cardData = [];
         // 클릭 이벤트 핸들러 (카드 배열 완료 후에만 동작)
         $('.content').on('click', '.card', function() {
             // 카드 배열이 완료되었는지 확인
@@ -271,13 +276,24 @@
                 return;
             }
 
+
             // 카드가 이미 뒤집혔는지 확인
             if (!card.hasClass('flipped')) {
                 // 카드 뒤집기
                 card.addClass('flipped');
 
-                var idx = card.attr('idx');
-                var direction = card.attr('direction');  // direction 속성에서 값 가져오기
+                var idx = card.attr('data-idx');
+                var direction = card.attr('data-direction');  // direction 속성에서 값 가져오기
+
+                // 카드 정보를 객체로 만들어 배열에 추가
+                cardData.push({
+                    type: flippedCount,
+                    idx: idx,
+                    direction: direction
+                });
+
+
+
 
                 setTimeout(function() {
                     card.css('background-image', `url("../../static/img/tarot/${idx}.jpg")`);
@@ -295,6 +311,10 @@
 
                 // 카드가 3개 모두 뒤집혔을 때 버튼 추가 및 스크롤
                 if (flippedCount === 3) {
+
+                    // 카드 데이터 JSON 변환
+                    let cardDataJson = JSON.stringify(cardData);
+
                     // 버튼 추가
                     $('.content').append(`
                         <div id="startBtn" class="lastBtn">
@@ -309,6 +329,33 @@
                 }
             }
         });
+
+
+        $('.content').on('click', '.tarot-result-button', function() {
+
+
+                console.log(cardData);
+                console.log(cardData);
+                $.ajax({
+                    type: 'POST',
+                    url: '/tarot_process',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(cardData),
+
+                    success: function(response) {
+                        // 서버가 반환한 리디렉션 URL을 사용하여 새로운 페이지로 이동
+                        window.location.href = response.redirect;
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("에러가 발생했습니다.");
+                        console.log("에러 상태 코드: " + jqXHR.status);
+                        console.log("에러 상태 텍스트: " + textStatus);
+                        console.log("서버로부터 받은 응답: " + jqXHR.responseText);
+                        console.log("에러 메시지: " + errorThrown);
+                    }
+                });
+            });
 
 
 

@@ -1,7 +1,8 @@
-from flask import Flask, render_template, jsonify, session, url_for
+from flask import Flask, render_template, jsonify, session, url_for,request
 
 from flask_cors import CORS
 from process.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
+from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 
 
 # CORS(app)
@@ -31,21 +32,36 @@ def hexagram_result():
 
 @app.route('/hexagram_process', methods=['POST'])
 def hexagram_process():
-    # process 폴더의 hexagram_process.py에서 get_hexagram_data 함수 호출
     data = get_hexagram_data()
-
-    print(data)
-
-    # 세션에 처리된 데이터 저장
     session['data'] = data
-
-    # 처리된 데이터를 JSON으로 반환하고, 리디렉션 URL 포함
     return jsonify({'redirect': url_for('hexagram_result')})  # 리디렉션 URL을 AJAX로 반환
 
 
 @app.route('/tarot')
 def tarot():
     return render_template('tarot/tarot_index.html')
+
+@app.route('/tarot/result')
+def tarot_result():
+    tarot_result = session.get('tarot_result', None)
+    data = session.get('data', {})
+    return render_template('tarot/tarot_result.html', tarot_result=tarot_result)  # 결과 페이지에서 데이터 표시
+
+@app.route('/tarot_process', methods=['POST'])
+def tarot_process():
+    # 클라이언트로부터 JSON 데이터를 받음
+    card_data = request.get_json()
+
+
+    if not card_data:
+        return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
+
+    data = get_tarot_data(card_data)
+
+    # 받은 card_data를 처리 (여기서는 단순 출력)
+    session['tarot_result'] = data
+    return jsonify({'redirect': url_for('tarot_result')})
+
 
 
 

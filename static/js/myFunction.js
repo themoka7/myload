@@ -1,6 +1,9 @@
  // 모달을 생성하고 표시하는 함수
         function showLoadingModal() {
-            const modalHtml = `
+
+            $('#commonModalContainer').empty();
+            console.log('showLoadingModal')
+            var modalHtml = `
                 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content modal-main">
@@ -25,13 +28,16 @@
             `;
 
             // 모달 HTML을 삽입
-            document.getElementById('commonModalContainer').innerHTML = modalHtml;
+            $('#commonModalContainer').html(modalHtml);
 
-            // 모달 열기
+            // 모달 설정
             $('#loadingModal').modal({
                 backdrop: 'static', // 배경 클릭으로 닫히지 않게 설정
                 keyboard: false     // ESC로 닫히지 않게 설정
             });
+
+            // 명시적으로 모달 열기
+            $('#loadingModal').modal('show');
 
 
         }
