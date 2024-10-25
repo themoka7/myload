@@ -319,6 +319,8 @@
 
             // 배열의 각 항목을 순회
             tarotResult.forEach((item, index) => {
+
+                console.log(index);
                 $(`#img_${index}`).attr('src', `../../static/img/tarot/${item['selected_tarot']['idx']}.jpg`);
 
                 // 0.5초 후 flip 클래스 추가로 뒤집기 효과 적용
