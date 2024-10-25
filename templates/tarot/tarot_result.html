@@ -124,7 +124,7 @@
     }
 
     .tarot-image img {
-        max-width: 300px;  /* 모바일에서 이미지를 화면에 맞춤 */
+        max-width: 200px;  /* 모바일에서 이미지를 화면에 맞춤 */
     }
 
     .tarot-description {
@@ -204,13 +204,13 @@
                                             <img id='img_0' src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
                                         </div>
                                         <div class="tarot-description">
-                                            <h3 id='name_0'>힘 타로 (Strength)</h3>
+                                            <h3 id='name_0'></h3>
                                             <p id='description_0'>
-                                                힘은 성격의 힘을 통해 중요한 삶의 문제, 상황 또는 유혹에 대한 승리의 결론을 예측합니다. 질병과 싸우거나 부상에서 회복 중이라면 매우 행복한 카드입니다.
+
                                             </p>
 
                                             <p id="interpretation_0" class="pretation">
-                                                여성이 사자를 차분하게 길들이는 모습은 당신이 어려운 상황에 인내심과 우아함으로 접근하고, 그 상황을 헤쳐나갈 능력이 있다는 것을 의미합니다.
+
                                             </p>
                                         </div>
                                     </div>
@@ -224,13 +224,13 @@
                                             <img id='img_1'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
                                         </div>
                                         <div class="tarot-description">
-                                            <h3 id='name_1'>힘 타로 (Strength)</h3>
+                                            <h3 id='name_1'></h3>
                                             <p id='description_1'>
-                                                힘은 성격의 힘을 통해 중요한 삶의 문제, 상황 또는 유혹에 대한 승리의 결론을 예측합니다. 질병과 싸우거나 부상에서 회복 중이라면 매우 행복한 카드입니다.
+
                                             </p>
 
                                             <p id="interpretation_1" class="pretation">
-                                                여성이 사자를 차분하게 길들이는 모습은 당신이 어려운 상황에 인내심과 우아함으로 접근하고, 그 상황을 헤쳐나갈 능력이 있다는 것을 의미합니다.
+
                                             </p>
                                         </div>
                                     </div>
@@ -244,13 +244,13 @@
                                             <img id='img_2'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
                                         </div>
                                         <div class="tarot-description">
-                                            <h3 id='name_2'>힘 타로 (Strength)</h3>
+                                            <h3 id='name_2'></h3>
                                             <p id='description_2'>
-                                                힘은 성격의 힘을 통해 중요한 삶의 문제, 상황 또는 유혹에 대한 승리의 결론을 예측합니다. 질병과 싸우거나 부상에서 회복 중이라면 매우 행복한 카드입니다.
+
                                             </p>
 
                                             <p id="interpretation_2" class="pretation">
-                                                여성이 사자를 차분하게 길들이는 모습은 당신이 어려운 상황에 인내심과 우아함으로 접근하고, 그 상황을 헤쳐나갈 능력이 있다는 것을 의미합니다.
+
                                             </p>
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@
     <script >
 
        var swiper = new Swiper(".mySwiper", {
-            initialSlide: 1, // 두 번째 슬라이드 (0부터 시작, "현재"를 기본 선택)
+            initialSlide: 0, // 두 번째 슬라이드 (0부터 시작, "현재"를 기본 선택)
             pagination: {
               el: ".swiper-pagination",
               clickable: true,
@@ -322,15 +322,17 @@
             // 배열의 각 항목을 순회
             tarotResult.forEach((item, index) => {
 
-                console.log(index);
+                //console.log(index);
                 $(`#img_${index}`).attr('src', `../../static/img/tarot/${item['selected_tarot']['idx']}.jpg`);
                 if (item['selected_tarot']['direction'] !== 'Forward') {
                     $(`#img_${index}`).css('transform', 'rotateX(180deg)');
+                    $(`#name_${index}`).text(item['card_definition']['name']+' (Reversed)');
                 } else {
                     $(`#img_${index}`).css('transform', ''); // Reset if "Forward"
+                    $(`#name_${index}`).text(item['card_definition']['name']);
                 }
 
-                $(`#name_${index}`).text(item['card_definition']['name']);
+                //$(`#name_${index}`).text(item['card_definition']['name']);
                 $(`#description_${index}`).text(item['card_definition']['description']);
 
                 const hiddenDiv = $(`#interpretation_${index}`);
