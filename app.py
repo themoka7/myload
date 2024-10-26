@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, session, url_for,request
+from flask import Flask, render_template, jsonify, session, url_for,request,Response
 
 from flask_cors import CORS
 from process.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
@@ -63,7 +63,33 @@ def tarot_process():
     return jsonify({'redirect': url_for('tarot_result')})
 
 
+# 사이트맵 생성 라우트 추가
+@app.route('/sitemap.xml')
+def sitemap():
+    # 사이트의 URL 목록
+    urls = [
+        {'loc': url_for('index', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'daily', 'priority': 1.0},
+        {'loc': url_for('intro', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.8},
+        {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.6},
+        {'loc': url_for('tarot', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.6},
+        # 추가 URL을 여기에 추가
+    ]
 
+    # XML 사이트맵 생성
+    xml = '''<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.1">'''
+
+    for url in urls:
+        xml += f'''
+        <url>
+            <loc>{url['loc']}</loc>
+            <lastmod>{url['lastmod']}</lastmod>
+            <changefreq>{url['changefreq']}</changefreq>
+            <priority>{url['priority']}</priority>
+        </url>'''
+
+    xml += '''</urlset>'''
+    return Response(xml, mimetype='application/xml')
 
 
 if __name__ == '__main__':
