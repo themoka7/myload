@@ -1,370 +1,370 @@
-    {% extends 'base.html' %}
+        {% extends 'base.html' %}
 
-    {% block styles %}
+        {% block styles %}
 
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 
 
-        <!-- Demo styles -->
-  <style>
+            <!-- Demo styles -->
+      <style>
 
-    .swiper {
-      max-width: 90vw; /* 화면 너비의 90% */
-      height: 100%;
+        .swiper {
+          max-width: 90vw; /* 화면 너비의 90% */
+          height: 100%;
+        }
+
+        .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .swiper-slide img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+
+
+        .swiper-pagination{
+            position: unset;
+            padding-top:20px;
+            padding-bottom: 30px;
+        }
+
+
+
+        .swiper-pagination-bullet {
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          line-height: 20px;
+          font-size: 12px;
+          color: #d1cccc;
+          opacity: 1;
+          background-color: #19172f;
+          padding-left: 20px;
+          padding-right: 20px;
+
+          border: 1px solid #bbb4a2;
+          border-radius: var(--swiper-pagination-bullet-border-radius, 5%);
+        }
+
+        .swiper-pagination-bullet-active {
+          color: #ffc107;
+          border: 2px solid #ffc107;
+          <!--background: #007aff;-->
+        }
+
+        .swiper-pagination-bullet{
+          display: inline;
+          font-size:36px;
+        }
+
+
+
+
+        * 부모 요소 설정: 가운데 정렬 */
+    .contain.tarot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
     }
 
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-
-
-    .swiper-pagination{
-        position: unset;
-        padding-top:20px;
-        padding-bottom: 30px;
-    }
-
-
-
-    .swiper-pagination-bullet {
-      width: 20px;
-      height: 20px;
-      text-align: center;
-      line-height: 20px;
-      font-size: 12px;
-      color: #d1cccc;
-      opacity: 1;
-      background-color: #19172f;
-      padding-left: 20px;
-      padding-right: 20px;
-
-      border: 1px solid #bbb4a2;
-      border-radius: var(--swiper-pagination-bullet-border-radius, 5%);
-    }
-
-    .swiper-pagination-bullet-active {
-      color: #ffc107;
-      border: 2px solid #ffc107;
-      <!--background: #007aff;-->
-    }
-
-    .swiper-pagination-bullet{
-      display: inline;
-      font-size:36px;
-    }
-
-
-
-
-    * 부모 요소 설정: 가운데 정렬 */
-.contain.tarot {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.intro_result {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center; /* 가로로 가운데 정렬 */
-    align-items: center;     /* 세로로 가운데 정렬 */
-    border: 3px solid #ffc107;
-    background-color: #19172f;
-    color: #ffc107;
-}
-
-/* 이미지와 설명 컨테이너 */
-.tarot-card-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px; /* 이미지와 설명 사이 간격 */
-}
-
-.tarot-image img {
-    max-width: 300px;  /* 이미지 크기 */
-    height: auto;
-    border: 2px solid #ccc;
-}
-
-.tarot-description {
-    max-width: 800px;
-}
-
-/* 반응형 스타일: 모바일 화면에서 이미지와 텍스트가 세로로 배치되도록 */
-@media screen and (max-width: 768px) {
-    .tarot-card-container {
+    .content {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .intro_result {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 20px;
+        justify-content: center; /* 가로로 가운데 정렬 */
+        align-items: center;     /* 세로로 가운데 정렬 */
+        border: 3px solid #ffc107;
+        background-color: #19172f;
+        color: #ffc107;
+    }
+
+    /* 이미지와 설명 컨테이너 */
+    .tarot-card-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 20px; /* 이미지와 설명 사이 간격 */
     }
 
     .tarot-image img {
-        max-width: 200px;  /* 모바일에서 이미지를 화면에 맞춤 */
+        max-width: 300px;  /* 이미지 크기 */
+        height: auto;
+        border: 2px solid #ccc;
     }
 
     .tarot-description {
-        max-width: 500px;
+        max-width: 800px;
     }
 
-    .intro p:first-of-type {
-        font-size: 17px;
+    /* 반응형 스타일: 모바일 화면에서 이미지와 텍스트가 세로로 배치되도록 */
+    @media screen and (max-width: 768px) {
+        .tarot-card-container {
+            flex-direction: column;
+        }
+
+        .tarot-image img {
+            max-width: 200px;  /* 모바일에서 이미지를 화면에 맞춤 */
+        }
+
+        .tarot-description {
+            max-width: 500px;
+        }
+
+        .intro p:first-of-type {
+            font-size: 17px;
+        }
+
+        .swiper-pagination-bullet {
+            display: inline;
+            font-size: 20px;
+        }
     }
 
-    .swiper-pagination-bullet {
-        display: inline;
-        font-size: 20px;
-    }
-}
 
 
+    /* 기본 이미지 컨테이너 스타일 */
+        .card-container {
+          perspective: 1000px;
+          display: inline-block;
+          margin: 10px;
+        }
 
-/* 기본 이미지 컨테이너 스타일 */
-    .card-container {
-      perspective: 1000px;
-      display: inline-block;
-      margin: 10px;
-    }
+        /* 이미지 뒤집기 효과 */
+        .flip-card {
+          width: 150px;
+          height: 200px;
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.6s;
+        }
 
-    /* 이미지 뒤집기 효과 */
-    .flip-card {
-      width: 150px;
-      height: 200px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
-    }
+        .flip-card img {
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
 
-    .flip-card img {
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+        .flip-card.flip .front {
+          transform: rotateY(180deg);
+        }
 
-    .flip-card.flip .front {
-      transform: rotateY(180deg);
-    }
+        .flip-card.flip .back {
+          transform: rotateY(0deg);
+        }
 
-    .flip-card.flip .back {
-      transform: rotateY(0deg);
-    }
+        .back {
+          transform: rotateY(180deg);
+        }
 
-    .back {
-      transform: rotateY(180deg);
-    }
-
-  </style>
+      </style>
 
 
-    {% endblock %}
+        {% endblock %}
 
-    {% block content %}
-    <!-- 콘텐츠 영역 -->
-    <div class="contain tarot">
-        <div class="content">
-            <div class="intro">
-                <div id="hi" class="intro_title">타로 카드가 전하는 과거, 현재, 미래의<br> 메시지를 통해 당신의 운명을 발견하세요</div>
+        {% block content %}
+        <!-- 콘텐츠 영역 -->
+        <div class="contain tarot">
+            <div class="content">
+                <div class="intro">
+                    <div id="hi" class="intro_title">타로 카드가 전하는 과거, 현재, 미래의<br> 메시지를 통해 당신의 운명을 발견하세요</div>
 
-                    <!---->
+                        <!---->
 
-                        <!-- Swiper -->
-                  <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="intro_result">
-                                    <div class="tarot-card-container">
-                                        <div class="tarot-image">
-                                            <img id='img_0' src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
+                            <!-- Swiper -->
+                      <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="intro_result">
+                                        <div class="tarot-card-container">
+                                            <div class="tarot-image">
+                                                <img id='img_0' src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
+                                            </div>
+                                            <div class="tarot-description">
+                                                <h3 id='name_0'></h3>
+                                                <p id='description_0'>
+
+                                                </p>
+
+                                                <p id="interpretation_0" class="pretation">
+
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="tarot-description">
-                                            <h3 id='name_0'></h3>
-                                            <p id='description_0'>
+                                    </div>
+                                </div>
 
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="intro_result">
+                                        <div class="tarot-card-container">
+                                            <div class="tarot-image">
+                                                <img id='img_1'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
+                                            </div>
+                                            <div class="tarot-description">
+                                                <h3 id='name_1'></h3>
+                                                <p id='description_1'>
 
-                                            <p id="interpretation_0" class="pretation">
+                                                </p>
 
-                                            </p>
+                                                <p id="interpretation_1" class="pretation">
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="intro_result">
+                                        <div class="tarot-card-container">
+                                            <div class="tarot-image">
+                                                <img id='img_2'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
+                                            </div>
+                                            <div class="tarot-description">
+                                                <h3 id='name_2'></h3>
+                                                <p id='description_2'>
+
+                                                </p>
+
+                                                <p id="interpretation_2" class="pretation">
+
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="swiper-slide">
-                                <div class="intro_result">
-                                    <div class="tarot-card-container">
-                                        <div class="tarot-image">
-                                            <img id='img_1'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
-                                        </div>
-                                        <div class="tarot-description">
-                                            <h3 id='name_1'></h3>
-                                            <p id='description_1'>
-
-                                            </p>
-
-                                            <p id="interpretation_1" class="pretation">
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="intro_result">
-                                    <div class="tarot-card-container">
-                                        <div class="tarot-image">
-                                            <img id='img_2'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
-                                        </div>
-                                        <div class="tarot-description">
-                                            <h3 id='name_2'></h3>
-                                            <p id='description_2'>
-
-                                            </p>
-
-                                            <p id="interpretation_2" class="pretation">
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="swiper-pagination"></div>
                         </div>
 
-                        <div class="swiper-pagination"></div>
-                    </div>
 
 
 
 
-
-            </div>
-
+                </div>
 
 
-            <div id="startBtn" class="lastBtn">
-                <a href="/tarot" class="tarot-button ui-link">처음으로</a>
+
+                <div id="startBtn" class="lastBtn">
+                    <a href="/tarot" class="tarot-button ui-link">처음으로</a>
+                </div>
             </div>
         </div>
-    </div>
 
 
-     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
-
-
-    {% endblock %}
+         <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
 
-    {% block scripts %}
-    <script >
 
-       var swiper = new Swiper(".mySwiper", {
-            initialSlide: 0, // 두 번째 슬라이드 (0부터 시작, "현재"를 기본 선택)
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true,
-              renderBullet: function (index, className) {
-                var labels = ["과거", "현재", "미래"];
-                return '<span class="' + className + '">' + labels[index] + "</span>";
-              }
+        {% endblock %}
+
+
+
+        {% block scripts %}
+        <script >
+
+           var swiper = new Swiper(".mySwiper", {
+                initialSlide: 0, // 두 번째 슬라이드 (0부터 시작, "현재"를 기본 선택)
+                pagination: {
+                  el: ".swiper-pagination",
+                  clickable: true,
+                  renderBullet: function (index, className) {
+                    var labels = ["과거", "현재", "미래"];
+                    return '<span class="' + className + '">' + labels[index] + "</span>";
+                  }
+                }
+              });
+
+
+            $(document).ready(function() {
+
+                $(".swiper-pagination").prependTo(".mySwiper"); // 페이지네이션을 Swiper 컨테이너 상단으로 이동
+                showLoadingModal();
+                var tarotResult = {{ tarot_result | tojson | safe }};
+
+                setTimeout(function() {
+                    closeLoadingModal();
+                    tarotResultSetting(tarotResult);
+                }, 3000); // 10000ms = 10초
+            })
+
+
+            function tarotResultSetting(tarotResult){
+                console.log(tarotResult);
+
+
+                // 배열의 각 항목을 순회
+                tarotResult.forEach((item, index) => {
+
+                    //console.log(index);
+                    $(`#img_${index}`).attr('src', `../../static/img/tarot/${item['selected_tarot']['idx']}.jpg`);
+                    if (item['selected_tarot']['direction'] !== 'Forward') {
+                        $(`#img_${index}`).css('transform', 'rotateX(180deg)');
+                        $(`#name_${index}`).text(item['card_definition']['name']+' (Reversed)');
+                    } else {
+                        $(`#img_${index}`).css('transform', ''); // Reset if "Forward"
+                        $(`#name_${index}`).text(item['card_definition']['name']);
+                    }
+
+                    //$(`#name_${index}`).text(item['card_definition']['name']);
+                    $(`#description_${index}`).text(item['card_definition']['description']);
+
+                    const hiddenDiv = $(`#interpretation_${index}`);
+                    hiddenDiv.css('display', 'block'); // div를 보이게 함
+                    hiddenDiv.text(''); // 초기화
+                    typeText($(`#interpretation_${index}`)[0], item['selected_interpretations'][0]['interpretation']);
+
+
+
+                });
+
+
             }
-          });
 
+            // 한 글자씩 표시하는 함수
+            function typeText(element, text, delay = 80) {
 
-        $(document).ready(function() {
-
-            $(".swiper-pagination").prependTo(".mySwiper"); // 페이지네이션을 Swiper 컨테이너 상단으로 이동
-            showLoadingModal();
-            var tarotResult = {{ tarot_result | tojson | safe }};
-
-            setTimeout(function() {
-                closeLoadingModal();
-                tarotResultSetting(tarotResult);
-            }, 3000); // 10000ms = 10초
-        })
-
-
-        function tarotResultSetting(tarotResult){
-            console.log(tarotResult);
-
-
-            // 배열의 각 항목을 순회
-            tarotResult.forEach((item, index) => {
-
-                //console.log(index);
-                $(`#img_${index}`).attr('src', `../../static/img/tarot/${item['selected_tarot']['idx']}.jpg`);
-                if (item['selected_tarot']['direction'] !== 'Forward') {
-                    $(`#img_${index}`).css('transform', 'rotateX(180deg)');
-                    $(`#name_${index}`).text(item['card_definition']['name']+' (Reversed)');
-                } else {
-                    $(`#img_${index}`).css('transform', ''); // Reset if "Forward"
-                    $(`#name_${index}`).text(item['card_definition']['name']);
-                }
-
-                //$(`#name_${index}`).text(item['card_definition']['name']);
-                $(`#description_${index}`).text(item['card_definition']['description']);
-
-                const hiddenDiv = $(`#interpretation_${index}`);
-                hiddenDiv.css('display', 'block'); // div를 보이게 함
-                hiddenDiv.text(''); // 초기화
-                typeText($(`#interpretation_${index}`)[0], item['selected_interpretations'][0]['interpretation']);
+            console.log(element);
+            console.log(text);
+                let index = 0;
+                const interval = setInterval(() => {
+                    if (index < text.length) {
+                        element.textContent += text[index]; // 한 글자씩 추가
+                        index++;
+                    } else {
+                        clearInterval(interval); // 모든 글자가 표시되면 타이머 종료
+                    }
+                }, delay);
+            }
 
 
 
-            });
+        </script>
 
-
-        }
-
-        // 한 글자씩 표시하는 함수
-        function typeText(element, text, delay = 80) {
-
-        console.log(element);
-        console.log(text);
-            let index = 0;
-            const interval = setInterval(() => {
-                if (index < text.length) {
-                    element.textContent += text[index]; // 한 글자씩 추가
-                    index++;
-                } else {
-                    clearInterval(interval); // 모든 글자가 표시되면 타이머 종료
-                }
-            }, delay);
-        }
-
-
-
-    </script>
-
-    {% endblock %}
+        {% endblock %}
