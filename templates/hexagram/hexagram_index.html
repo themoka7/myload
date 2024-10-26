@@ -1,5 +1,25 @@
     {% extends 'base.html' %}
 
+      {% block styles %}
+
+    <style>
+
+
+/* 반응형 스타일: 모바일 화면에서 이미지와 텍스트가 세로로 배치되도록 */
+@media screen and (max-width: 768px) {
+    .content .intro .intro_title {
+            font-size: 26px;
+
+    }
+
+}
+
+
+    </style>
+
+
+    {% endblock %}
+
     {% block content %}
     <!-- 콘텐츠 영역 -->
 
