@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, session, url_for,request,Response
+from flask import Flask, render_template, jsonify, session, url_for,request,Response, send_from_directory
 
 from flask_cors import CORS
 from process.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
@@ -90,6 +90,10 @@ def sitemap():
 
     xml += '''</urlset>'''
     return Response(xml, mimetype='application/xml')
+
+@app.route('/robots.txt')
+def serve_robots():
+    return send_from_directory('', 'robots.txt')  # '' means the current directory
 
 
 if __name__ == '__main__':
