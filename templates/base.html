@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <meta name="description" content="올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 제공하는 웹사이트입니다. 전문적인 해석과 개인 맞춤형 상담으로 여러분의 운세를 안내합니다."/>
     <meta name="google-site-verification" content="FedKpaqD_YMVirBy5GMYUlTEd3OfIFS912DHOnMWMOg" />
     <meta name="naver-site-verification" content="9b7cc168cdb28426a763badc6ba3977221f3144c" />
 
-    <title>세상의 모든 점 올·점</title>
+
+    <title>{% block title %}기본 제목{% endblock %}</title>
+    <meta name="description" content="{% block description %}기본 설명{% endblock %}">
+    <meta name="keywords" content="올점, 주역, 점괘, 사주, 타로, 점성술, 성명학, 운세" />
+
+
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/hexagram.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
