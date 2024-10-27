@@ -79,6 +79,18 @@ body {
     padding-right: 15px;
 }
 
+.contain.chizodiac {
+    text-align: center;
+    background: url('../../static/img/chizodiac.webp') repeat center center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
 
 .contain::before {
     content: "";
@@ -166,8 +178,6 @@ body {
 }
 
 /*타로 버튼*/
-
-
 .tarot-button {
     display: inline-block;
     width: 150px; /* 버튼 이미지 크기 설정 */
@@ -180,6 +190,24 @@ body {
 }
 
 .tarot-button:hover {
+    background-color: transparent;  /* 마우스 올렸을 때도 투명 */
+    text-decoration: none;  /* 밑줄 제거 */
+}
+
+
+/*당사주 버튼*/
+.chizodiac-button {
+    display: inline-block;
+    width: 150px; /* 버튼 이미지 크기 설정 */
+    height: 150px;
+    background: url('../../static/img/chizodiac_go.png') no-repeat center center;
+    background-size: contain; /* 이미지가 컨테이너에 맞춰질 수 있도록 설정 */
+    text-indent: -9999px; /* 텍스트를 숨기기 */
+    border: none;
+    cursor: pointer;
+}
+
+.chizodiac-button:hover {
     background-color: transparent;  /* 마우스 올렸을 때도 투명 */
     text-decoration: none;  /* 밑줄 제거 */
 }
