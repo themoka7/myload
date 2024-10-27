@@ -336,3 +336,15 @@ body {
 }
 
 
+.dropdown-item {
+
+    color: #ffffff;
+
+}
+.dropdown-menu {
+    --bs-dropdown-color: var(--bs-body-color);
+    --bs-dropdown-bg: #212529;
+    --bs-dropdown-border-color: rgb(155 157 158);
+    --bs-dropdown-link-hover-color: #9b9d9e;
+    --bs-dropdown-link-hover-bg: #f8f9fa00;
+}
