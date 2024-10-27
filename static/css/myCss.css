@@ -2,6 +2,12 @@
 /* main */
 
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 
 body {
@@ -28,9 +34,10 @@ body {
 
 
 .content {
+    max-width: 600px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);*/
     transition: transform 0.3s;
     padding-left: 15px;
     padding-right: 15px;
@@ -39,7 +46,7 @@ body {
 
 .contain.intropage {
     text-align: center;
-    background: url('../../static/img/intro.webp') no-repeat center center;
+    background: url('../../static/img/intro.webp') repeat center center;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
@@ -96,6 +103,7 @@ body {
 .intro {
     position: relative;
     z-index: 2; /* 글자가 배경 위로 올라오도록 설정 */
+    text-align: left;
 }
 
 .content .intro .intro_title{
@@ -235,13 +243,15 @@ body {
     background-color: rgb(255 255 255 / 80%);
     padding: 20px;
     border-radius: 10px;
-    max-width: 500px;
+    max-width: 500px; /* 최대 너비 설정 */
+    width: 100%; /* 모바일에서는 전체 너비 사용 */
     margin: 20px auto;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-family: 'Pretendard', sans-serif;
     white-space: pre-wrap;
     z-index: 5;
     border: solid #9b4545 2px;
+    text-align: left;
 }
 
 /* 모바일용 스타일 (화면 너비가 600px 이하인 경우) */

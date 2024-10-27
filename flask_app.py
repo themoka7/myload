@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, session, url_for,request,Response, send_from_directory
 
 from flask_cors import CORS
-from process.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
+from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 
 
@@ -14,7 +14,7 @@ app.secret_key = '1qa2ws3ed4rf5tg&&'  # 세션을 사용하려면 필요합니�
 
 @app.route('/')
 def index():
-    return render_template('hexagram/hexagram_index.html')
+    return render_template('hexagram/chizodiac_index.html')
 
 @app.route('/intro')
 def intro():
@@ -22,13 +22,13 @@ def intro():
 
 @app.route('/hexagram')
 def hexagram():
-    return render_template('hexagram/hexagram_index.html')
+    return render_template('hexagram/chizodiac_index.html')
 
 @app.route('/hexagram/result')
 def hexagram_result():
     # 세션에 저장된 처리된 데이터 불러오기
     data = session.get('data', {})
-    return render_template('hexagram/hexagram_result.html', data=data)  # 결과 페이지에서 데이터 표시
+    return render_template('hexagram/chizodiac_result.html', data=data)  # 결과 페이지에서 데이터 표시
 
 @app.route('/hexagram_process', methods=['POST'])
 def hexagram_process():
