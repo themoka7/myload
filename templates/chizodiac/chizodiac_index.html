@@ -1,14 +1,25 @@
     {% extends 'base.html' %}
 
-    {% block title %}주역 점괘{% endblock %}
-    {% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
-    {% block keywords %}주역, 점괘, 사주, 타로, 점성술, 성명학, 운세{% endblock %}
+    {% block title %}당사주{% endblock %}
+    {% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 무료로 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
+    {% block keywords %}주역, 점괘, 사주, 타로,당사주, 점성술, 성명학, 운세{% endblock %}
 
 
     {% block styles %}
 
     <style>
 
+ .form-input {
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align:left;
+    }
+    .form-select {
+        height: calc(1.5em + 0.75rem + 2px); /* label과 동일한 높이로 조정 */
+        padding-top: 0.375rem; /* 세로 중앙 맞춤 */
+        padding-bottom: 0.375rem;
+    }
 
 /* 반응형 스타일: 모바일 화면에서 이미지와 텍스트가 세로로 배치되도록 */
 @media screen and (max-width: 768px) {
@@ -31,17 +42,109 @@
         <div class="contain chizodiac">
             <div class="content">
                <div class="intro">
-                    <div id="hi" class="intro_title">당신의 운명을 탐험하세요</div>
-                    <p>당사주는 별자리를 통해
-                        <br>초년운, 중년운, 말년운, 평생운을<br> 살펴보는 전통적인 운세입니다.<br>
+                    <div id="hi" class="intro_title">당사주(當四柱)</div>
+                    <p>인생의 중요한 네 가지 기둥을 통해<br> 운명과 사건을 점치는 운세<br>
                    </p>
-                    <p>인생의 흐름과 중요한 순간들을 미리 준비할 수 있도록 도와줍니다.</p>
+                    <p>당사주는 전통적인 사주 명리학 방식 중 하나로
+                        <br>초년운, 중년운, 말년운, 평생운을 통해<br>인생의 흐름과 운세를 예측을 제공합니다.</p>
                     <p>당사주와 함께 운명을 탐구하고, 삶의 새로운 가능성을 발견하세요.<br>
                     지금, 당신의 운명이 기다리고 있습니다.</p>
                 </div>
 
-                <div id="hidden" class="hidden">
+                <div class="form-input">
+
+                     <div class="container">
+                        <!-- 성별 선택 -->
+                        <div class="row g-3 align-items-center">
+                            <div class="col-4 col-md-2">
+                                <label for="gender" class="form-label">성별</label>
+                            </div>
+                            <div class="col-8 col-md-4">
+                                <select id="gender" class="form-select">
+                                    <option selected="">성별</option>
+                                    <option>남성</option>
+                                    <option>여성</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 생년월일 선택 (양/음력, 년, 월, 일, 시) -->
+                        <div class="row g-3 align-items-center mt-3">
+                            <div class="col-4 col-md-2">
+                                <label class="form-label">생년월일</label>
+                            </div>
+                            <div class="col-8 col-md-10">
+                                <div class="row g-3">
+                                    <div class="col-6 col-md-3">
+                                        <select id="calendar" class="form-select">
+                                            <option selected="">선택</option>
+                                            <option>양력</option>
+                                            <option>음력</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <select id="year" class="form-select">
+                                            <option selected="">년</option>
+                                            <!-- 연도 예시 -->
+                                            <option>2000</option>
+                                            <option>1999</option>
+                                            <option>1998</option>
+                                            <!-- 추가 필요시 반복 -->
+                                        </select>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <select id="month" class="form-select">
+                                            <option selected="">월</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <!-- 1월부터 12월까지 추가 -->
+                                        </select>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <select id="day" class="form-select">
+                                            <option selected="">일</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <!-- 1일부터 31일까지 추가 -->
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row g-3 align-items-center mt-3">
+                            <div class="col-4 col-md-2">
+                                <label for="gender" class="form-label">시간</label>
+                            </div>
+                            <div class="col-8 col-md-4">
+                                <select id="time" class="form-select">
+                                    <option selected="">선택</option>
+
+                                    <option value="00">朝子(00:00~01:30)</option>
+                                    <option value="02">丑(01:31~03:30)</option>
+                                    <option value="04">寅(03:31~05:30)</option>
+                                    <option value="06">卯(05:31~07:30)</option>
+                                    <option value="08">辰(07:31~09:30)</option>
+                                    <option value="10">巳(09:31~11:30)</option>
+                                    <option value="12">午(11:31~13:30)</option>
+                                    <option value="14">未(13:31~15:30)</option>
+                                    <option value="16">申(15:31~17:30)</option>
+                                    <option value="18">酉(17:31~19:30)</option>
+                                    <option value="20">戌(19:31~21:30)</option>
+                                    <option value="22">亥(21:31~23:30)</option>
+                                    <option value="24">夜子(23:31~24:00)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
+
                 <div id="startBtn" class="lastBtn">
                     <a href="javascript:void(0);" class="chizodiac-button ui-link">시작하기</a>
                 </div>
@@ -56,22 +159,37 @@
         $(document).ready(function() {
             showLoadingModal();
 
+
+            const yearSelect = $('#year');
+            yearSelect.find('option:not(:first)').remove();
+            const currentYear = new Date().getFullYear();
+
+            for (let year = currentYear; year >= 1930; year--) {
+                yearSelect.append(new Option(year, year));
+            }
+
+            const monthSelect = $('#month');
+            monthSelect.find('option:not(:first)').remove(); // 기본 "선택" 옵션을 제외하고 기존 옵션 삭제
+
+            // 1월부터 12월까지 옵션 추가
+            for (let month = 1; month <= 12; month++) {
+                monthSelect.append(new Option(month, month));
+            }
+
+            const daySelect = $('#day');
+            daySelect.find('option:not(:first)').remove(); // 기본 "선택" 옵션을 제외하고 기존 옵션 삭제
+
+            // 1일부터 31일까지 옵션 추가
+            for (let day = 1; day <= 31; day++) {
+                daySelect.append(new Option(day, day));
+            }
+
             // 10초 후 모달을 닫는 함수
             setTimeout(function() {
                 closeLoadingModal();
             }, 1000); // 10000ms = 10초
 
             $('.ghost-button').on('click', function() {
-
-
-                const displayStyle = $('#hidden').css('display');
-                    if (displayStyle === "none") {
-                    showDiv();
-
-
-                    return;
-                }
-
 
                 $.ajax({
                     type: 'POST',
@@ -93,34 +211,5 @@
         })
 
 
-    const warningMessage = `1. 명확한 질문을 준비하라
-    주역은 막연한 질문보다는 구체적이고 명확한 질문에 더 나은 통찰을 제공합니다.
-    2. 심리적으로 안정된 상태에서 진행하라
-    주역 점괘를 할 때는 마음을 차분히 하고, 집중하는 것이 중요합니다.
-    3. 해석을 주관적으로 왜곡하지 말라
-    있는 그대로의 점괘를 받아들이고, 그 안에서 자신이 해야 할 역할을 찾는 것이 중요합니다.
-
-    아래 버튼을 클릭하세요.`;
-
-    // 한 글자씩 표시하는 함수
-    function typeText(element, text, delay = 80) {
-        let index = 0;
-        const interval = setInterval(() => {
-            if (index < text.length) {
-                element.textContent += text[index]; // 한 글자씩 추가
-                index++;
-            } else {
-                clearInterval(interval); // 모든 글자가 표시되면 타이머 종료
-            }
-        }, delay);
-    }
-
-    // 숨겨진 div를 나타내고 타이핑 애니메이션 실행
-    function showDiv() {
-        const hiddenDiv = document.getElementById('hidden');
-        hiddenDiv.style.display = 'block'; // div를 보이게 함
-        hiddenDiv.textContent = ''; // 초기화
-        typeText(hiddenDiv, warningMessage); // 타이핑 애니메이션 실행
-    }
     </script>
      {% endblock %}
