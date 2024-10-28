@@ -21,8 +21,10 @@ def get_tarot_data(selected_tarot):
         # 파일이 존재하는지 확인
         if os.path.exists(file_path):
             # JSON 파일을 열고 데이터 로드
+
             with open(file_path, 'r', encoding='utf-8') as file:
                 json_data = json.load(file)
+
 
                 # 선택된 interpretations에서 type과 direction을 모두 비교
                 matching_interpretations = [
@@ -52,5 +54,5 @@ def get_tarot_data(selected_tarot):
 updated_tarot_data = get_tarot_data(selected_tarot)
 
 # 결과 출력
-for card in updated_tarot_data:
-    print(json.dumps(card, indent=4, ensure_ascii=False))
+'''for card in updated_tarot_data:
+    print(json.dumps(card, indent=4, ensure_ascii=False))'''

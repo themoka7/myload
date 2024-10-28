@@ -1,125 +1,219 @@
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-    {% block title %}주역 점괘{% endblock %}
-    {% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
-    {% block keywords %}주역, 점괘, 사주, 타로, 점성술, 성명학, 운세{% endblock %}
-
-
-      {% block styles %}
-
-      <style>
-.hexa {
-    all: unset;
-    display: flex;
-    flex-direction: column; /* 요소를 위아래로 배치 */
-    justify-content: center;
-    align-items: center;
-    line-height: 1;
-    font-family: 'Playfair Display', serif;
-    font-size: 80px;
-    color: #2c3e50;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transform: scaleX(2.5);
-}
-
-.hexa span {
-    display: inline-block;
-}
+{% block title %}주역 점괘{% endblock %}
+{% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
+{% block keywords %}주역, 점괘, 사주, 타로, 점성술, 성명학, 운세{% endblock %}
 
 
-    </style>
+{% block styles %}
+
+<style>
+    .table{
+        text-align: center;
+        table-layout: fixed;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+
+    }
+
+    .table-container {
+        width: 100%; /* 전체 너비 사용 */
+        max-width: 800px; /* 최대 너비를 제한 */
+        margin: 0 auto; /* 화면 가운데 정렬 */
+    }
+
+    .table-container .table,
+    .table-container .additional-info {
+        width: 100%; /* 동일한 너비 */
+    }
+
+    .additional-info {
+        background-color: #f9f4ec; /* 원하는 배경색 */
+        padding: 15px;
+        text-align: center;
+        border-radius: 5px;
+
+        text-align: left;
+        word-wrap: break-word; /* 단어가 너비를 넘길 경우 줄바꿈 */
+        white-space: normal; /* 텍스트를 자동으로 줄바꿈 */
+    }
+
+    .table thead tr th:nth-child(1) {
+        background-color: #f9f4ec;
+    }
+
+    .table tbody:nth-of-type(1) tr:nth-child(1),
+    .table tbody:nth-of-type(1) tr:nth-child(2) {
+        font-size: 37px; /* 원하는 크기로 설정 */
+        font-weight: bold;
+        color: #222;
+    }
+     .table thead tr th,
+     .table tbody tr td {
+        background-color: #f9f4ec;
+    }
 
 
-    {% endblock %}
+
+    .content .intro .intro_title.sub_title{
+    font-size: 25px;
+    padding-top: 20px;
+    }
 
 
-    {% block content %}
+</style>
 
 
-        <div class="contain hexagram">
+{% endblock %}
 
-            <div class="content" >
-                <div class="intro" style="margin-bottom: 100px;">
-                    <!-- JSON 데이터 출력 -->
-                    <h1 class="intro_title">주역 점괘 결과</h1>
 
-                    <!--<p>뽑힌 괘: <span id="hexagram_value"></span> </p>-->
-                    <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
-                    <p></p>
-                    <p><span id="desc_1"></span> <span id="desc_2"></span> </p>
-                    <p id="pretation" class="pretation"></p>
+{% block content %}
+
+
+<div class="contain chizodiac">
+
+    <div class="content">
+        <div class="intro" style="margin-bottom: 100px;">
+            <!-- JSON 데이터 출력 -->
+            <h1 class="intro_title">당사주 결과</h1>
+
+
+
+            <div class="table-container">
+
+
+
+                <table class="table">
+                    <thead>
+
+                        <tr>
+                            <th colspan="4" id="who"></th>
+
+                        </tr>
+
+                        <tr>
+                            <th scope="col">시</th>
+                            <th scope="col">일</th>
+                            <th scope="col">월</th>
+                            <th scope="col">년</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="ChiHeavenlyTimeText"></td>
+                            <td id="ChiHeavenlyDayText"></td>
+                            <td id="ChiHeavenlyMonthText"></td>
+                            <td id="ChiHeavenlyYearText"></td>
+                        </tr>
+                        <tr>
+                            <td id="ChiEarthlyTimeText"></td>
+                            <td id="ChiEarthlyDayText"></td>
+                            <td id="ChiEarthlyMonthText"></td>
+                            <td id="ChiEarthlyYearText"></td>
+                        </tr>
+                        <tr>
+                            <td id="time_type"></td>
+                            <td id="day_type"></td>
+                            <td id="month_type"></td>
+                            <td id="year_type"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="intro_title sub_title">초년운</h2>
+
+                <div class="additional-info" id="year_contenst">
+
                 </div>
 
+                 <h2 class="intro_title sub_title">중년운</h2>
+                <div class="additional-info" id="month_contenst">
+
+                </div>
+
+                 <h2 class="intro_title sub_title">말년운</h2>
+                <div class="additional-info" id="day_contenst">
+
+                </div>
+
+                 <h2 class="intro_title sub_title">평생운</h2>
+                <div class="additional-info" id="time_contenst">
+
+                </div>
             </div>
+
+
+
         </div>
 
-     {% endblock %}
+        <div id="startBtn" class="lastBtn">
+            <a href="/chizodiac" class="chizodiac-button ui-link">처음으로</a>
+        </div>
 
-     {% block scripts %}
-    <script >
+
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
         $(document).ready(function() {
             showLoadingModal();
 
             // 10초 후 모달을 닫는 함수
             setTimeout(function() {
                 closeLoadingModal();
-                typeWriter();
-
-
+                chizodiacSetting();
             }, 1000); // 10000ms = 10초
 
 
-        })
 
 
 
+        });
+
+        function chizodiacSetting(){
+
+            var chizodiacResult = {{ chizodiac_result | tojson | safe }};
+            console.log(chizodiacResult);
 
 
-    const text = `{{ data['interpretation']|safe }}`;
-    let index = 0;
+            $('#who').text(chizodiacResult['gender'] + ' 음력:'+chizodiacResult['Lunar']+ ' 양력:'+chizodiacResult['Solar']);
 
-    const pretationDiv = document.getElementById('pretation');
-    pretationDiv.style.display = 'block'; // div를 보이게 함
-    pretationDiv.textContent = ''; // 초기화
+            $('#ChiHeavenlyTimeText').text(chizodiacResult['ChiHeavenlyTimeText']);
+            $('#ChiHeavenlyDayText').text(chizodiacResult['ChiHeavenlyDayText']);
+            $('#ChiHeavenlyMonthText').text(chizodiacResult['ChiHeavenlyMonthText']);
+            $('#ChiHeavenlyYearText').text(chizodiacResult['ChiHeavenlyYearText']);
 
-
-      function typeWriter() {
-
-            var type_1_value = "{{ data['type_1'] }}";
-            $('#type_1').text(type_1_value);
-            var type_2_value = "{{ data['type_2'] }}";
-            $('#type_2').text(type_2_value);
+            $('#ChiEarthlyTimeText').text(chizodiacResult['ChiEarthlyTimeText']);
+            $('#ChiEarthlyDayText').text(chizodiacResult['ChiEarthlyDayText']);
+            $('#ChiEarthlyMonthText').text(chizodiacResult['ChiEarthlyMonthText']);
+            $('#ChiEarthlyYearText').text(chizodiacResult['ChiEarthlyYearText']);
 
 
-            var hexagram_value = "{{ data['hexagram'] }}";
-            $('#hexagram_value').text(hexagram_value);
-
-            var desc_value = "{{ data['desc'] }}";
-            //$('#desc').text(desc_value);
-
-            // 정규식을 사용하여 한글과 한자를 분리
-            var hanja = desc_value.match(/\(([^)]+)\)/)[1];  // 괄호 안의 한자를 추출
-            var hangeul = desc_value.split('(')[0];  // 괄호 앞의 한글 부분 추출
-
-            // 한글과 한자를 각각 요소에 설정
-            $('#desc_1').text(hangeul);  // 한글 텍스트
-            $('#desc_2').text(hanja);    // 한자 텍스트
+            $('#year_type').text(chizodiacResult['year_type']);
+            $('#month_type').text(chizodiacResult['month_type']);
+            $('#day_type').text(chizodiacResult['day_type']);
+            $('#time_type').text(chizodiacResult['time_type']);
 
 
+            $('#year_contenst').text(chizodiacResult['year_contenst']);
+            $('#month_contenst').text(chizodiacResult['month_contenst']);
+            $('#day_contenst').text(chizodiacResult['day_contenst']);
+            $('#time_contenst').text(chizodiacResult['time_contenst']);
 
 
 
-             if (index < text.length) {
-                 if (text.substring(index, index + 4) === '<br>') {  // <br> 태그가 있으면 줄바꿈 적용
-                    document.querySelector(".pretation").innerHTML += '<br>';
-                    index += 4;  // <br> 태그를 4글자로 처리
-                } else {
-                    document.querySelector(".pretation").innerHTML += text.charAt(index);
-                    index++;
-                }
-                setTimeout(typeWriter, 100);  // 글자 나오는 속도 조정 (50ms)
-            }
         }
-    </script>
 
-     {% endblock %}
+
+
+
+
+
+</script>
+
+{% endblock %}

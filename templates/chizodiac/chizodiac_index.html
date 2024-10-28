@@ -41,6 +41,8 @@
 
         <div class="contain chizodiac">
             <div class="content">
+
+                <form id="myForm" class="needs-validation" novalidate>
                <div class="intro">
                     <div id="hi" class="intro_title">당사주(當四柱)</div>
                     <p>인생의 중요한 네 가지 기둥을 통해<br> 운명과 사건을 점치는 운세<br>
@@ -54,92 +56,96 @@
                 <div class="form-input">
 
                      <div class="container">
-                        <!-- 성별 선택 -->
-                        <div class="row g-3 align-items-center">
-                            <div class="col-4 col-md-2">
-                                <label for="gender" class="form-label">성별</label>
-                            </div>
-                            <div class="col-8 col-md-4">
-                                <select id="gender" class="form-select">
-                                    <option selected="">성별</option>
-                                    <option>남성</option>
-                                    <option>여성</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <!-- 생년월일 선택 (양/음력, 년, 월, 일, 시) -->
-                        <div class="row g-3 align-items-center mt-3">
-                            <div class="col-4 col-md-2">
-                                <label class="form-label">생년월일</label>
+                            <!-- 성별 선택 -->
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4 col-md-2">
+                                    <label for="gender" class="form-label">성별</label>
+                                </div>
+                                <div class="col-8 col-md-4">
+                                    <select id="gender" class="form-select" required>
+                                        <option selected disabled value="">성별</option>
+                                        <option>남성</option>
+                                        <option>여성</option>
+                                    </select>
+
+                                </div>
                             </div>
-                            <div class="col-8 col-md-10">
-                                <div class="row g-3">
-                                    <div class="col-6 col-md-3">
-                                        <select id="calendar" class="form-select">
-                                            <option selected="">선택</option>
-                                            <option>양력</option>
-                                            <option>음력</option>
-                                        </select>
+
+                            <!-- 생년월일 선택 (양/음력, 년, 월, 일, 시) -->
+                            <div class="row g-3 align-items-center mt-3">
+                                <div class="col-4 col-md-2">
+                                    <label class="form-label">생년월일</label>
+                                </div>
+                                <div class="col-8 col-md-10">
+                                    <div class="row g-3">
+                                        <div class="col-6 col-md-3">
+                                            <select id="calendar" class="form-select" required>
+                                                <option selected disabled value="">선택</option>
+                                                <option>양력</option>
+                                                <option>음력</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <select id="year" class="form-select" required>
+                                                <option selected disabled value="">년</option>
+                                                <!-- 연도 예시 -->
+                                                <option>2000</option>
+                                                <option>1999</option>
+                                                <option>1998</option>
+                                                <!-- 추가 필요시 반복 -->
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <select id="month" class="form-select" required>
+                                                <option selected disabled value="">월</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <!-- 1월부터 12월까지 추가 -->
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <select id="day" class="form-select" required>
+                                                <option selected disabled value="">일</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <!-- 1일부터 31일까지 추가 -->
+                                            </select>
+
+                                        </div>
+
                                     </div>
-                                    <div class="col-6 col-md-3">
-                                        <select id="year" class="form-select">
-                                            <option selected="">년</option>
-                                            <!-- 연도 예시 -->
-                                            <option>2000</option>
-                                            <option>1999</option>
-                                            <option>1998</option>
-                                            <!-- 추가 필요시 반복 -->
-                                        </select>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <select id="month" class="form-select">
-                                            <option selected="">월</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <!-- 1월부터 12월까지 추가 -->
-                                        </select>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <select id="day" class="form-select">
-                                            <option selected="">일</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <!-- 1일부터 31일까지 추가 -->
-                                        </select>
-                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="row g-3 align-items-center mt-3">
+                                <div class="col-4 col-md-2">
+                                    <label for="gender" class="form-label">시간</label>
+                                </div>
+                                <div class="col-8 col-md-4">
+                                    <select id="time" class="form-select" required>
+                                        <option selected disabled value="">선택</option>
+
+                                        <option value="00">朝子(00:00~01:30)</option>
+                                        <option value="02">丑(01:31~03:30)</option>
+                                        <option value="04">寅(03:31~05:30)</option>
+                                        <option value="06">卯(05:31~07:30)</option>
+                                        <option value="08">辰(07:31~09:30)</option>
+                                        <option value="10">巳(09:31~11:30)</option>
+                                        <option value="12">午(11:31~13:30)</option>
+                                        <option value="14">未(13:31~15:30)</option>
+                                        <option value="16">申(15:31~17:30)</option>
+                                        <option value="18">酉(17:31~19:30)</option>
+                                        <option value="20">戌(19:31~21:30)</option>
+                                        <option value="22">亥(21:31~23:30)</option>
+                                        <option value="24">夜子(23:31~24:00)</option>
+                                    </select>
 
                                 </div>
                             </div>
                         </div>
-
-                         <div class="row g-3 align-items-center mt-3">
-                            <div class="col-4 col-md-2">
-                                <label for="gender" class="form-label">시간</label>
-                            </div>
-                            <div class="col-8 col-md-4">
-                                <select id="time" class="form-select">
-                                    <option selected="">선택</option>
-
-                                    <option value="00">朝子(00:00~01:30)</option>
-                                    <option value="02">丑(01:31~03:30)</option>
-                                    <option value="04">寅(03:31~05:30)</option>
-                                    <option value="06">卯(05:31~07:30)</option>
-                                    <option value="08">辰(07:31~09:30)</option>
-                                    <option value="10">巳(09:31~11:30)</option>
-                                    <option value="12">午(11:31~13:30)</option>
-                                    <option value="14">未(13:31~15:30)</option>
-                                    <option value="16">申(15:31~17:30)</option>
-                                    <option value="18">酉(17:31~19:30)</option>
-                                    <option value="20">戌(19:31~21:30)</option>
-                                    <option value="22">亥(21:31~23:30)</option>
-                                    <option value="24">夜子(23:31~24:00)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -148,7 +154,11 @@
                 <div id="startBtn" class="lastBtn">
                     <a href="javascript:void(0);" class="chizodiac-button ui-link">시작하기</a>
                 </div>
+
+                </form>
             </div>
+
+
         </div>
     {% endblock %}
 
@@ -189,12 +199,36 @@
                 closeLoadingModal();
             }, 1000); // 10000ms = 10초
 
-            $('.ghost-button').on('click', function() {
+            $('#startBtn').on('click', function() {
+
+                const form = document.getElementById('myForm');
+
+
+
+                // 폼 유효성 검사
+                if (form.checkValidity() === false) {
+                    form.classList.add('was-validated'); // Bootstrap 유효성 스타일 적용
+                    return;
+                }
+
+                const chizodiac_data = {
+                    gender: $("#gender").val(),
+                    calendar: $("#calendar").val(),
+                    year: $("#year").val(),
+                    month: $("#month").val(),
+                    day: $("#day").val(),
+                    time: $("#time").val()
+                };
+
+
 
                 $.ajax({
                     type: 'POST',
-                    url: '/hexagram_process', // Flask의 /process 경로로 요청
+                    url: '/chizodiac_process',
                     dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(chizodiac_data),
+
                     success: function(response) {
                         // 서버가 반환한 리디렉션 URL을 사용하여 새로운 페이지로 이동
                         window.location.href = response.redirect;

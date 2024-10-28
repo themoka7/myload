@@ -46,13 +46,13 @@
             $('#loadingModal').modal('hide');
         }
 
-// 모달을 닫는 함수
-function closeLoadingModal() {
-    // 모달 닫기
-    $('#loadingModal').modal('hide');
+    // 모달을 닫는 함수
+    function closeLoadingModal() {
+        // 모달 닫기
+        $('#loadingModal').modal('hide');
 
-    // 모달이 닫히면 모달 HTML을 지워 메모리 절약
-    $('#loadingModal').on('hidden.bs.modal', function () {
-        document.getElementById('commonModalContainer').innerHTML = '';
-    });
-}
+        // 모달이 닫히면 모달 HTML을 지워 메모리 절약
+        $('#loadingModal').on('hidden.bs.modal', function () {
+            document.getElementById('commonModalContainer').innerHTML = '';
+        });
+    }
