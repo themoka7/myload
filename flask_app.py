@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify, session, url_for,request,Resp
 from flask_cors import CORS
 from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
+from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
 
 
 # CORS(app)
@@ -41,6 +42,29 @@ def hexagram_process():
 @app.route('/chizodiac')
 def chizodiac():
     return render_template('chizodiac/chizodiac_index.html')
+
+
+@app.route('/chizodiac/result')
+def chizodiac_result():
+    chizodiac_result = session.get('chizodiac_result', None)
+    data = session.get('data', {})
+    return render_template('chizodiac/chizodiac_result.html', chizodiac_result=chizodiac_result)  # 결과 페이지에서 데이터 표시
+
+@app.route('/chizodiac_process', methods=['POST'])
+def chizodiac_process():
+    # 클라이언트로부터 JSON 데이터를 받음
+    chizodiac_data = request.get_json()
+
+
+    if not chizodiac_data:
+        return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
+
+    data = get_chizodiac_data(chizodiac_data)
+
+    # 받은 card_data를 처리 (여기서는 단순 출력)
+    session['chizodiac_result'] = data
+    return jsonify({'redirect': url_for('chizodiac_result')})
+
 
 
 @app.route('/tarot')
