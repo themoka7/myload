@@ -10,14 +10,6 @@
     <style>
 
 
-/* 반응형 스타일: 모바일 화면에서 이미지와 텍스트가 세로로 배치되도록 */
-@media screen and (max-width: 768px) {
-    .content .intro .intro_title {
-            font-size: 26px;
-
-    }
-
-}
 
 
     </style>
@@ -39,7 +31,8 @@
                 <div id="hidden" class="hidden">
                 </div>
                 <div id="startBtn" class="lastBtn">
-                    <a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>
+                    <button id="process" type="button" class="btn btn-outline-dark">시작하기</button>
+                    <!--<a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>-->
                 </div>
             </div>
         </div>
@@ -55,9 +48,9 @@
             // 10초 후 모달을 닫는 함수
             setTimeout(function() {
                 closeLoadingModal();
-            }, 1000); // 10000ms = 10초
+            }, 500); // 10000ms = 10초
 
-            $('.ghost-button').on('click', function() {
+            $('#process').on('click', function() {
 
 
                 const displayStyle = $('#hidden').css('display');

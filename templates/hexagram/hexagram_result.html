@@ -66,7 +66,7 @@
                 typeWriter();
 
 
-            }, 1000); // 10000ms = 10초
+            }, 500); // 10000ms = 10초
 
 
         })
@@ -76,6 +76,8 @@
 
 
     const text = `{{ data['interpretation']|safe }}`;
+
+    console.log(text);
     let index = 0;
 
     const pretationDiv = document.getElementById('pretation');
@@ -98,6 +100,8 @@
             //$('#desc').text(desc_value);
 
             // 정규식을 사용하여 한글과 한자를 분리
+
+            console.log(desc_value);
             var hanja = desc_value.match(/\(([^)]+)\)/)[1];  // 괄호 안의 한자를 추출
             var hangeul = desc_value.split('(')[0];  // 괄호 앞의 한글 부분 추출
 

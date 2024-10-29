@@ -266,6 +266,10 @@ body {
     border: solid #9b4545 2px;
     background-color: rgb(255 255 255 / 80%);
     border-radius: 10px;
+    color: #333;
+    background-color: rgb(247 241 231);
+    font-size: 17px;
+    font-family: 'Pretendard', sans-serif;
 }
 
 /* 모바일용 스타일 (화면 너비가 600px 이하인 경우) */
@@ -359,4 +363,43 @@ body {
     --bs-dropdown-border-color: rgb(155 157 158);
     --bs-dropdown-link-hover-color: #9b9d9e;
     --bs-dropdown-link-hover-bg: #f8f9fa00;
+}
+
+.btn {
+    border-radius: 100px;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 17px 39px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.14);
+    text-transform: uppercase;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2);
+    background-color: #212529;
+    --bs-btn-color: #ffffff;
+    --bs-btn-hover-bg: #21252900;
+    --bs-btn-hover-color: #212529;
+    --bs-btn-disabled-bg: #000000;
+
+}
+
+@media screen and (max-width: 768px) {
+    .content .intro .intro_title {
+        font-size: 20px;
+    }
+
+    .intro p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #000;
+        margin-bottom: 20px;
+        font-weight: 600;
+
+    }
+
+    .intro p:first-of-type {
+
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+    }
 }

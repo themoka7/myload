@@ -1,6 +1,6 @@
     {% extends 'base.html' %}
 
-    {% block title %}별자리운세{% endblock %}
+    {% block title %}오눌의 별자리 운세{% endblock %}
     {% block description %}달의 황도상 위치를 기반으로 운세를 알려드리는 서비스 입니다. 달이 별자리에 가까워질수록 긍정적인 기운이 넘치고 반대로 멀어질수록 주변과 내 자신을 돌아봐야 합니다.{% endblock %}
     {% block keywords %}매일 별자리 운세, 별자리, 별자리운세, 올점{% endblock %}
 
@@ -76,30 +76,40 @@
     flex-direction: column;
     height: 100%;
 }
-
-#second_title{
-
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--bs-heading-color);
-
-
+.card-text{
+    /* display: none; */
+    /* background-color: rgb(250 248 232); */
+    /* background-color: rgb(255 255 255 / 80%); */
+    /* padding: 20px; */
+    /* border-radius: 10px; */
+    /* max-width: 500px; */
+    width: 100%;
+    margin: 20px auto;
+    font-size: 17px;
+    font-family: 'Pretendard', sans-serif;
+    white-space: pre-wrap;
+    z-index: 5;
+    /* border: solid #9b4545 2px; */
+    text-align: left;
 }
-.intro p:first-of-type {
-    font-size: initial;
-    line-height: 1.8;
-    color: initial;
-    margin-bottom: 20px;
-    font-weight: initial;
-}
-.card-title2{
-font-size: initial;
-}
+
 
 @media screen and (max-width: 768px) {
 .card-img-top {
-        width: 80%;
-        height: auto; /* 이미지 비율을 유지합니다 */
+    width: 80%;
+    height: auto; /* 이미지 비율을 유지합니다 */
+    display: block; /* 블록 요소로 변경 */
+    margin: 0 auto; /* 가로 중앙 정렬 */
+}
+
+    .card-title2{
+        font-size: 17px;
+    }
+
+    .row>* {
+        padding-right: calc(var(--bs-gutter-x)* 0.2);
+        padding-left: calc(var(--bs-gutter-x)* 0.2);
+
     }
 }
 
@@ -118,9 +128,9 @@ font-size: initial;
     <div class="content">
         <div class="intro" style="margin-bottom: 100px;">
             <!-- JSON 데이터 출력 -->
-            <h1 class="intro_title">별자리 운세(Daily)</h1>
-            <p id="second_title">올점에서는 황도상의 달의 위치를 기반으로 과학적인 운세를 제공합니다.</p>
-            <p class="third_title">지금 달은 천칭자리를 향하고 있습니다.</p>
+            <h1 class="intro_title">오늘의 별자리 운세</h1>
+            <p id="second_title">올점에서는 황도상 달의 위치 기반하여 과학적 운세를 제공합니다.</p>
+            <p class="third_title">오늘 달은 천칭자리를 향하고 있습니다.</p>
 
 
            <div id="dailystarzodiac_container" class="container mt-6">
@@ -144,7 +154,7 @@ font-size: initial;
             setTimeout(function() {
                 closeLoadingModal();
                 dailystarzodiacSetting();
-            }, 1000); // 10000ms = 10초
+            }, 500); // 10000ms = 10초
 
 
 
@@ -159,7 +169,7 @@ font-size: initial;
 
             console.log(dailystarzodiacResult);
 
-            $('.third_title').text(`달은 현재 황도(${dailystarzodiacResult['ecliptic_longitude']}도)의 ${dailystarzodiacResult['zodiac_sign']}를 지나고 있습니다.`);
+            $('.third_title').text(`달은 오늘 황도(${dailystarzodiacResult['ecliptic_longitude']}도)의 ${dailystarzodiacResult['zodiac_sign']}를 지나고 있습니다.`);
 
 
             const $container = $('#dailystarzodiac_container');
@@ -195,7 +205,7 @@ font-size: initial;
                             <div class="card-body">
                                 <h5 class="card-title1">${zodiac.koreanName}</h5>
                                 <h5 class="card-title2">${zodiac.dateRange}</h5>
-                                <p id="cardtext_${zodiac.name}" class="card-text">Today is a great day for new beginnings...</p>
+                                <div id="cardtext_${zodiac.name}" class="card-text">Today is a great day for new beginnings...</div>
                             </div>
                         </div>
                     </div>

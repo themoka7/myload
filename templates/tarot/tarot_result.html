@@ -59,6 +59,7 @@
 
           border: 1px solid #bbb4a2;
           border-radius: var(--swiper-pagination-bullet-border-radius, 5%);
+          border-radius: 10px;
         }
 
         .swiper-pagination-bullet-active {
@@ -101,6 +102,7 @@
         border: 3px solid #ffc107;
         background-color: #19172f;
         color: #ffc107;
+        border-radius: 10px;
     }
 
     /* 이미지와 설명 컨테이너 */
@@ -146,9 +148,7 @@
             display: inline;
             font-size: 20px;
         }
-       .content .intro .intro_title {
-        font-size: 17px;
-        }
+
     }
 
 
@@ -189,6 +189,9 @@
         .back {
           transform: rotateY(180deg);
         }
+        .description{
+            padding-bottom: 20px;
+        }
 
       </style>
 
@@ -215,13 +218,13 @@
                                             </div>
                                             <div class="tarot-description">
                                                 <h3 id='name_0'></h3>
-                                                <p id='description_0'>
+                                                <div id='description_0' class="description">
 
-                                                </p>
+                                                </div>
 
-                                                <p id="interpretation_0" class="pretation">
+                                                <div id="interpretation_0" class="pretation">
 
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -235,9 +238,9 @@
                                             </div>
                                             <div class="tarot-description">
                                                 <h3 id='name_1'></h3>
-                                                <p id='description_1'>
+                                                <div id='description_1' class="description">
 
-                                                </p>
+                                                </div>
 
                                                 <p id="interpretation_1" class="pretation">
 
@@ -255,9 +258,9 @@
                                             </div>
                                             <div class="tarot-description">
                                                 <h3 id='name_2'></h3>
-                                                <p id='description_2'>
+                                                <div id='description_2' class="description">
 
-                                                </p>
+                                                </div>
 
                                                 <p id="interpretation_2" class="pretation">
 
@@ -279,9 +282,6 @@
 
 
 
-                <div id="startBtn" class="lastBtn">
-                    <a href="/tarot" class="tarot-button ui-link">처음으로</a>
-                </div>
             </div>
         </div>
 
@@ -321,7 +321,7 @@
                 setTimeout(function() {
                     closeLoadingModal();
                     tarotResultSetting(tarotResult);
-                }, 3000); // 10000ms = 10초
+                }, 500); // 10000ms = 10초
             })
 
 

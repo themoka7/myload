@@ -61,6 +61,13 @@
     padding-top: 20px;
     }
 
+    @media screen and (max-width: 768px) {
+     .content .intro .intro_title.sub_title{
+        font-size: 20px;
+        padding-top: 20px;
+        }
+    }
+
 
 </style>
 
@@ -147,10 +154,6 @@
 
         </div>
 
-        <div id="startBtn" class="lastBtn">
-            <a href="/chizodiac" class="chizodiac-button ui-link">처음으로</a>
-        </div>
-
 
 
     </div>
@@ -167,7 +170,7 @@
             setTimeout(function() {
                 closeLoadingModal();
                 chizodiacSetting();
-            }, 1000); // 10000ms = 10초
+            }, 500); // 10000ms = 10초
 
 
 
