@@ -378,6 +378,7 @@ body {
     --bs-btn-color: #ffffff;
     --bs-btn-hover-bg: #21252900;
     --bs-btn-hover-color: #212529;
+    --bs-btn-disabled-bg: #000000;
 
 }
 
