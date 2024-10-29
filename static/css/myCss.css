@@ -266,6 +266,10 @@ body {
     border: solid #9b4545 2px;
     background-color: rgb(255 255 255 / 80%);
     border-radius: 10px;
+    color: #333;
+    background-color: rgb(247 241 231);
+    font-size: 17px;
+    font-family: 'Pretendard', sans-serif;
 }
 
 /* 모바일용 스타일 (화면 너비가 600px 이하인 경우) */
