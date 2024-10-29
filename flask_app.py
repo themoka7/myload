@@ -30,12 +30,14 @@ def hexagram():
 @app.route('/hexagram/result')
 def hexagram_result():
     # 세션에 저장된 처리된 데이터 불러오기
+    session.clear()
     data = session.get('data', {})
     return render_template('hexagram/hexagram_result.html', data=data)  # 결과 페이지에서 데이터 표시
 
 @app.route('/hexagram_process', methods=['POST'])
 def hexagram_process():
     data = get_hexagram_data()
+    session.clear()
     session['data'] = data
     return jsonify({'redirect': url_for('hexagram_result')})  # 리디렉션 URL을 AJAX로 반환
 
@@ -49,6 +51,7 @@ def chizodiac():
 @app.route('/chizodiac/result')
 def chizodiac_result():
     chizodiac_result = session.get('chizodiac_result', None)
+    session.clear()
     data = session.get('data', {})
     return render_template('chizodiac/chizodiac_result.html', chizodiac_result=chizodiac_result)  # 결과 페이지에서 데이터 표시
 
@@ -76,6 +79,7 @@ def tarot():
 @app.route('/tarot/result')
 def tarot_result():
     tarot_result = session.get('tarot_result', None)
+    session.clear()
     data = session.get('data', {})
     return render_template('tarot/tarot_result.html', tarot_result=tarot_result)  # 결과 페이지에서 데이터 표시
 
@@ -91,6 +95,7 @@ def tarot_process():
     data = get_tarot_data(card_data)
 
     # 받은 card_data를 처리 (여기서는 단순 출력)
+    session.clear()
     session['tarot_result'] = data
     return jsonify({'redirect': url_for('tarot_result')})
 
@@ -101,6 +106,7 @@ def dailystarzodiac():
     print(type(data))
 
     # 받은 card_data를 처리 (여기서는 단순 출력)
+    session.clear()
     session['dailystarzodiac_result'] = data
 
     return render_template('dailystarzodiac/dailystarzodiac_index.html')
@@ -118,6 +124,7 @@ def sitemap():
         {'loc': url_for('tarot', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'daily', 'priority': 0.6},
         {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily', 'priority': 0.6},
         {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily','priority': 0.6},
+
         # 추가 URL을 여기에 추가
     ]
 
