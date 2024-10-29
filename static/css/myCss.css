@@ -89,6 +89,18 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+.contain.dailystarzodiac {
+    text-align: center;
+    background: url('../../static/img/dailystarzodiac.webp') repeat center center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
 
 
 

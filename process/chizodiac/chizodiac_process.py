@@ -78,7 +78,7 @@ def get_chizodiac_data(selected_chizodiac):
         calendar.setSolarDate(date.year, date.month, date.day)
         KorGapJa = calendar.getGapJaString()
         ChiGapJa = calendar.getChineseGapJaString()
-        print(calendar.LunarIsoFormat())
+
 
     day_data = {
         "KorHeavenlyDayText": KorGapJa.split()[2][0],

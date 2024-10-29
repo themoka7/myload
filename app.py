@@ -4,6 +4,8 @@ from flask_cors import CORS
 from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
+from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
+
 
 
 # CORS(app)
@@ -92,6 +94,18 @@ def tarot_process():
     session['tarot_result'] = data
     return jsonify({'redirect': url_for('tarot_result')})
 
+@app.route('/dailystarzodiac')
+def dailystarzodiac():
+    data = get_dailystarzodiac_data()
+    print('1')
+    print(type(data))
+
+    # 받은 card_data를 처리 (여기서는 단순 출력)
+    session['dailystarzodiac_result'] = data
+
+    return render_template('dailystarzodiac/dailystarzodiac_index.html')
+
+
 
 # 사이트맵 생성 라우트 추가
 @app.route('/sitemap.xml')
@@ -102,6 +116,7 @@ def sitemap():
         {'loc': url_for('intro', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.8},
         {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.6},
         {'loc': url_for('tarot', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.6},
+        {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'monthly', 'priority': 0.6},
         # 추가 URL을 여기에 추가
     ]
 

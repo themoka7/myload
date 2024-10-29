@@ -1,0 +1,260 @@
+    {% extends 'base.html' %}
+
+    {% block title %}별자리운세{% endblock %}
+    {% block description %}달의 황도상 위치를 기반으로 운세를 알려드리는 서비스 입니다. 달이 별자리에 가까워질수록 긍정적인 기운이 넘치고 반대로 멀어질수록 주변과 내 자신을 돌아봐야 합니다.{% endblock %}
+    {% block keywords %}매일 별자리 운세, 별자리, 별자리운세, 올점{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+
+    .content {
+    max-width: 1000px;
+    }
+ .table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.responsive-table {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    gap: 10px;
+}
+
+.table-cell {
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 160px;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zodiac-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.horoscope {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    padding: 3px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* 같은 행의 카드 높이 자동 맞춤 */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#second_title{
+
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+
+
+}
+.intro p:first-of-type {
+    font-size: initial;
+    line-height: 1.8;
+    color: initial;
+    margin-bottom: 20px;
+    font-weight: initial;
+}
+.card-title2{
+font-size: initial;
+}
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+{% block content %}
+
+
+<div class="contain dailystarzodiac">
+
+    <div class="content">
+        <div class="intro" style="margin-bottom: 100px;">
+            <!-- JSON 데이터 출력 -->
+            <h1 class="intro_title">별자리 운세(Daily)</h1>
+            <p id="second_title">올점에서는 황도상의 달의 위치를 기반으로 과학적인 운세를 제공합니다.</p>
+            <p class="third_title">지금 달은 천칭자리를 향하고 있습니다.</p>
+
+
+           <div id="dailystarzodiac_container" class="container mt-6">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-6 mb-4">
+                        <div class="card text-center">
+                            <img src="../../static/img/dailystarzodiac/aquarius.png" class="card-img-top" alt="aquarius">
+                            <div class="card-body">
+                                <h5 class="card-title1">물병자리 (Aquarius)</h5>
+                                <h5 class="card-title2">1월 20일 ~ 2월 18일</h5>
+                                <p id='cardtext_Aquarius' class="card-text">Today is a great day for new beginnings...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 다른 별자리도 동일한 구조로 작성 -->
+                    <div class="col-lg-3 col-md-4 col-6 mb-4">
+                        <div class="card text-center">
+                            <img src="../../static/img/dailystarzodiac/pisces.png" class="card-img-top" alt="pisces">
+                            <div class="card-body">
+                                <h5 class="card-title">물고기자리 (Pisces)</h5>
+                                <h5 class="card-title">2월 19일 ~ 3월 20일</h5>
+                                <p id='cardtext_Pisces' class="card-text">Today is a great day for new beginnings...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 다른 별자리도 동일한 구조로 작성 -->
+                    <div class="col-lg-3 col-md-4 col-6 mb-4">
+                        <div class="card text-center">
+                            <img src="../../static/img/dailystarzodiac/aries.png" class="card-img-top" alt="aries">
+                            <div class="card-body">
+                                <h5 class="card-title">양자리 (Aries)</h5>
+                                <h5 class="card-title">3월 21일 ~ 4월 19일</h5>
+                                <p id='cardtext_Aries' class="card-text">Today is a great day for new beginnings...</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 다른 별자리도 동일한 구조로 작성 -->
+                    <div class="col-lg-3 col-md-4 col-6 mb-4">
+                        <div class="card text-center">
+                            <img src="../../static/img/dailystarzodiac/taurus.png" class="card-img-top" alt="taurus">
+                            <div class="card-body">
+                                <h5 class="card-title">황소자리 (Taurus)</h5>
+                                <h5 class="card-title">4월 20일 ~ 5월 20일</h5>
+                                <p id='cardtext_Taurus' class="card-text">Today is a great day for new beginnings...</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+            showLoadingModal();
+
+            // 10초 후 모달을 닫는 함수
+            setTimeout(function() {
+                closeLoadingModal();
+                dailystarzodiacSetting();
+            }, 1000); // 10000ms = 10초
+
+
+
+
+
+        });
+
+        function dailystarzodiacSetting(){
+
+
+            var dailystarzodiacResult = {{ session['dailystarzodiac_result'] | tojson }};
+
+            console.log(dailystarzodiacResult);
+
+            $('.third_title').text(`달은 현재 황도(${dailystarzodiacResult['ecliptic_longitude']}도)의 ${dailystarzodiacResult['zodiac_sign']}를 지나고 있습니다.`);
+
+
+            const $container = $('#dailystarzodiac_container');
+            $container.empty();
+
+
+            // 별자리 정보 배열
+            const zodiacData1 = [
+                { name: 'Aquarius', koreanName: '물병자리', dateRange: '1월 20일 ~ 2월 18일' },
+                { name: 'Pisces', koreanName: '물고기자리', dateRange: '2월 19일 ~ 3월 20일' },
+                { name: 'Aries', koreanName: '양자리', dateRange: '3월 21일 ~ 4월 19일' },
+                { name: 'Taurus', koreanName: '황소자리', dateRange: '4월 20일 ~ 5월 20일' },
+                { name: 'Gemini', koreanName: '쌍둥이자리', dateRange: '5월 21일 ~ 6월 20일' },
+                { name: 'Cancer', koreanName: '게자리', dateRange: '6월 21일 ~ 7월 22일' },
+                { name: 'Leo', koreanName: '사자자리', dateRange: '7월 23일 ~ 8월 22일' },
+                { name: 'Virgo', koreanName: '처녀자리', dateRange: '8월 23일 ~ 9월 22일' },
+                { name: 'Libra', koreanName: '천칭자리', dateRange: '9월 23일 ~ 10월 22일' },
+                { name: 'Scorpio', koreanName: '전갈자리', dateRange: '10월 23일 ~ 11월 21일' },
+                { name: 'Sagittarius', koreanName: '사수자리', dateRange: '11월 22일 ~ 12월 21일' },
+                { name: 'Capricorn', koreanName: '염소자리', dateRange: '12월 22일 ~ 1월 19일' }
+            ];
+
+
+            const $row = $('<div class="row"></div>');
+            $container.append($row);
+
+
+            $.each(zodiacData1, function(index, zodiac) {
+                const $col = $(`
+                    <div class="col-lg-3 col-md-4 col-6 mb-4">
+                        <div class="card text-center">
+                            <img src="../../static/img/dailystarzodiac/${zodiac.name}.png" class="card-img-top" alt="aquarius">
+                            <div class="card-body">
+                                <h5 class="card-title1">${zodiac.koreanName}</h5>
+                                <h5 class="card-title2">${zodiac.dateRange}</h5>
+                                <p id="cardtext_${zodiac.name}" class="card-text">Today is a great day for new beginnings...</p>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                $row.append($col);
+                $(`#cardtext_${zodiac.name}`).text(dailystarzodiacResult['zodiac_data'][zodiac.name]['운세']);
+            });
+
+
+
+
+        }
+
+
+
+
+
+
+</script>
+     {% endblock %}
