@@ -32,6 +32,7 @@ def hexagram_result():
     # 세션에 저장된 처리된 데이터 불러오기
 
     data = session.get('data', {})
+    print(data)
     return render_template('hexagram/hexagram_result.html', data=data)  # 결과 페이지에서 데이터 표시
 
 @app.route('/hexagram_process', methods=['POST'])
