@@ -360,3 +360,27 @@ body {
     --bs-dropdown-link-hover-color: #9b9d9e;
     --bs-dropdown-link-hover-bg: #f8f9fa00;
 }
+
+@media screen and (max-width: 768px) {
+    .content .intro .intro_title {
+        font-size: 20px;
+    }
+
+    .intro p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #000;
+        margin-bottom: 20px;
+        font-weight: 600;
+
+    }
+
+    .intro p:first-of-type {
+
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+    }
+
+
+}

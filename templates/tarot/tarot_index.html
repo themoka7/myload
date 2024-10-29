@@ -9,14 +9,20 @@
     <style>
 
          .shake_title {
-            background: linear-gradient(270deg, #6a11cb, #2575fc); /* 보라색 계열 그라데이션 */
-            background-size: 400% 400%;
-            -webkit-background-clip: text; /* 텍스트에 그라데이션 클립 적용 */
-            background-clip: text;
-            color: transparent; /* 텍스트의 기본 색상을 투명하게 */
-            animation: gradientText 5s ease infinite; /* 2초 동안 색상이 변하는 애니메이션 */
             font-size: 36px;
+            color: #741414;
+            /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); */
+            transition: text-shadow 0.3s ease;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+        }
+
+        @media screen and (max-width: 768px) {
+            .shake_title {
+                font-size: 20px;
+            }
         }
 
         @keyframes gradientText {
