@@ -144,7 +144,8 @@
                 </div>
 
                 <div id="startBtn" class="lastBtn">
-                    <a href="javascript:void(0);" class="chizodiac-button ui-link">시작하기</a>
+                    <button id="process" type="button" class="btn btn-outline-dark">시작하기</button>
+                    <!--<a href="javascript:void(0);" class="chizodiac-button ui-link">시작하기</a>-->
                 </div>
 
                 </form>
@@ -191,7 +192,7 @@
                 closeLoadingModal();
             }, 1000); // 10000ms = 10초
 
-            $('#startBtn').on('click', function() {
+            $('#process').on('click', function() {
 
                 const form = document.getElementById('myForm');
 
