@@ -113,10 +113,11 @@ def sitemap():
     # 사이트의 URL 목록
     urls = [
         {'loc': url_for('index', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'daily', 'priority': 1.0},
-        {'loc': url_for('intro', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.8},
-        {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.6},
-        {'loc': url_for('tarot', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'monthly', 'priority': 0.6},
-        {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'monthly', 'priority': 0.6},
+        {'loc': url_for('intro', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'daily', 'priority': 0.8},
+        {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'daily', 'priority': 0.6},
+        {'loc': url_for('tarot', _external=True), 'lastmod': '2024-10-01', 'changefreq': 'daily', 'priority': 0.6},
+        {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily', 'priority': 0.6},
+        {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily','priority': 0.6},
         # 추가 URL을 여기에 추가
     ]
 
