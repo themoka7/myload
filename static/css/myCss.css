@@ -108,8 +108,8 @@ body {
     content: "";
     position: absolute;
     top: 0;
-    left: 50px;
-    right: 50px;
+    left: 3%;
+    right: 3%;
     bottom: 0;
     /* background: inherit; */
     filter: blur(30px);
