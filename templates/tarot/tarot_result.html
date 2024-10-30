@@ -53,7 +53,7 @@
           font-size: 12px;
           color: #d1cccc;
           opacity: 1;
-          background-color: #19172f;
+          background-color: #ffffff;
           padding-left: 20px;
           padding-right: 20px;
 
@@ -63,34 +63,22 @@
         }
 
         .swiper-pagination-bullet-active {
-          color: #ffc107;
-          border: 2px solid #ffc107;
+          color: #9b4545;
+          border: 2px solid #9b4545;
+          background-color: rgb(247 241 231);
           <!--background: #007aff;-->
         }
 
         .swiper-pagination-bullet{
           display: inline;
-          font-size:36px;
+          font-size: 17px;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
 
 
 
-        * 부모 요소 설정: 가운데 정렬 */
-    .contain.tarot {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        text-align: center;
-    }
-
-    .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
 
     .intro_result {
         display: flex;
@@ -99,23 +87,23 @@
         padding: 20px;
         justify-content: center; /* 가로로 가운데 정렬 */
         align-items: center;     /* 세로로 가운데 정렬 */
-        border: 3px solid #ffc107;
-        background-color: #19172f;
-        color: #ffc107;
+
+        border: solid #9b4545 2px;
+        background-color: rgb(247 241 231);
         border-radius: 10px;
     }
 
     /* 이미지와 설명 컨테이너 */
     .tarot-card-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
+
         gap: 20px; /* 이미지와 설명 사이 간격 */
     }
 
     .tarot-image img {
-        max-width: 300px;  /* 이미지 크기 */
+        max-width: 200px;  /* 이미지 크기 */
         height: auto;
         border: 2px solid #ccc;
     }
@@ -191,6 +179,12 @@
         }
         .description{
             padding-bottom: 20px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .name{
+        padding-bottom: 20px;
+        font-weight: 600;
         }
 
       </style>
@@ -203,7 +197,7 @@
         <div class="contain tarot">
             <div class="content">
                 <div class="intro">
-                    <div id="hi" class="intro_title">타로 카드가 전하는 과거, 현재, 미래의<br> 메시지를 통해 당신의 운명을 발견하세요</div>
+                    <div id="hi" class="intro_title">타로 결과</div>
 
                         <!---->
 
@@ -217,7 +211,7 @@
                                                 <img id='img_0' src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
                                             </div>
                                             <div class="tarot-description">
-                                                <h3 id='name_0'></h3>
+                                                <div id='name_0' class="name"></div>
                                                 <div id='description_0' class="description">
 
                                                 </div>
@@ -237,14 +231,14 @@
                                                 <img id='img_1'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
                                             </div>
                                             <div class="tarot-description">
-                                                <h3 id='name_1'></h3>
+                                                <div id='name_1' class="name"></div>
                                                 <div id='description_1' class="description">
 
                                                 </div>
 
-                                                <p id="interpretation_1" class="pretation">
+                                                <div id="interpretation_1" class="pretation">
 
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -257,14 +251,14 @@
                                                 <img id='img_2'  src="../../static/img/tarot_go.png" alt="Strength Tarot Card" />
                                             </div>
                                             <div class="tarot-description">
-                                                <h3 id='name_2'></h3>
+                                                <div id='name_2' class="name"></div>
                                                 <div id='description_2' class="description">
 
                                                 </div>
 
-                                                <p id="interpretation_2" class="pretation">
+                                                <div id="interpretation_2" class="pretation">
 
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

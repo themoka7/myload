@@ -248,7 +248,7 @@
             const cards = $(".card");
 
             // 한 번에 7개씩 랜덤한 순서로 카드 보여주기
-            const groupSize = 7;  // 한 번에 보여줄 카드 개수
+            const groupSize = 26;  // 한 번에 보여줄 카드 개수
             for (let i = 0; i < indices.length; i += groupSize) {
                 setTimeout(function() {
                     // 7개씩 동시에 나타내기
@@ -329,21 +329,24 @@
 
                     // 버튼 추가
                     $('.content').append(`
-                        <div id="startBtn" class="lastBtn">
-                            <a href="javascript:void(0);" class="tarot-result-button ui-link">시작하기</a>
+                         <div id="startBtn" class="lastBtn">
+                            <button id="process2" type="button" class="btn btn-outline-dark">카드 해석</button>
+                            <!--<a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>-->
                         </div>
                     `);
 
-                    // 스크롤을 마지막으로 내리기
-                    $('html, body').animate({
-                        scrollTop: $(document).height() // 페이지 맨 아래로 스크롤
-                    }, 500);  // 0.5초 동안 부드럽게 스크롤
+                    setTimeout(function() {
+                        $('html, body').animate({
+                            scrollTop: $(document).height() // 페이지 맨 아래로 스크롤
+                        }, 500); // 0.5초 동안 부드럽게 스크롤
+                    }, 2000); // 2초(2000밀리초) 후에 실행
                 }
             }
         });
 
 
-        $('.content').on('click', '.tarot-result-button', function() {
+        $(document).on('click', '#process2', function() {
+
 
 
                 console.log(cardData);

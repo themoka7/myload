@@ -10,7 +10,7 @@
     <style>
 
     .content {
-    max-width: 1000px;
+
     }
  .table-container {
     display: flex;
@@ -69,12 +69,14 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch; /* 같은 행의 카드 높이 자동 맞춤 */
+    gap: 10px;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     height: 100%;
+
 }
 .card-text{
     /* display: none; */
@@ -86,17 +88,31 @@
     width: 100%;
     margin: 20px auto;
     font-size: 17px;
-    font-family: 'Pretendard', sans-serif;
+
     white-space: pre-wrap;
     z-index: 5;
     /* border: solid #9b4545 2px; */
     text-align: left;
+    font-weight: 600;
 }
+.card-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* 세로 중앙 정렬 */
+    border: solid #9b4545 2px;
+    background-color: rgb(247 241 231);
+}
+.card-img-top {
 
+   width: 20%;
+}
+.card-title{
+    font-weight: 600;
+}
 
 @media screen and (max-width: 768px) {
 .card-img-top {
-    width: 80%;
+
     height: auto; /* 이미지 비율을 유지합니다 */
     display: block; /* 블록 요소로 변경 */
     margin: 0 auto; /* 가로 중앙 정렬 */
@@ -199,12 +215,12 @@
 
             $.each(zodiacData1, function(index, zodiac) {
                 const $col = $(`
-                    <div class="col-lg-3 col-md-4 col-6 mb-4">
-                        <div class="card text-center">
+                    <div class="">
+                        <div class="card text-center card-horizontal">
                             <img src="../../static/img/dailystarzodiac/${zodiac.name}.png" class="card-img-top" alt="aquarius">
                             <div class="card-body">
-                                <h5 class="card-title1">${zodiac.koreanName}</h5>
-                                <h5 class="card-title2">${zodiac.dateRange}</h5>
+                                <div class="card-title">${zodiac.koreanName} / ${zodiac.dateRange}</div>
+
                                 <div id="cardtext_${zodiac.name}" class="card-text">Today is a great day for new beginnings...</div>
                             </div>
                         </div>
