@@ -17,7 +17,7 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/eightzodiac">사주(명리)</a>
+                    <a class="dropdown-item" href="showPopup(event)">사주(명리)</a>
                     <a class="dropdown-item" href="/chizodiac">당사주</a>
                 </div>
 
@@ -33,3 +33,13 @@
               </ul>
             </div>
           </nav>
+
+ <script>
+    function showPopup(event) {
+        event.preventDefault(); // 기본 링크 이동 동작 방지
+        alert("서비스 개발 중입니다.");
+
+        // 팝업을 닫은 후 페이지 이동이 필요하면 아래 줄의 주석을 해제하세요
+        // window.location.href = '/eightzodiac';
+    }
+</script>
