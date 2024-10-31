@@ -1,6 +1,8 @@
 from flask import Flask, render_template, jsonify, session, url_for,request,Response, send_from_directory
 
 from flask_cors import CORS
+
+from process.common.rss import generate_rss
 from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
@@ -236,6 +238,20 @@ def serve_robots():
 #########################################
 #                robots                 #
 #########################################
+
+#########################################
+#                rss                    #
+#########################################
+@app.route('/rss.xml')
+def rss():
+    rss_feed = generate_rss()
+    return Response(rss_feed, mimetype="application/rss+xml")
+
+#########################################
+#                rss                 #
+#########################################
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)
