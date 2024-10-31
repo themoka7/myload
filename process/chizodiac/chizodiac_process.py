@@ -104,4 +104,4 @@ def get_chizodiac_data(selected_chizodiac):
     return eightchar
 
 
-get_chizodiac_data(selected_chizodiac)
+#get_chizodiac_data(selected_chizodiac)

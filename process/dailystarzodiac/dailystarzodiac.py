@@ -73,4 +73,4 @@ def get_dailystarzodiac_data():
 
     return new_data
 
-print(get_dailystarzodiac_data())
+#print(get_dailystarzodiac_data())

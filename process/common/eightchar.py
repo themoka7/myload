@@ -34,7 +34,7 @@ def get_eightchar(type, year, month, day, time):
     calendar = KoreanLunarCalendar()
     if type != '양력':
         calendar.setLunarDate(year, month, day, False)
-        print(calendar.SolarIsoFormat().split('-'))
+        #print(calendar.SolarIsoFormat().split('-'))
         year = int(calendar.SolarIsoFormat().split('-')[0])
         month = int(calendar.SolarIsoFormat().split('-')[1])
         day = int(calendar.SolarIsoFormat().split('-')[2])
@@ -118,4 +118,4 @@ def calculate_hour_pillar(day_gan, hour_branch_index):
     gan_cycle = gan_cycles[day_gan]
     return gan_cycle[hour_branch_index]
 
-get_eightchar('양력', '1981','3','28','02')
+#get_eightchar('양력', '1981','3','28','02')
