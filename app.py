@@ -114,6 +114,7 @@ def eightzodiac_process():
     # 클라이언트로부터 JSON 데이터를 받음
     eightzodiac_data = request.get_json()
 
+    print(eightzodiac_data)
 
     if not eightzodiac_data:
         return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
@@ -127,7 +128,7 @@ def eightzodiac_process():
 
 
 #########################################
-#            chizodiac(자평)           #
+#            eightzodiac_process(자평)           #
 #########################################
 
 

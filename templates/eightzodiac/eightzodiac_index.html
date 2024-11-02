@@ -208,7 +208,7 @@
                     return;
                 }
 
-                const chizodiac_data = {
+                const eightzodiac_data = {
                     gender: $("#gender").val(),
                     calendar: $("#calendar").val(),
                     year: $("#year").val(),
@@ -221,10 +221,10 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/chizodiac_process',
+                    url: '/eightzodiac_process',
                     dataType: 'json',
                     contentType: 'application/json',
-                    data: JSON.stringify(chizodiac_data),
+                    data: JSON.stringify(eightzodiac_data),
 
                     success: function(response) {
                         // 서버가 반환한 리디렉션 URL을 사용하여 새로운 페이지로 이동
