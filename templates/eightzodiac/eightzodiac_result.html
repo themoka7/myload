@@ -416,11 +416,11 @@
 
                // 요소별 위치 지정
             const positions = [
-                { x: 290, y: 100 },
-                { x: 440, y: 200 },
-                { x: 365, y: 350 },
-                { x: 215, y: 350 },
-                { x: 140, y: 200 }
+                { x: 290, y: 100 },    // 기준점 (맨 위)
+                { x: 460, y: 210 },    // 오른쪽 위
+                { x: 400, y: 380 },    // 오른쪽 아래
+                { x: 180, y: 380 },    // 왼쪽 아래
+                { x: 110, y: 210 }
             ];
 
             // 위치를 순서대로 할당
@@ -446,17 +446,17 @@
 
 
             elements.forEach((element, index) => {
-                init_radius = 20 ;
+                init_radius = 30 ;
 
-                radiusRange = 50 - init_radius;
-                console.log(radiusRange);
-                percentage = parseFloat(elementRatios[element.label].replace("%", ""));
-                radius = init_radius + (radiusRange * (percentage / 100));
-                console.log(radius);
+                //radiusRange = 50 - init_radius;
+                //console.log(radiusRange);
+                //percentage = parseFloat(elementRatios[element.label].replace("%", ""));
+                //radius = init_radius + (radiusRange * (percentage / 100));
+                //console.log(radius);
 
-                increasePercentage = ((radius - init_radius) / radiusRange);
-                console.log('*'+increasePercentage);
-
+                //increasePercentage = ((radius - init_radius) / radiusRange);
+                //console.log('*'+increasePercentage);
+                radius = init_radius;
                 ctx.beginPath();
                 ctx.arc(element.x, element.y, radius, 0, Math.PI * 2);
                 ctx.fillStyle = element.color;
