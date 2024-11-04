@@ -65,6 +65,7 @@
         background-color: rgb(247 241 231);
         font-size: 17px;
         font-weight: 600;
+        margin-bottom: 1rem;
     }
 
     .table thead tr th:nth-child(1) {
@@ -188,38 +189,9 @@
 
 
 
-    .table-container .table.sub_table{
-        text-align: center;
-        text-align: center;
-        table-layout: fixed;
-        width: 90%;
-        /* border-radius: 10px; */
-        /* overflow: hidden; */
-        font-weight: 600;
-        border-top: solid #9b4545 2px;
-        border-left: solid #9b4545 2px;
-        border-right: solid #9b4545 2px;
-        border-bottom: solid #9b4545 1px;
-        border-collapse: separate;
-        border-spacing: 0;
-        border-radius: 10px;
-        overflow: hidden;
-        margin: 0 auto;
 
-    }
-     .sub_table thead tr th:nth-child(1) {
-        background-color: #f9f4ec;
-    }
-
-    .sub_table tbody:nth-of-type(1) tr:nth-child(1),
-    .sub_table tbody:nth-of-type(1) tr:nth-child(2) {
-        font-size: 20px; /* 원하는 크기로 설정 */
-
-        color: #222;
-    }
-     .sub_table thead tr th,
-     .sub_table tbody tr td {
-        background-color: #f9f4ec;
+    .sub_table tbody tr td {
+        font-size: 15px;
     }
     .content .intro .sub2_title{
         font-size: 20px; /* 원하는 크기로 설정 */
@@ -305,15 +277,15 @@
             </div>
 
             <div class="canvas-container">
-             <h2 class="intro_title sub_title" id="convas-title">오행의 상생상극 관계도</h2>
+             <h2 class="intro_title sub_title">오행의 상생상극 관계도</h2>
                 <canvas id="fiveElementsCanvas" width="600px" height="550px" ></canvas>
                 <br>
                 <img id="canvasImage" class="responsive-image" alt="Canvas Image"/>
             </div>
 
              <div class="table-container">
-                    <h2 class="intro_title sub2_title" id="convas-title">신약신강법(身弱身强法) : <span id="strength">aa</span></h2>
-                    <table class="table">
+                    <h2 class="intro_title sub2_title" >신약신강법(身弱身强法) : <span id="strength">aa</span></h2>
+                    <table class="table sub_table">
                         <thead>
                             <tr>
                                 <th colspan="4" id="strength_text">월지와 일지에서 힘을 얻고, , 년지나 시지에서도 도움을 받음</th>
@@ -338,11 +310,19 @@
 
             <!-- 일간으로 보는 성격-->
             <div class="table-container">
-                    <h2 class="intro_title sub2_title" id="daily_-title">일간으로 보는 나의 성격 : <span id="daily_personality_name">aa</span></h2>
-                    <div class="additional-info" id="daily_personality_features">중년에 외부의 충고를 잘 받아들이고 겸손을 유지하면, 큰 성과와 함께 사회적 위치가 높아질 것입니다. 스스로의 지혜와 남의 조언을 조화롭게 활용하는 능력이 남성로서의 위상을 더욱 높이게 될 것입니다. 이 시기의 성취는 남다른 노력과 준비 덕분에 더욱 빛을 발할 것입니다.</div>
+                    <h2 class="intro_title sub2_title" id="daily_title">일간으로 보는 나의 성격 : <span id="daily_personality_name">aa</span></h2>
+                    <div class="additional-info" id="daily_personality_features"></div>
 
             </div>
             <!-- 일간으로 보는 성격-->
+
+             <!-- 천간/지지합-->
+            <div class="table-container">
+                    <h2 class="intro_title sub2_title" id="plus_title">천간 및 지지의 합 (다른 오행으로 변하는 것)</h2>
+                    <div class="additional-info" id="plus_text"></div>
+
+            </div>
+             <!-- 천간/지지합-->
 
 
         </div>
@@ -490,13 +470,52 @@
             $('#strength_year').text(eightzodiacResult['strength'].split('|')[2].split(',')[3].split('=')[1]);
 
             //일간 성격
-            $('#daily_personality_name').text(eightzodiacResult['ChiHeavenlyDayText']+eightzodiacResult['HeavenlyDayElement'].split(',')[0].split('=')[1]);
+            $('#daily_personality_name').text(eightzodiacResult['ChiHeavenlyDayText']+eightzodiacResult['ChiEarthlyDayText']);
             $('#daily_personality_features').html(`
                 <div class='sub3_title'>성격</div>
                 <div class='sub3_text'>${eightzodiacResult['daily_text']['features']}</div>
 
                 <div class='sub3_title'>특징</div>
                 <div class='sub3_text'>${eightzodiacResult['daily_text']['personality']}</div>`);
+
+
+            var heavenlySumResult;
+            if (eightzodiacResult['KorHeavenlySumResult'].length === 0) {
+                heavenlySumResult = 0;
+            }else{
+            }
+            var EarthlySumResult;
+            if (eightzodiacResult['KorEarthlySumResult'].length === 0) {
+                EarthlySumResult = 0;
+            }
+
+            console.log(heavenlySumResult);
+            console.log(EarthlySumResult);
+
+             if(eightzodiacResult['KorHeavenlySumResult'].length !== 0 || eightzodiacResult['KorEarthlySumResult'].length !== 0){
+
+                Object.keys(eightzodiacResult['KorHeavenlySumResult']).forEach(key => {
+                    console.log(`Key: ${key}, Value:`, eightzodiacResult['KorHeavenlySumResult'][key]);
+                    // 여기에 각 key에 대해 필요한 작업을 추가할 수 있습니다.
+                    htmlContent = `<div class='sub3_title'>천간합-${eightzodiacResult['KorHeavenlySumResult'][key]['합화명칭']} </div>
+                    <div class='sub3_text'>${eightzodiacResult['KorHeavenlySumResult'][key]['해석']}</div>`;
+
+                    $('#plus_text').append(htmlContent);
+                });
+
+                Object.keys(eightzodiacResult['KorEarthlySumResult']).forEach(key => {
+                    console.log(`Key: ${key}, Value:`, eightzodiacResult['KorEarthlySumResult'][key]);
+                    // 여기에 각 key에 대해 필요한 작업을 추가할 수 있습니다.
+                    htmlContent = `<div class='sub3_title'>${eightzodiacResult['KorEarthlySumResult'][key]['합']}-${eightzodiacResult['KorEarthlySumResult'][key]['합화명칭']} </div>
+                    <div class='sub3_text'>${eightzodiacResult['KorEarthlySumResult'][key]['해석']}</div>`;
+
+                    $('#plus_text').append(htmlContent);
+                });
+
+            }
+
+
+
 
         }
 
