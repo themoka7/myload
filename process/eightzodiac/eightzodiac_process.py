@@ -10,9 +10,9 @@ from process.common.eightchar import get_eightchar
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 Heavenly_Five_Elements = {
-    '갑': 'GREEN, 목=木, 양=陽', '을': '목=木, 음=陰', '병': '화=火, 양=陽', '정': '화=火, 음=陰',
-    '무': '토=土, 양=陽', '기': '토=土, 음=陰', '경': '금=金, 양=陽', '신': '금=金, 음=陰',
-    '임': '수=水, 양=陽', '계': '수=水, 음=陰'
+    '갑': '목=木,양=陽', '을': '목=木,음=陰', '병': '화=火,양=陽', '정': '화=火,음=陰',
+    '무': '토=土,양=陽', '기': '토=土,음=陰', '경': '금=金,양=陽', '신': '금=金,음=陰',
+    '임': '수=水,양=陽', '계': '수=水,음=陰'
 }
 
 Earthly_Five_Elements = {
@@ -21,6 +21,14 @@ Earthly_Five_Elements = {
     '사': '화=火, 양=陽', '오': '화=火, 음=陰', '미': '토=土, 음=陰',
     '신': '금=金, 양=陽', '유': '금=金, 음=陰', '술': '토=土, 양=陽',
     '해': '수=水, 양=陽'
+}
+
+EarthlyHeaven_Elements = {
+    '인': '무=戊,병=丙,갑=甲','묘': '갑=甲,　=　,을=乙','진': '을=乙,경=庚,무=戊',
+    '사': '무=戊,경=庚,병=丙','오': '병=丙,기=己,정=丁','미': '정=丁,을=乙,기=己',
+    '신': '무=戊,임=壬,경=庚','유': '경=庚,　=　,신=辛','술': '신=辛,정=丁,무=戊',
+    '해': '무=戊,갑=甲,임=壬','자': '임=壬,　=　,계=癸','축': '계=癸,신=辛,기=己'
+
 }
 
 
@@ -60,6 +68,24 @@ def get_eightzodiac_data(data):
     # 오행과 음양 추가
 
     #print(is_strong_day_master(eightchar))
+
+    # 지장간
+    time_units = ['Time', 'Day', 'Month', 'Year']
+
+    for unit in time_units:
+        # 지장간
+        elements = EarthlyHeaven_Elements.get(eightchar[f'KorEarthly{unit}Text']).split(',')
+        EarthlyHeavenText = ''
+
+        for element in elements:
+            current_text = element.split('=')[0] + '=' + element.split('=')[1] + ',' + Heavenly_Five_Elements.get(
+                element.split('=')[0], "")
+            EarthlyHeavenText += current_text + '|'
+
+        # 지장간 업데이트
+        eightchar.update({f'EarthlyHeaven{unit}Element': EarthlyHeavenText[:-1]})
+    # 지장간
+
 
 
     # 일간으로 십성 추가
