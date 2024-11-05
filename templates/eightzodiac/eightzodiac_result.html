@@ -120,7 +120,7 @@
     }
 
     .main-text {
-        border: solid 0.2px;
+
         height: 46px;
         width: 46px;
         display: flex;
@@ -130,19 +130,24 @@
 
 .yellow {
     background-color: #fbf600;
+    border: solid 0.2px;
 }
 .green{
     background-color: #00fb13;
+    border: solid 0.2px;
 }
 .red{
     background-color: #ff1919d1;
+    border: solid 0.2px;
 }
 .white{
     background-color: #fff;
+    border: solid 0.2px;
 }
 .black{
     background-color: #000000;
     color: #ffffff;
+    border: solid 0.2px;
 }
 
 .canvas-container{
@@ -211,6 +216,18 @@
     .sub3_text{
         font-size: 15px;
     }
+    #Earthly td {
+        border-bottom : 0px;
+    }
+    #EarthlyHeaven td{
+        padding: .5rem ;
+    }
+
+    .EarthlyHeavenElement {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+    }
 
 
 </style>
@@ -267,6 +284,13 @@
                             <td id="ChiEarthlyDayText"></td>
                             <td id="ChiEarthlyMonthText"></td>
                             <td id="ChiEarthlyYearText"></td>
+                        </tr>
+                        <tr id="EarthlyHeaven">
+                            <td ><div id="EarthlyHeavenTimeElement" class="EarthlyHeavenElement"></div></td>
+                             <td ><div id="EarthlyHeavenDayElement" class="EarthlyHeavenElement"></div></td>
+                             <td ><div id="EarthlyHeavenMonthElement" class="EarthlyHeavenElement"></div></td>
+                             <td ><div id="EarthlyHeavenYearElement" class="EarthlyHeavenElement"></div></td>
+
                         </tr>
 
 
@@ -431,6 +455,30 @@
             });
 
 
+            //지장간 넣기
+
+            ['Time', 'Day', 'Month', 'Year'].forEach(text => {
+
+
+                const elements = eightzodiacResult[`EarthlyHeaven${text}Element`].split('|');
+
+
+
+                for (let i = 0; i < elements.length; i++) {
+                    console.log(elements[i]);
+                     firstPart = elements[i].split(',')[1].split('=')[1];
+                     html = `
+                        <div class="bottom ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}" >${elements[i].split(',')[0].split('=')[1]}</div>
+                    `;
+                    $(`#EarthlyHeaven${text}Element`).append(html);
+                }
+
+
+
+            });
+
+
+            //지장간 넣기
 
             const totalElements = Object.values(elementCounts).reduce((a, b) => a + b, 0);
 
