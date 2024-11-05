@@ -392,13 +392,21 @@ body {
     font-weight: 700;
     margin-bottom: 20px;
 }
-   ul li{
-            font-size: 15px;
+   .myli{
+        font-size: 15px;
         line-height: 1.5;
         color: #000;
         margin-bottom: 10px;
-        font-weight: 600;
-        }
+
+
+    }
+
+    .sub3_title{
+
+        color: #741414;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
 
 
 @media screen and (max-width: 768px) {
