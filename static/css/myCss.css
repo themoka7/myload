@@ -156,7 +156,7 @@ body {
 
 }
 
-.intro p:first-of-type {
+.intro .first_type {
 
     font-size: 24px;
     font-weight: 700;
@@ -386,6 +386,20 @@ body {
     --bs-btn-disabled-bg: #000000;
 
 }
+.content .intro .sub2_title {
+    font-size: 20px;
+    color: #741414;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+   ul li{
+            font-size: 15px;
+        line-height: 1.5;
+        color: #000;
+        margin-bottom: 10px;
+        font-weight: 600;
+        }
+
 
 @media screen and (max-width: 768px) {
     .content .intro .intro_title {
@@ -401,9 +415,9 @@ body {
 
     }
 
-    .intro p:first-of-type {
+    .intro .first_type {
 
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 700;
         color: #000;
     }

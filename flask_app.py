@@ -59,6 +59,11 @@ def hexagram_process():
 #########################################
 #            chizodiac(당사주)           #
 #########################################
+
+@app.route('/chizodiac_intro')
+def chizodiac_intro():
+    return render_template('chizodiac/chizodiac_intro.html')
+
 @app.route('/chizodiac')
 def chizodiac():
     return render_template('chizodiac/chizodiac_index.html')
@@ -97,6 +102,14 @@ def chizodiac_process():
 #########################################
 #            chizodiac(자평)           #
 #########################################
+
+
+@app.route('/eightzodiac_intro')
+def eightzodiac_intro():
+    return render_template('eightzodiac/eightzodiac_intro.html')
+
+
+
 @app.route('/eightzodiac')
 def eightzodiac():
     return render_template('eightzodiac/eightzodiac_index.html')
@@ -114,6 +127,7 @@ def eightzodiac_process():
     # 클라이언트로부터 JSON 데이터를 받음
     eightzodiac_data = request.get_json()
 
+    print(eightzodiac_data)
 
     if not eightzodiac_data:
         return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
@@ -127,13 +141,17 @@ def eightzodiac_process():
 
 
 #########################################
-#            chizodiac(자평)           #
+#            eightzodiac_process(자평)           #
 #########################################
 
 
 #########################################
 #                  타로                 #
 #########################################
+
+@app.route('/tarot_intro')
+def tarot_intro():
+    return render_template('tarot/tarot_intro.html')
 @app.route('/tarot')
 def tarot():
     return render_template('tarot/tarot_index.html')

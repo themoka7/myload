@@ -59,6 +59,11 @@ def hexagram_process():
 #########################################
 #            chizodiac(당사주)           #
 #########################################
+
+@app.route('/chizodiac_intro')
+def chizodiac_intro():
+    return render_template('chizodiac/chizodiac_intro.html')
+
 @app.route('/chizodiac')
 def chizodiac():
     return render_template('chizodiac/chizodiac_index.html')
@@ -97,6 +102,14 @@ def chizodiac_process():
 #########################################
 #            chizodiac(자평)           #
 #########################################
+
+
+@app.route('/eightzodiac_intro')
+def eightzodiac_intro():
+    return render_template('eightzodiac/eightzodiac_intro.html')
+
+
+
 @app.route('/eightzodiac')
 def eightzodiac():
     return render_template('eightzodiac/eightzodiac_index.html')
@@ -135,6 +148,10 @@ def eightzodiac_process():
 #########################################
 #                  타로                 #
 #########################################
+
+@app.route('/tarot_intro')
+def tarot_intro():
+    return render_template('tarot/tarot_intro.html')
 @app.route('/tarot')
 def tarot():
     return render_template('tarot/tarot_index.html')

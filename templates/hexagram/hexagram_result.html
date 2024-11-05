@@ -26,6 +26,14 @@
     display: inline-block;
 }
 
+@media screen and (max-width: 768px) {
+    .hexa {
+
+    font-size: 60px;
+
+    }
+}
+
 
     </style>
 
@@ -46,8 +54,14 @@
                     <!--<p>뽑힌 괘: <span id="hexagram_value"></span> </p>-->
                     <div class="hexa"> <span id="type_1"></span><span id="type_2"></span></div>
                     <p></p>
-                    <p><span id="desc_1"></span> <span id="desc_2"></span> </p>
+                    <p style="text-align: center;"><span id="desc_1"></span> <span id="desc_2"></span> </p>
                     <div id="pretation" class="pretation"></div>
+                </div>
+
+
+                <div id="startBtn" class="lastBtn">
+                    <button id="process" type="button" class="btn btn-outline-dark">처음으로</button>
+                    <!--<a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>-->
                 </div>
 
             </div>
@@ -67,6 +81,11 @@
 
 
             }, 500); // 10000ms = 10초
+
+             $('#process').on('click', function() {
+
+                window.location.href = "/hexagram"; // Replace with your target URL
+            });
 
 
         })

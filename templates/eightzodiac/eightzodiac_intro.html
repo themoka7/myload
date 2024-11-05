@@ -1,0 +1,101 @@
+    {% extends 'base.html' %}
+
+    {% block title %}사주명리란{% endblock %}
+    {% block description %}사주명리에 대한 기본 설명과 역사정보를 제공합니다.{% endblock %}
+    {% block keywords %}사주명리, 주역, 점괘, 사주, 타로,당사주, 점성술, 성명학, 운세{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+
+
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+
+        <div class="contain chizodiac">
+
+            <div class="content">
+
+        <div class="intro">
+            <div id="hi" class="intro_title">사주명리(四柱命理)란</div>
+            <p class="first_type">명리학은 인간이 태어난 시간과 간지(干支)를 바탕으로 인생의 길흉화복을 예측하는 전통 학문입니다.<br>
+                이 학문은 천지(天地)의 기운과 개인의 운명적 흐름을 해석하여 삶의 지혜와 방향을 제시합니다.</p>
+            <p>오행과 음양의 조화 속에서 성격, 재능, 건강 등을 분석하며, 인간관계와 인생의 다양한 도전에
+                대비할 수 있는 통찰력을 제공합니다.</p>
+        </div>
+
+        <div class="intro">
+            <div class="sub2_title">명리학의 역사</div>
+            <p>명리학은 주나라 시기 낙록자와 귀곡자에 의해 그 기원이 마련되었고, 춘추전국시대에 걸쳐 발전되었습니다.<br>
+               상나라와 주나라 시기에 간지가 사용되었으며, 중국 한나라의 동중서가 음양오행의 이론을 체계화하였습니다.<br>
+               특히 송나라 시기 서자평에 의해 자평명리학이 정립되어 현재까지 이어지고 있습니다.</p>
+
+            <div class="sub2_title">삼명(三命)의 개념</div>
+            <p>삼명학에서는 인간의 운명을 '수명(壽命)', '수명(隨命)', '조명(遭命)'으로 나눕니다.<br>
+               이는 인간의 고유한 수명과 환경에 따른 운명, 삶의 상황에 따라 형성되는 운명을 의미하며, 각자의 사주팔자에 의해<br>
+               결정된 길흉화복을 해석하는 중요한 이론입니다.</p>
+
+            <div  class="sub2_title">오행(五行)과 음양(陰陽)</div>
+            <p>명리학의 핵심인 오행(五行) 이론은 목(木), 화(火), 토(土), 금(金), 수(水)의 다섯 가지 요소로 구성됩니다.<br>
+               각각의 오행은 음양의 조화 속에서 인간의 성격, 건강, 재능을 나타내며, 서로 상생(相生)과 상극(相剋)의<br>
+               관계를 통해 개인의 운세를 해석합니다.</p>
+
+            <div  class="sub2_title">자평명리학(子平命理學)</div>
+            <p>자평명리학은 송나라 서자평이 창시한 이론으로, 사주를 일주(日主)를 중심으로 해석합니다.<br>
+               일간(日干)을 월령(月令)에 대비하여 인간의 운명을 분석하며, 이를 통해 인생의 기회와 도전을 예상하고 대비할 수 있도록 돕습니다.</p>
+
+
+
+
+            <div class="sub2_title">중국 역사 속 명리학의 발전</div>
+            <p>명리학은 한나라에서 음양오행 이론이 체계화되며 발전하였고, 수나라와 당나라를 거쳐 송나라 시기에 이르러 <br>
+               자평명리학으로 정립되었습니다. 이후 명과 청나라 시기에 명리학 서적이 다양하게 저술되며 더욱 활발히 발전하게 되었습니다.</p>
+
+            <div class="sub2_title">한국에서의 명리학</div>
+            <p>한국에서는 고려 말부터 명리학이 전래되어 조선왕조 시기 잡과의 음양과를 통해 학문적으로 정립되었습니다.<br>
+               조선시대에는 사주팔자를 통한 운세 해석이 귀족과 왕실을 중심으로 널리 퍼지며 중요한 예언적 지식으로 여겨졌습니다.</p>
+        </div>
+
+        <div id="startBtn" class="lastBtn">
+            <button id="process" type="button" class="btn btn-outline-dark" >시작하기</button>
+        </div>
+
+</div>
+
+
+        </div>
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script >
+        $(document).ready(function() {
+            showLoadingModal();
+
+
+
+            // 10초 후 모달을 닫는 함수
+            setTimeout(function() {
+                closeLoadingModal();
+            }, 500); // 10000ms = 10초
+
+            $('#process').on('click', function() {
+
+                window.location.href = "/eightzodiac";
+            });
+
+        })
+
+
+    </script>
+     {% endblock %}

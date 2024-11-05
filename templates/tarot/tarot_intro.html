@@ -1,0 +1,100 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}타로{% endblock %}
+    {% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 무료로 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
+    {% block keywords %}주역, 무료 운세, 점괘, 사주, 타로, 점성술, 성명학, 운세{% endblock %}
+
+    {% block styles %}
+    <style>
+
+    </style>
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+    <div class="contain tarot">
+        <div class="content">
+
+                    <div class="intro">
+                        <div id="hi" class="intro_title">타로카드란</div>
+                        <p class="first_type">타로카드는 신비한 상징과 이미지로 가득한 예언의 도구로, 개인의 내면과 삶의 방향을 조명합니다.<br>
+                            카드에 담긴 상징을 통해 현재 상황과 미래의 가능성을 예측하는 방법입니다.</p>
+                        <p>중세 유럽에서 시작된 타로카드는 오늘날까지 많은 사람들이 사용하는 심리적, 예언적 도구로 자리잡았습니다.</p>
+                    </div>
+
+                    <div class="intro">
+                        <div class="sub2_title">타로카드의 역사</div>
+                        <p>타로카드는 15세기 이탈리아에서 놀이 카드로 처음 등장했습니다. 이후 18세기부터 점술적<br>
+                            목적으로 사용되기 시작하였고, 다양한 문화적 해석이 추가되며 현대의 타로카드로 발전하였습니다.</p>
+
+                        <div class="sub2_title">타로카드의 구성</div>
+                        <ul>
+                            <li><strong>메이저 아르카나 (Major Arcana)</strong>: 22장의 주요 카드로, 인생에서 중요한 변화를 의미합니다.<br>
+                                이 카드는 개인의 삶의 주요 주제와 깊은 의미를 상징하며, 타로 리딩에서 핵심적인 역할을 합니다.</li>
+                            <li><strong>마이너 아르카나 (Minor Arcana)</strong>: 56장의 카드로, 일상적인 사건과 관계를 나타냅니다.<br>
+                                이 카드는 개인의 일상적인 경험과 감정, 관계에서 나타나는 상황을 구체적으로 설명합니다.</li>
+                            <li><strong>4개의 슈트 (Suit)</strong>: 마이너 아르카나는 네 개의 슈트로 나뉘며 각각 다른 삶의 측면을 상징합니다.<br>
+                                - 완드 (Wands): 창조성과 열정을 나타내며, 주로 일과 프로젝트를 상징합니다.<br>
+                                - 컵 (Cups): 감정과 관계를 상징하며, 사랑과 인간관계를 나타냅니다.<br>
+                                - 소드 (Swords): 논리와 갈등을 나타내며, 결단력과 지적 문제를 상징합니다.<br>
+                                - 펜타클 (Pentacles): 물질적 세계와 재정을 상징하며, 주로 돈과 직업을 나타냅니다.</li>
+                        </ul>
+
+                        <div class="sub2_title">타로카드의 해석 방법</div>
+                        <p>타로 리딩에서는 카드를 뽑아 배열하여 그 의미를 해석합니다. 각 카드는 배치 위치에 따라<br>
+                           과거, 현재, 미래와 같은 시간적 흐름을 나타내며, 정방향과 역방향에 따라 의미가 달라질 수 있습니다.</p>
+
+                        <div class="sub2_title">대표적인 타로카드 배열법</div>
+                        <ul>
+                            <li><strong>3카드 스프레드 (Past, Present, Future)</strong>: 세 장의 카드를 뽑아 과거, 현재, 미래의 흐름을 해석합니다.</li>
+                            <li><strong>셀틱 크로스 (Celtic Cross)</strong>: 10장의 카드를 사용하여 문제의 배경, 현재 상황, 미래 가능성을 종합적으로 분석합니다.</li>
+                            <li><strong>원 카드 드로우 (One Card Draw)</strong>: 한 장의 카드를 뽑아 당일의 조언이나 간단한 답변을 얻는 데 사용됩니다.</li>
+                        </ul>
+
+                        <div class="sub2_title">타로카드의 상징성</div>
+                        <p>타로카드는 각 카드에 내포된 상징성과 이미지의 해석을 통해 개인의 심리적 상태와<br>
+                           내면의 갈등을 조명합니다. 다양한 상징이 복합적으로 나타나므로, 각각의 상징에 대한 깊은 이해가 필요합니다.</p>
+
+                        <div class="sub2_title">타로의 현대적 활용</div>
+                        <p>현대에 이르러 타로는 개인 상담, 심리치료, 자기 성찰의 도구로 많이 사용됩니다.<br>
+                           각 카드의 의미를 통해 인생의 방향을 점검하고, 현재의 고민을 풀어가는 데 도움을 줍니다.</p>
+                    </div>
+
+                    <div id="startBtn" class="lastBtn">
+                        <button id="process" type="button" class="btn btn-outline-dark">시작하기</button>
+                    </div>
+
+            </div>
+    </div>
+
+
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script >
+
+        $(document).ready(function() {
+            console.log('1');
+            showLoadingModal();
+
+            // 10초 후 모달을 닫는 함수
+            setTimeout(function() {
+                closeLoadingModal();
+            }, 500); // 10000ms = 10초
+
+
+            $('#process').on('click', function() {
+                window.location.href = "/tarot";
+            });
+
+        });
+
+
+
+
+    </script>
+
+    {% endblock %}

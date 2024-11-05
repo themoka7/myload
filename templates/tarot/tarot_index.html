@@ -93,6 +93,16 @@
             font-size: 16px;
             cursor: pointer;
         }
+
+
+        .sub3_title{
+         font-size: 15px;
+
+        color: #741414;
+        font-weight: 700;
+        margin-bottom: 20px;
+        }
+
     </style>
     {% endblock %}
 
@@ -100,12 +110,29 @@
     <!-- 콘텐츠 영역 -->
     <div class="contain tarot">
         <div class="content">
+
             <div class="intro">
-                <div id="hi" class="intro_title">타로 카드를 통해<br>당신의 미래를 발견하세요</div>
-                <p>미래를 예측하고 인생의 중요한 순간에 현명한 결정을 내릴 수 있도록 돕는 타로 카드의 지혜.<br>타로 카드는 단순한 점이 아니라,<br> 우리의 삶을 이끌어주는 깊은 통찰을 제공합니다.</p>
-                <p>이제, 마음을 열고 타로 카드의 안내를 받아보세요.<br> 카드가 당신의 길을 밝혀 줄 것입니다.</p>
-                <p>타로와 함께 운명을 탐구하고, 삶의 새로운 가능성을 발견하세요. <br>지금, 당신의 운명이 기다리고 있습니다.</p>
+                <div id="hi" class="intro_title">3카드 스프레드 (3-Card Spread)</div>
+                <p>간단하면서도 효과적인 타로카드 배열법으로,<br>
+                   문제에 대한 과거, 현재, 미래의 흐름과<br>
+                   심층적인 이해와 방향을 제시합니다.
+                <p> 특히 빠른 질문에 대한 답변, 일상적인 조언, 또는 상황의 변화를 살펴보는 데 유용합니다.</p>
+
+                <div class="sub2_title">카드 배치의 의미</div>
+                <ul>
+                    <li><span class="sub3_title">첫 번째 카드 - 과거 (Past)</span>: 이 카드는 현재 상황에 영향을 미친 과거의 사건이나 상황을 나타냅니다.<br>
+                        과거의 경험, 결정, 또는 환경이 현재 문제와 어떻게 연결되어 있는지 보여줍니다.</li>
+                    <li><span class="sub3_title">두 번째 카드 - 현재 (Present)</span>: 이 카드는 현재의 상황을 나타내며, 개인의 감정이나 문제에 대한<br>
+                        현시점을 설명합니다. 현재 무엇이 중요한지, 어떤 상황이 중심에 있는지를 알려줍니다.</li>
+                    <li><span class="sub3_title">세 번째 카드 - 미래 (Future)</span>: 이 카드는 현재의 흐름이 이어질 경우 발생할 수 있는 결과나 미래의 상황을<br>
+                        예측합니다. 현재의 선택이 가져올 가능성 있는 결과를 보여주며, 미래에 대한 준비를 돕습니다.</li>
+                </ul>
+
+
             </div>
+
+
+
             <div id="hidden" class="hidden">
             </div>
             <div id="startBtn" class="lastBtn">
@@ -163,12 +190,7 @@
 
 
             $('#process').on('click', function() {
-               const displayStyle = $('#hidden').css('display');
-                    if (displayStyle === "none") {
-                    showDiv();
-                    return;
-                }
-                tarotSetting();
+               tarotSetting();
             });
 
 
@@ -177,36 +199,6 @@
 
         })
 
-    const warningMessage = `1. 명확한 질문을 준비하라
-타로 카드는 구체적이고 진심 어린 질문에 더 정확한 인사이트를 제공합니다.
-2. 열린 마음으로 진행하라
-타로 리딩을 할 때는 마음을 열고, 카드가 전하는 메시지에 귀를 기울이는 것이 중요합니다.
-3. 결과를 고정된 해석으로 여기지 말라
-타로는 당신에게 지침을 제공할 뿐, 모든 것은 당신의 선택에 달려있습니다. 점괘를 유연하게 받아들이고 자신의 내면을 탐구하세요.
-
-아래 버튼을 클릭하세요.`;
-
-
-        // 한 글자씩 표시하는 함수
-        function typeText(element, text, delay = 80) {
-            let index = 0;
-            const interval = setInterval(() => {
-                if (index < text.length) {
-                    element.textContent += text[index]; // 한 글자씩 추가
-                    index++;
-                } else {
-                    clearInterval(interval); // 모든 글자가 표시되면 타이머 종료
-                }
-            }, delay);
-        }
-
-        // 숨겨진 div를 나타내고 타이핑 애니메이션 실행
-        function showDiv() {
-            const hiddenDiv = document.getElementById('hidden');
-            hiddenDiv.style.display = 'block'; // div를 보이게 함
-            hiddenDiv.textContent = ''; // 초기화
-            typeText(hiddenDiv, warningMessage); // 타이핑 애니메이션 실행
-        }
 
 
         function tarotSetting(){

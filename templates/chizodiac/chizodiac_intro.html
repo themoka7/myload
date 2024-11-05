@@ -1,0 +1,98 @@
+    {% extends 'base.html' %}
+
+    {% block title %}당사주{% endblock %}
+    {% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 무료로 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
+    {% block keywords %}주역, 점괘, 사주, 타로,당사주, 점성술, 성명학, 운세{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+
+
+    </style>
+
+
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+
+        <div class="contain chizodiac">
+
+
+            <div class="content">
+
+                    <div class="intro">
+                        <div id="hi" class="intro_title">당사주(唐四柱)란</div>
+                        <p>당사주는 한국 전통 점술로, 출생 연월일시를 바탕으로 인간의 운명과 삶의 방향을 예측하는 학문입니다.<br>
+                           조선시대에 발전하여 현재까지 전해져 내려오는 운명 해석의 방식 중 하나입니다.</p>
+                        <p>천간(天干)과 지지(地支)의 결합을 통해 인간의 길흉화복을 예측하며, 특히 사람의 타고난 성격, 인생의 흐름,<br>
+                           그리고 특정 시기에 발생할 주요 사건들을 조망합니다.</p>
+                    </div>
+
+                    <div class="intro">
+                        <div class="sub2_title">당사주의 역사</div>
+                        <p>당사주는 고려와 조선시대에 걸쳐 명리학과 함께 전해졌으며, 한국의 독특한 운세 해석법으로 발전했습니다.<br>
+                           조선 시대 왕실과 귀족들이 즐겨 사용하였고, 다양한 운세서적을 통해 대중에게도 널리 알려졌습니다.</p>
+
+                        <div class="sub2_title">당사주의 구성 요소</div>
+                        <ul>
+                            <li><strong>천간(天干)과 지지(地支)</strong>: 당사주에서는 출생 시기의 천간과 지지의 조합을 통해 인간의
+                                기본 성격과 타고난 운명을 해석합니다. 이를 통해 주요한 운명의 흐름을 이해할 수 있습니다.</li>
+                            <li><strong>년주(年柱)</strong>: 태어난 해의 기운으로, 조상이나 집안의 영향력, 그리고 초년의 성격과 성향을 나타냅니다.</li>
+                            <li><strong>월주(月柱)</strong>: 태어난 달의 기운으로, 개인의 사회적 성격과 중년기의 운세를 예측합니다.</li>
+                            <li><strong>일주(日柱)</strong>: 태어난 날의 기운으로, 배우자와의 관계, 성격, 그리고 후반 인생을 상징합니다.</li>
+                            <li><strong>시주(時柱)</strong>: 태어난 시간의 기운으로, 자녀와의 관계 및 노년기의 운세를 예측하는 데 사용됩니다.</li>
+                        </ul>
+
+                        <div class="sub2_title">오행과 음양</div>
+                        <p>당사주에서도 오행(五行)과 음양(陰陽)의 이론을 사용하여 인간의 성격, 건강, 관계를 분석합니다.<br>
+                           오행은 목(木), 화(火), 토(土), 금(金), 수(水)로 구성되며, 상생과 상극의 원리를 통해 인생의 길흉을 예측합니다.</p>
+
+                        <div class="sub2_title">당사주의 특징</div>
+                        <p>당사주는 사주의 기초 이론에 입각하되, 한국 고유의 문화와 전통이 반영된 해석을 제공합니다.<br>
+                           출생 연월일시를 조합하여 개인의 운명을 파악하고, 그에 따른 생활 지침을 제공합니다.</p>
+
+                        <div class="sub2_title">주요 해석 방식</div>
+                        <p>당사주에서는 출생 시기를 천간과 지지로 해석하는 외에도, 각 연령대별 운세를 분석하여 개인의 인생 흐름을 파악합니다.<br>
+                           특정 연도나 시기에 발생할 수 있는 사건을 예측하고, 준비할 수 있도록 조언을 제공합니다.</p>
+
+                        <div  class="sub2_title">당사주의 현대적 활용</div>
+                        <p>현대에 이르러 당사주는 전통적 해석뿐만 아니라, 개인의 직업, 재정, 인간관계 등 다양한 영역에서 활용됩니다.<br>
+                           이를 통해 다가올 기회와 도전에 대비하고, 긍정적인 삶의 방향을 설정하는 데 도움을 줍니다.</p>
+                    </div>
+
+                    <div id="startBtn" class="lastBtn">
+                        <button id="process" type="button" class="btn btn-outline-dark">시작하기</button>
+                    </div>
+
+            </div>
+
+
+        </div>
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script >
+        $(document).ready(function() {
+            showLoadingModal();
+
+
+
+            // 10초 후 모달을 닫는 함수
+            setTimeout(function() {
+                closeLoadingModal();
+            }, 500); // 10000ms = 10초
+
+            $('#process').on('click', function() {
+
+                window.location.href = "/chizodiac";
+            });
+        })
+
+
+    </script>
+     {% endblock %}

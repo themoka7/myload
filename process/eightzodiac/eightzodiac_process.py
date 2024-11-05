@@ -10,17 +10,17 @@ from process.common.eightchar import get_eightchar
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 Heavenly_Five_Elements = {
-    '갑': 'GREEN, 목=木, 양=陽', '을': '목=木, 음=陰', '병': '화=火, 양=陽', '정': '화=火, 음=陰',
-    '무': '토=土, 양=陽', '기': '토=土, 음=陰', '경': '금=金, 양=陽', '신': '금=金, 음=陰',
-    '임': '수=水, 양=陽', '계': '수=水, 음=陰'
+    '갑': '목=木,양=陽', '을': '목=木,음=陰', '병':'화=火,양=陽', '정': '화=火,음=陰',
+    '무': '토=土,양=陽', '기': '토=土,음=陰', '경': '금=金,양=陽', '신': '금=金,음=陰',
+    '임': '수=水,양=陽', '계': '수=水,음=陰'
 }
 
 Earthly_Five_Elements = {
-    '자': '수=水, 음=陰', '축': '토=土, 음=陰',
-    '인': '목=木, 양=陽', '묘': '목=木, 음=陰', '진': '토=土, 양=陽',
-    '사': '화=火, 양=陽', '오': '화=火, 음=陰', '미': '토=土, 음=陰',
-    '신': '금=金, 양=陽', '유': '금=金, 음=陰', '술': '토=土, 양=陽',
-    '해': '수=水, 양=陽'
+    '자': '수=水,음=陰', '축': '토=土,음=陰',
+    '인': '목=木,양=陽', '묘': '목=木,음=陰', '진': '토=土,양=陽',
+    '사': '화=火,양=陽', '오': '화=火,음=陰', '미': '토=土,음=陰',
+    '신': '금=金,양=陽', '유': '금=金,음=陰', '술': '토=土,양=陽',
+    '해': '수=水,양=陽'
 }
 
 
@@ -154,7 +154,52 @@ def get_eightzodiac_data(data):
     eightchar.update({'daily_text' : dailyTextData[eightchar['KorHeavenlyDayText']+eightchar['KorEarthlyDayText']]});
     
 
+
+    #대운정하기
     print(eightchar)
+    direction = 'forward'
+
+    if(eightchar['gender'] == '남자' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '음' ):
+        direction = 'back'
+    if (eightchar['gender'] == '여자' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '양'):
+        direction = 'back'
+
+    heavenly_idx = ['갑', '을', '병', '정', '무', '기', '경', '신', '임', '계']
+    earthly_idx = ['자', '축', '인', '묘', '진', '사', '오', '미', '신', '유', '술', '해']
+
+    # 현재 천간의 인덱스 찾기
+    current_heavenly_index = heavenly_idx.index(eightchar['KorHeavenlyMonthText'])
+
+    # 다음 천간 인덱스 계산
+    if direction == 'forward':
+        next_heavenly_index = (current_heavenly_index + 1) % len(heavenly_idx)  # 순환하여 처음으로 돌아감
+    else:
+        next_heavenly_index = (current_heavenly_index - 1) % len(heavenly_idx)  # 순환하여 마지막으로 돌아감
+
+    # 다음 천간 값 가져오기
+    next_heavenly = heavenly_idx[next_heavenly_index]
+
+    print(eightchar['KorHeavenlyMonthText'])
+    print(next_heavenly)
+
+    # 현재 지지의 인덱스 찾기
+    current_earthly_index = earthly_idx.index(eightchar['KorEarthlyMonthText'])
+
+    # 다음 지지 인덱스 계산
+    if direction == 'forward':
+        next_earthly_index = (current_earthly_index + 1) % len(earthly_idx)  # 순환하여 처음으로 돌아감
+    else:
+        next_earthly_index = (current_earthly_index - 1) % len(earthly_idx)  # 순환하여 마지막으로 돌아감
+
+    # 다음 지지 값 가져오기
+    next_earthly = earthly_idx[next_earthly_index]
+
+
+    print(eightchar['KorEarthlyMonthText'])
+    print(next_earthly)
+
+    print(direction)
+
     return eightchar
 
 
