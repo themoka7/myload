@@ -284,7 +284,7 @@ def evaluate_strength(month_branch, day_branch, year_branch, hour_branch):
 # data = {'gender': '남자', 'calendar': '양력', 'year': '2016', 'month': '8', 'day': '30', 'time': '16'}
 
 # 정목
-#data = {'gender': '남자', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '04'}
+data = {'gender': '남성', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '04'}
 
 # 함수 호출
-#get_eightzodiac_data(data)
+get_eightzodiac_data(data)

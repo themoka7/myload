@@ -84,13 +84,16 @@ class SolarCalculator:
 
 
 def get_solar_term(eightchar):
-    print('eightchar')
+    #print(eightchar)
+    #print(eightchar['gender'])
+    #print(eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0])
+
     location = 'forward'
 
     # 대운 방향 결정
-    if eightchar['gender'] == '남자' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '음':
+    if eightchar['gender'] == '남성' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '음':
         location = 'back'
-    if eightchar['gender'] == '여자' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '양':
+    if eightchar['gender'] == '여성' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '양':
         location = 'back'
 
     #print('location : ' + location)
@@ -105,10 +108,10 @@ def get_solar_term(eightchar):
     #print(previous_term)
     #print(next_term)
     # 절기 출력
-    #if previous_term:
-        #print(f"이전 절기: {previous_term[0]} - {previous_term[1].strftime('%Y-%m-%d %H:%M:%S')}")
-    #if next_term:
-        #print(f"다음 절기: {next_term[0]} - {next_term[1].strftime('%Y-%m-%d %H:%M:%S')}")
+    '''if previous_term:
+        print(f"이전 절기: {previous_term[0]} - {previous_term[1].strftime('%Y-%m-%d %H:%M:%S')}")
+    if next_term:
+        print(f"다음 절기: {next_term[0]} - {next_term[1].strftime('%Y-%m-%d %H:%M:%S')}")'''
 
     # 날짜 차이 계산 및 대운수 결정
     days_difference = None
@@ -147,9 +150,9 @@ def get_solar_term(eightchar):
         # 방향에 따른 인덱스 리스트 생성
     result_indices = []
     if location == 'back':
-        result_indices = [(start_index - i) % 60 for i in range(1, 12)]
+        result_indices = [(start_index - i) % 60 for i in range(1, 11)]
     elif location == 'forward':
-        result_indices = [(start_index + i) % 60 for i in range(1, 12)]
+        result_indices = [(start_index + i) % 60 for i in range(1, 11)]
 
         # 인덱스에 해당하는 갑자 조합과 대운수 추가
     result_terms_with_daewon = {}
@@ -158,7 +161,7 @@ def get_solar_term(eightchar):
         daewon_value = daewon + i * 10  # 10씩 증가하는 대운수
         result_terms_with_daewon[term_name] = daewon_value
 
-    result_terms_with_daewon
+
     #print(result_terms_with_daewon)
 
     # foreach 방식으로 딕셔너리를 순회하며 출력
@@ -170,7 +173,7 @@ def get_solar_term(eightchar):
     for ganji, daewon in result_terms_with_daewon.items():
 
         term_name = list(SixtyData.keys())[(start_index+daewon) % 60 ]
-        print(term_name)
+
         array = [];
         for i in range(0, 10):
             #print(daewon)
@@ -181,8 +184,9 @@ def get_solar_term(eightchar):
 
         result.update({ganji :{ 'daewon' : daewon , 'array' : array }})
 
-    #print('result')
-    #print(result)
+
+    print(result)
+
 
 
     return result
