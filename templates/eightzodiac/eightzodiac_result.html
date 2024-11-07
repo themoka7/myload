@@ -129,6 +129,18 @@
         color: #222;
     }
 
+    .mini-main-text {
+
+        height: 35px;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: #222;
+    }
+
 .yellow {
     background-color: #fbf600;
     border: solid 0.2px;
@@ -252,9 +264,22 @@
         flex-direction: column; /* 세로 방향으로 정렬 */
         gap: 5px; /* 각 div 간의 간격 */
         align-items: center;
-        margin : 10px;
+
 
     }
+
+    #future_10_heaven_tens {
+     width: 100%;
+    table-layout: fixed; /* 테이블 너비를 고정하고 셀이 자동 조정되도록 함 */
+    }
+
+
+    #future_10_earth_tens {
+     width: 100%;
+    table-layout: fixed; /* 테이블 너비를 고정하고 셀이 자동 조정되도록 함 */
+    }
+
+
     #future_10_heaven_tens .cell-content.active {
         border: solid #9b4545 2px;
         border-radius: 10px;
@@ -508,19 +533,12 @@
             $(this).addClass('active');
             const hiddenData = $(this).find('div[style="hidden"]').attr('data');
             const deawon = $(this).find('div[datatype="deawon"]').attr('deawon');
-            console.log(deawon);
             const dataArray = JSON.parse(hiddenData);
 
             $('#future_10_earth_tens tr').empty();
             dataArray.forEach((item, index) => {
 
-                const [[key, value]] = Object.entries(item);
-
-                //console.log(`Key: ${key}`);
-                //console.log(`Value: ${value}`);
-
-
-
+               const [[key, value]] = Object.entries(item);
 
                heavenly_future = value.split('*')[0];
                Earthly_future = value.split('*')[1];
@@ -533,8 +551,8 @@
                                 <div class="cell-content">
                                     <div class='bottom' data_type='year' year=${key} >${key}</div>
                                     <div class='bottom'>${heavenly_future.split('|')[2]}</div>
-                                    <div class="main-text ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}">${heavenly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
-                                    <div class="main-text ${secontPart === '木' ? 'green' : secontPart === '火' ? 'red' : secontPart === '土' ? 'yellow' : secontPart === '金' ? 'white' : secontPart === '水' ? 'black' : ''}">${Earthly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class="mini-main-text ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}">${heavenly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class="mini-main-text ${secontPart === '木' ? 'green' : secontPart === '火' ? 'red' : secontPart === '土' ? 'yellow' : secontPart === '金' ? 'white' : secontPart === '水' ? 'black' : ''}">${Earthly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
                                     <div class='bottom'>${Earthly_future.split('|')[2]}</div>
 
                                 </div>
@@ -542,47 +560,17 @@
 
             });
 
-
-            isDown = true;
             $(this).closest('#scrolling_heaven').css('cursor', 'grabbing'); // 드래그 중 커서 변경
-            startX = e.pageX - $(this).closest('#scrolling_heaven').offset().left;
-            scrollLeft = $(this).closest('#scrolling_heaven').scrollLeft();
         });
-
-
 
         $(document).on('mousedown', '#future_10_earth_tens .cell-content', function(e) {
 
             $('#future_10_earth_tens .cell-content.active').removeClass('active');
-            /*여기서 세운을 셋팅하면 되네*/
             $(this).addClass('active');
-
-
-            isDown = true;
-            $(this).closest('#scrolling_earth').css('cursor', 'grabbing'); // 드래그 중 커서 변경
-            startX = e.pageX - $(this).closest('#scrolling_earth').offset().left;
-            scrollLeft = $(this).closest('#scrolling_earth').scrollLeft();
         });
 
         $(document).mouseup(function() {
-            isDown = false;
             $('.cell-content').css('cursor', 'grab');
-        });
-
-        $(document).on('mousemove', '#scrolling_heaven', function(e) {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - $(this).offset().left;
-            const walk = (x - startX) * 1; // 이동 속도 조절
-            $(this).scrollLeft(scrollLeft - walk);
-        });
-
-        $(document).on('mousemove', '#scrolling_earth', function(e) {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - $(this).offset().left;
-            const walk = (x - startX) * 1; // 이동 속도 조절
-            $(this).scrollLeft(scrollLeft - walk);
         });
 
 
@@ -799,8 +787,8 @@
                                 <div class="cell-content">
                                     <div class='bottom' datatype='deawon' deawon='${key}'>${key}</div>
                                     <div class='bottom'>${heavenly_future.split('|')[2]}</div>
-                                    <div class="main-text ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}">${heavenly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
-                                    <div class="main-text ${secontPart === '木' ? 'green' : secontPart === '火' ? 'red' : secontPart === '土' ? 'yellow' : secontPart === '金' ? 'white' : secontPart === '水' ? 'black' : ''}">${Earthly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class="mini-main-text ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}">${heavenly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class="mini-main-text ${secontPart === '木' ? 'green' : secontPart === '火' ? 'red' : secontPart === '土' ? 'yellow' : secontPart === '金' ? 'white' : secontPart === '水' ? 'black' : ''}">${Earthly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
                                     <div class='bottom'>${Earthly_future.split('|')[2]}</div>
                                     <div style='hidden' data='${JSON.stringify(eightzodiacResult['future_10_tens'][key]['array'])}'></div>
                                 </div>
