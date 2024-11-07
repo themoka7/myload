@@ -74,9 +74,7 @@
 
     .table tbody:nth-of-type(1) tr:nth-child(1),
     .table tbody:nth-of-type(1) tr:nth-child(2) {
-        font-size: 37px; /* 원하는 크기로 설정 */
-        font-weight: bold;
-        color: #222;
+
     }
      .table thead tr th,
      .table tbody tr td {
@@ -126,6 +124,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 37px;
+        font-weight: bold;
+        color: #222;
     }
 
 .yellow {
@@ -229,6 +230,40 @@
         justify-content: center;
     }
 
+
+    .scroll{
+
+        white-space: nowrap;
+        overflow: hidden; /* 스크롤바 숨기기 */
+        user-select: none; /* 텍스트 선택 방지 */
+    }
+   .scroll table{
+        width: 1000px; /* 테이블 너비 설정 */
+        border-collapse: collapse;
+    }
+     .scroll table td {
+
+        text-align: center;
+    }
+
+    .cell-content {
+    cursor: grab; /* 마우스 커서를 손 모양으로 변경 */
+        display: flex;
+        flex-direction: column; /* 세로 방향으로 정렬 */
+        gap: 5px; /* 각 div 간의 간격 */
+        align-items: center;
+        margin : 10px;
+
+    }
+    #future_10_heaven_tens .cell-content.active {
+        border: solid #9b4545 2px;
+        border-radius: 10px;
+    }
+
+    #future_10_earth_tens .cell-content.active {
+        border: solid #9b4545 2px;
+        border-radius: 10px;
+    }
 
 </style>
 
@@ -349,7 +384,92 @@
              <!-- 천간/지지합-->
 
 
+
+
+            <div class="table-container">
+                <h2 class="intro_title sub2_title" id="plus_title">대운</h2>
+                <div class="additional-info scroll" id="scrolling_heaven">
+                    <table id="future_10_heaven_tens">
+                        <tr>
+                            <td>
+                                <div class="cell-content">
+                                    <div>Div 1</div>
+                                    <div>Div 2</div>
+                                    <div>Div 3</div>
+                                    <div>Div 4</div>
+                                    <div>Div 5</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cell-content">
+                                    <div>Div 1</div>
+                                    <div>Div 2</div>
+                                    <div>Div 3</div>
+                                    <div>Div 4</div>
+                                    <div>Div 5</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cell-content">
+                                    <div>Div 1</div>
+                                    <div>Div 2</div>
+                                    <div>Div 3</div>
+                                    <div>Div 4</div>
+                                    <div>Div 5</div>
+                                </div>
+                            </td>
+                            <!-- 추가 셀 반복 -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="table-container">
+                <h2 class="intro_title sub2_title" id="plus_title2">세운</h2>
+                <div class="additional-info scroll" id="scrolling_earth">
+                    <table id="future_10_earth_tens">
+                        <tr>
+                            <td>
+                                <div class="cell-content">
+                                    <div>Div 1</div>
+                                    <div>Div 2</div>
+                                    <div>Div 3</div>
+                                    <div>Div 4</div>
+                                    <div>Div 5</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cell-content">
+                                    <div>Div 1</div>
+                                    <div>Div 2</div>
+                                    <div>Div 3</div>
+                                    <div>Div 4</div>
+                                    <div>Div 5</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cell-content">
+                                    <div>Div 1</div>
+                                    <div>Div 2</div>
+                                    <div>Div 3</div>
+                                    <d  iv>Div 4</div>
+                                    <div>Div 5</div>
+                                </div>
+                            </td>
+                            <!-- 추가 셀 반복 -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
         </div>
+
+
+
 
 
 
@@ -370,9 +490,104 @@
             }, 500); // 10000ms = 10초
 
 
-
-
         });
+
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        $(document).on('mousedown', '#future_10_heaven_tens .cell-content', function(e) {
+
+            $('#future_10_heaven_tens .cell-content.active').removeClass('active');
+            /*여기서 세운을 셋팅하면 되네*/
+            $(this).addClass('active');
+
+
+            /*여기서 세운을 셋팅하면 되네*/
+            $(this).addClass('active');
+            const hiddenData = $(this).find('div[style="hidden"]').attr('data');
+            const deawon = $(this).find('div[datatype="deawon"]').attr('deawon');
+            console.log(deawon);
+            const dataArray = JSON.parse(hiddenData);
+
+            $('#future_10_earth_tens tr').empty();
+            dataArray.forEach((item, index) => {
+
+                const [[key, value]] = Object.entries(item);
+
+                //console.log(`Key: ${key}`);
+                //console.log(`Value: ${value}`);
+
+
+
+
+               heavenly_future = value.split('*')[0];
+               Earthly_future = value.split('*')[1];
+
+               firstPart = heavenly_future.split('|')[1].split(',')[0].split('=')[1];
+               secontPart = Earthly_future.split('|')[1].split(',')[0].split('=')[1];
+
+
+               $('#future_10_earth_tens tr').append(`<td>
+                                <div class="cell-content">
+                                    <div class='bottom' data_type='year' year=${key} >${key}</div>
+                                    <div class='bottom'>${heavenly_future.split('|')[2]}</div>
+                                    <div class="main-text ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}">${heavenly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class="main-text ${secontPart === '木' ? 'green' : secontPart === '火' ? 'red' : secontPart === '土' ? 'yellow' : secontPart === '金' ? 'white' : secontPart === '水' ? 'black' : ''}">${Earthly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class='bottom'>${Earthly_future.split('|')[2]}</div>
+
+                                </div>
+                            </td>`);
+
+            });
+
+
+            isDown = true;
+            $(this).closest('#scrolling_heaven').css('cursor', 'grabbing'); // 드래그 중 커서 변경
+            startX = e.pageX - $(this).closest('#scrolling_heaven').offset().left;
+            scrollLeft = $(this).closest('#scrolling_heaven').scrollLeft();
+        });
+
+
+
+        $(document).on('mousedown', '#future_10_earth_tens .cell-content', function(e) {
+
+            $('#future_10_earth_tens .cell-content.active').removeClass('active');
+            /*여기서 세운을 셋팅하면 되네*/
+            $(this).addClass('active');
+
+
+            isDown = true;
+            $(this).closest('#scrolling_earth').css('cursor', 'grabbing'); // 드래그 중 커서 변경
+            startX = e.pageX - $(this).closest('#scrolling_earth').offset().left;
+            scrollLeft = $(this).closest('#scrolling_earth').scrollLeft();
+        });
+
+        $(document).mouseup(function() {
+            isDown = false;
+            $('.cell-content').css('cursor', 'grab');
+        });
+
+        $(document).on('mousemove', '#scrolling_heaven', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - $(this).offset().left;
+            const walk = (x - startX) * 1; // 이동 속도 조절
+            $(this).scrollLeft(scrollLeft - walk);
+        });
+
+        $(document).on('mousemove', '#scrolling_earth', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - $(this).offset().left;
+            const walk = (x - startX) * 1; // 이동 속도 조절
+            $(this).scrollLeft(scrollLeft - walk);
+        });
+
+
+
+
 
         var elementText = '';
         var elementRatios = {};
@@ -465,7 +680,7 @@
 
 
                 for (let i = 0; i < elements.length; i++) {
-                    console.log(elements[i]);
+                    //console.log(elements[i]);
                      firstPart = elements[i].split(',')[1].split('=')[1];
                      html = `
                         <div class="bottom ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}" >${elements[i].split(',')[0].split('=')[1]}</div>
@@ -497,9 +712,9 @@
 
             elementText = eightzodiacResult['HeavenlyDayElement'].split(',')[0].split('=')[1];
             // 캔버스 그리기
-            console.log(1);
-            console.log(elementText);
-            console.log(elementRatios);
+            //console.log(1);
+            //console.log(elementText);
+            //console.log(elementRatios);
             drawCanvas();
 
 
@@ -516,6 +731,8 @@
             $('#strength_daye').text(eightzodiacResult['strength'].split('|')[2].split(',')[1].split('=')[1]);
             $('#strength_month').text(eightzodiacResult['strength'].split('|')[2].split(',')[2].split('=')[1]);
             $('#strength_year').text(eightzodiacResult['strength'].split('|')[2].split(',')[3].split('=')[1]);
+
+
 
             //일간 성격
             $('#daily_personality_name').text(eightzodiacResult['ChiHeavenlyDayText']+eightzodiacResult['ChiEarthlyDayText']);
@@ -537,13 +754,11 @@
                 EarthlySumResult = 0;
             }
 
-            console.log(heavenlySumResult);
-            console.log(EarthlySumResult);
 
              if(eightzodiacResult['KorHeavenlySumResult'].length !== 0 || eightzodiacResult['KorEarthlySumResult'].length !== 0){
 
                 Object.keys(eightzodiacResult['KorHeavenlySumResult']).forEach(key => {
-                    console.log(`Key: ${key}, Value:`, eightzodiacResult['KorHeavenlySumResult'][key]);
+                    //console.log(`Key: ${key}, Value:`, eightzodiacResult['KorHeavenlySumResult'][key]);
                     // 여기에 각 key에 대해 필요한 작업을 추가할 수 있습니다.
                     htmlContent = `<div class='sub3_title'>천간합-${eightzodiacResult['KorHeavenlySumResult'][key]['합화명칭']} </div>
                     <div class='sub3_text'>${eightzodiacResult['KorHeavenlySumResult'][key]['해석']}</div>`;
@@ -552,7 +767,7 @@
                 });
 
                 Object.keys(eightzodiacResult['KorEarthlySumResult']).forEach(key => {
-                    console.log(`Key: ${key}, Value:`, eightzodiacResult['KorEarthlySumResult'][key]);
+                    //console.log(`Key: ${key}, Value:`, eightzodiacResult['KorEarthlySumResult'][key]);
                     // 여기에 각 key에 대해 필요한 작업을 추가할 수 있습니다.
                     htmlContent = `<div class='sub3_title'>${eightzodiacResult['KorEarthlySumResult'][key]['합']}-${eightzodiacResult['KorEarthlySumResult'][key]['합화명칭']} </div>
                     <div class='sub3_text'>${eightzodiacResult['KorEarthlySumResult'][key]['해석']}</div>`;
@@ -564,6 +779,72 @@
 
 
 
+            //대운
+            currentKey1 = 0 ;
+            currentKey2 = 0 ;
+            $('#future_10_heaven_tens tr').empty();
+            const currentYear = new Date().getFullYear(); // 현재 연도 가져오기
+            Object.keys(eightzodiacResult['future_10_tens']).forEach(key => {
+
+               //console.log(`Key: ${key}, Value:`, eightzodiacResult['future_10_tens'][key]);
+
+               heavenly_future = eightzodiacResult['future_10_tens'][key]['data'].split('*')[0];
+               Earthly_future = eightzodiacResult['future_10_tens'][key]['data'].split('*')[1];
+
+               firstPart = heavenly_future.split('|')[1].split(',')[0].split('=')[1];
+               secontPart = Earthly_future.split('|')[1].split(',')[0].split('=')[1];
+
+
+               $('#future_10_heaven_tens tr').append(`<td>
+                                <div class="cell-content">
+                                    <div class='bottom' datatype='deawon' deawon='${key}'>${key}</div>
+                                    <div class='bottom'>${heavenly_future.split('|')[2]}</div>
+                                    <div class="main-text ${firstPart === '木' ? 'green' : firstPart === '火' ? 'red' : firstPart === '土' ? 'yellow' : firstPart === '金' ? 'white' : firstPart === '水' ? 'black' : ''}">${heavenly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class="main-text ${secontPart === '木' ? 'green' : secontPart === '火' ? 'red' : secontPart === '土' ? 'yellow' : secontPart === '金' ? 'white' : secontPart === '水' ? 'black' : ''}">${Earthly_future.split('|')[1].split(',')[2].split('=')[1]}</div>
+                                    <div class='bottom'>${Earthly_future.split('|')[2]}</div>
+                                    <div style='hidden' data='${JSON.stringify(eightzodiacResult['future_10_tens'][key]['array'])}'></div>
+                                </div>
+                            </td>`);
+
+
+
+
+
+                eightzodiacResult['future_10_tens'][key]['array'].forEach((item, index) => {
+                    const [[key2, value]] = Object.entries(item);
+                    if(key2 == currentYear){
+                        currentKey1 = key;
+                        currentKey2 = key2;
+                    }
+                });
+
+            });
+
+            const targetElement = $(`.cell-content .bottom[deawon="${currentKey1}"]`);
+
+            if (targetElement.length) {
+                // 스크롤 컨테이너로 부드럽게 이동
+                targetElement.parent().addClass('active');
+                targetElement.parent().trigger('mousedown');
+                $('#scrolling_heaven').animate({
+                    scrollLeft: targetElement.position().left + $('#scrolling_heaven').scrollLeft()
+                }, 100); // 800ms 동안 스크롤
+
+            }
+
+            const targetElement2 = $(`.cell-content .bottom[year="${currentKey2}"]`);
+                console.log(targetElement2.position().left);
+                if (targetElement2.length) {
+                // 스크롤 컨테이너로 부드럽게 이동
+                    targetElement2.parent().addClass('active');
+
+
+                    var scrollPosition2 = targetElement2.offset().left - $('#scrolling_earth').offset().left + $('#scrolling_earth').scrollLeft();
+                    $('#future_10_earth_tens').off('mouseenter');
+                    $('#scrolling_earth').animate({
+                         scrollLeft: scrollPosition2
+                    }, 100); // 800ms 동안 스크롤
+                }
 
         }
 
@@ -579,8 +860,8 @@
 
      function drawCanvas() {
 
-        console.log(elementText);
-        console.log(elementRatios);
+        //console.log(elementText);
+        //console.log(elementRatios);
             const canvas = document.getElementById("fiveElementsCanvas");
             const ctx = canvas.getContext("2d");
 

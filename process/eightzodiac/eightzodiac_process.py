@@ -51,7 +51,7 @@ def add_ten_gods(eightchar_data, day_heavenly):
 def get_eightzodiac_data(data):
     # 사주 정보 추출
     eightchar = get_eightchar(data['calendar'], data['year'], data['month'], data['day'], data['time'])
-    print("추출된 사주 정보:", eightchar)
+    #print("추출된 사주 정보:", eightchar)
 
     # 오행과 음양 추가
     eightchar.update({'HeavenlyYearElement': Heavenly_Five_Elements.get(eightchar['KorHeavenlyYearText'], "")})
@@ -90,9 +90,9 @@ def get_eightzodiac_data(data):
     eightchar.update(ten_gods_data)
     eightchar.update({'KorHeavenlyDayTextTenGod': '나'})
 
-    print("십성 추가된 사주 정보:", eightchar)
+    #print("십성 추가된 사주 정보:", eightchar)
 
-    print(eightchar['KorHeavenlyTimeText'])
+    '''print(eightchar['KorHeavenlyTimeText'])
     print(eightchar['KorHeavenlyDayText'])
     print(eightchar['KorHeavenlyMonthText'])
     print(eightchar['KorHeavenlyYearText'])
@@ -100,7 +100,7 @@ def get_eightzodiac_data(data):
     print(eightchar['KorEarthlyTimeText'])
     print(eightchar['KorEarthlyDayText'])
     print(eightchar['KorEarthlyMonthText'])
-    print(eightchar['KorEarthlyYearText'])
+    print(eightchar['KorEarthlyYearText'])'''
 
     # 천간합 추출
     Heavenly_list = [eightchar['KorHeavenlyTimeText'], eightchar['KorHeavenlyDayText'],
@@ -109,14 +109,14 @@ def get_eightzodiac_data(data):
 
     # 가능한 조합
 
-    print('1')
+
     KorHeavenlySum = json.loads(Path(current_dir, 'json/plus.json').read_text(encoding='utf-8'))['KorHeavenlySum']
-    print('2')
+
     using_Heavenly_list = ["".join(pair) for pair in itertools.permutations(Heavenly_list, 2)]
     KorHeavenlySumResult = {pair: KorHeavenlySum[pair] for pair in using_Heavenly_list if pair in KorHeavenlySum}
 
-    print('---천간합---')
-    print(KorHeavenlySumResult)
+
+
 
     eightchar.update({'KorHeavenlySumResult': KorHeavenlySumResult})
 
@@ -133,8 +133,7 @@ def get_eightzodiac_data(data):
     KorEarthlySumResultFor3 = {pair: KorEarthlySum[pair] for pair in usingEarthlylistfor3 if pair in KorEarthlySum}
 
     EarthlyMergedResult = {**KorEarthlySumResultFor2, **KorEarthlySumResultFor3}
-    print('---지지합---')
-    print(EarthlyMergedResult)
+
     eightchar.update({'KorEarthlySumResult': EarthlyMergedResult})
 
     # 살추출
@@ -150,7 +149,7 @@ def get_eightzodiac_data(data):
     kill_data_result = {pair: kill_data[pair] for pair in using_eight_list if pair in kill_data}
 
     eightchar.update({'kill_data_result': kill_data_result})
-    print('---살---')
+
 
     # 처음 입력값 추가
     eightchar.update(data)
@@ -171,8 +170,14 @@ def get_eightzodiac_data(data):
 
     eightchar.update({'daily_text': dailyTextData[eightchar['KorHeavenlyDayText'] + eightchar['KorEarthlyDayText']]});
 
+
+
+
     # 세운, 대운 계산하기
     get_solar_term_data = get_solar_term(eightchar)
+    print('----------------------------------------get_solar_term_data')
+    print(get_solar_term_data)
+    print('----------------------------------------get_solar_term_data')
 
     result = {}
     for ganji, info in get_solar_term_data.items():
@@ -184,9 +189,9 @@ def get_eightzodiac_data(data):
              'KorEarthlyYearText': ganji[1]}
         tens_a = add_ten_gods(a, day_heavenly)
 
-        print(daewon)
-        print(ganji[0] + '|' + Heavenly_Five_Elements.get(ganji[0], "") + '|' + tens_a['KorHeavenlyYearTextTenGod'])
-        print(ganji[1] + '|' + Earthly_Five_Elements.get(ganji[1], "") + '|' + tens_a['KorEarthlyYearTextTenGod'])
+        #print(daewon)
+        #print(ganji[0] + '|' + Heavenly_Five_Elements.get(ganji[0], "") + '|' + tens_a['KorHeavenlyYearTextTenGod'])
+        #print(ganji[1] + '|' + Earthly_Five_Elements.get(ganji[1], "") + '|' + tens_a['KorEarthlyYearTextTenGod'])
 
         result_array = [];
         for year_info in array:
@@ -197,13 +202,13 @@ def get_eightzodiac_data(data):
             tens_b = add_ten_gods(b, day_heavenly)
 
             ganji_year, year = year_info.split(',')
-            print(f" - {year}")
-            print(ganji_year[0] + '|' + Heavenly_Five_Elements.get(ganji_year[0], "") + '|' + tens_b['KorHeavenlyYearTextTenGod'])
-            print(ganji_year[1] + '|' + Earthly_Five_Elements.get(ganji_year[1], "") + '|' + tens_b['KorEarthlyYearTextTenGod'])
+            #print(f" - {year}")
+            #print(ganji_year[0] + '|' + Heavenly_Five_Elements.get(ganji_year[0], "") + '|' + tens_b['KorHeavenlyYearTextTenGod'])
+            #print(ganji_year[1] + '|' + Earthly_Five_Elements.get(ganji_year[1], "") + '|' + tens_b['KorEarthlyYearTextTenGod'])
             result_array.append({year : ganji_year[0] + '|' + Heavenly_Five_Elements.get(ganji_year[0], "") + '|' + tens_b['KorHeavenlyYearTextTenGod'] + '*' +ganji_year[1] + '|' + Earthly_Five_Elements.get(ganji_year[1], "") + '|' + tens_b['KorEarthlyYearTextTenGod'] })
 
-            print()  # 항목 간 구분을 위한 빈 줄
-        print(result_array)
+            #print()  # 항목 간 구분을 위한 빈 줄
+        #print(result_array)
 
         result.update({daewon: {'daewon': daewon,'data':ganji[0] + '|' + Heavenly_Five_Elements.get(ganji[0], "") + '|' + tens_a['KorHeavenlyYearTextTenGod']+'*'+ganji[1] + '|' + Earthly_Five_Elements.get(ganji[1], "") + '|' + tens_a['KorEarthlyYearTextTenGod'], 'array': result_array}})
 
@@ -212,7 +217,7 @@ def get_eightzodiac_data(data):
 
 
 
-    eightchar.update({'future': result})
+    eightchar.update({'future_10_tens': result})
 
     print(eightchar)
     return eightchar
@@ -279,7 +284,7 @@ def evaluate_strength(month_branch, day_branch, year_branch, hour_branch):
 # data = {'gender': '남자', 'calendar': '양력', 'year': '2016', 'month': '8', 'day': '30', 'time': '16'}
 
 # 정목
-data = {'gender': '남자', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '06'}
+#data = {'gender': '남자', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '04'}
 
 # 함수 호출
-get_eightzodiac_data(data)
+#get_eightzodiac_data(data)
