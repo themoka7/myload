@@ -4,6 +4,7 @@ from pathlib import Path
 import json
 
 from process.common.eightchar import get_eightchar
+from process.common.eightchar_ver2 import get_eightchar2
 from process.eightzodiac.solar_term_process import get_solar_term
 
 # 데이터에 십성 추가 함수
@@ -50,7 +51,13 @@ def add_ten_gods(eightchar_data, day_heavenly):
 # 메인 함수 정의
 def get_eightzodiac_data(data):
     # 사주 정보 추출
-    eightchar = get_eightchar(data['calendar'], data['year'], data['month'], data['day'], data['time'])
+    #eightchar = get_eightchar(data['calendar'], data['year'], data['month'], data['day'], data['time'])
+
+    #print("추출된 사주 정보:", eightchar)
+    eightchar = get_eightchar2(data['calendar'], data['year'], data['month'], data['day'], data['time'])
+
+
+
     #print("추출된 사주 정보:", eightchar)
 
     # 오행과 음양 추가
@@ -65,7 +72,7 @@ def get_eightzodiac_data(data):
     eightchar.update({'EarthlyTimeElement': Earthly_Five_Elements.get(eightchar['KorEarthlyTimeText'], "")})
     # 오행과 음양 추가
 
-    # print(is_strong_day_master(eightchar))
+    print(eightchar)
 
     # 지장간
     time_units = ['Time', 'Day', 'Month', 'Year']
@@ -284,7 +291,7 @@ def evaluate_strength(month_branch, day_branch, year_branch, hour_branch):
 # data = {'gender': '남자', 'calendar': '양력', 'year': '2016', 'month': '8', 'day': '30', 'time': '16'}
 
 # 정목
-data = {'gender': '남성', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '04'}
+data = {'gender': '여성', 'calendar': '양력', 'year': '1981', 'month': '10', 'day': '7', 'time': '02'}
 
 # 함수 호출
 get_eightzodiac_data(data)

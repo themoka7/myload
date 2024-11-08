@@ -7,6 +7,7 @@ from korean_lunar_calendar import KoreanLunarCalendar
 from datetime import datetime, timedelta
 
 from process.common.eightchar import get_eightchar
+from process.common.eightchar_ver2 import get_eightchar2
 
 #selected_chizodiac = {'gender': '남성', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '24'}
 selected_chizodiac = {'gender': '여성', 'calendar': '양력', 'year': '1991', 'month': '11', 'day': '19', 'time': '02'}
@@ -31,7 +32,7 @@ birth_hour = [{ "value": "00", "label": "子", "kor_label" : "자" },
 def get_chizodiac_data(selected_chizodiac):
 
 
-    eightchar = get_eightchar(selected_chizodiac['calendar'], selected_chizodiac['year'], selected_chizodiac['month'], selected_chizodiac['day'], selected_chizodiac['time'])
+    eightchar = get_eightchar2(selected_chizodiac['calendar'], selected_chizodiac['year'], selected_chizodiac['month'], selected_chizodiac['day'], selected_chizodiac['time'])
 
 
 

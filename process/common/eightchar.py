@@ -32,6 +32,7 @@ def get_eightchar(type, year, month, day, time):
 
 
     calendar = KoreanLunarCalendar()
+    #print(calendar)
     if type != '양력':
         calendar.setLunarDate(year, month, day, False)
         #print(calendar.SolarIsoFormat().split('-'))
@@ -41,10 +42,15 @@ def get_eightchar(type, year, month, day, time):
 
 
     # params : year(년), month(월), day(일)
+    print(year)
+    print(month)
+    print(day)
     calendar.setSolarDate(year, month, day)
     # Korean GapJa String
     KorGapJa = calendar.getGapJaString()
+    print(KorGapJa)
     ChiGapJa = calendar.getChineseGapJaString()
+    print(ChiGapJa)
 
 
 

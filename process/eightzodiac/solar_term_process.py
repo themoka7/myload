@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import math
 
 from process.common.eightchar import get_eightchar
+from process.common.eightchar_ver2 import solortoso24
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -84,7 +85,8 @@ class SolarCalculator:
 
 
 def get_solar_term(eightchar):
-    #print(eightchar)
+    print('****')
+    print(eightchar)
     #print(eightchar['gender'])
     #print(eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0])
 
@@ -96,17 +98,29 @@ def get_solar_term(eightchar):
     if eightchar['gender'] == '여성' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '양':
         location = 'back'
 
-    #print('location : ' + location)
+    print('location : ' + location)
 
 
     # SolarCalculator 인스턴스 생성 및 날짜 변환
-    calculator = SolarCalculator()
+    '''calculator = SolarCalculator()
     target_date = datetime.strptime(eightchar['Solar'], '%Y-%m-%d')
     previous_term, next_term = calculator.find_adjacent_terms(target_date)
 
+    print(previous_term)
+    print(next_term)'''
 
-    #print(previous_term)
-    #print(next_term)
+    inginame, ingiyear, ingimonth, ingiday, ingihour, ingimin, midname, midyear, midmonth, midday, midhour, midmin, outginame, outgiyear, outgimonth, outgiday, outgihour, outgimin = solortoso24(
+        int(eightchar['year']), int(eightchar['month']), int(eightchar['day']), 23, 25)
+
+    #print(ingiyear, ingimonth, ingiday , 23, 25)
+    #print(outgiyear, outgimonth, outgiday)
+
+    target_date = datetime( int(eightchar['year']), int(eightchar['month']), int(eightchar['day']), 23, 25)
+    previous_term = datetime(ingiyear, ingimonth, ingiday, 23, 25)
+    next_term = datetime(outgiyear, outgimonth, outgiday, 23, 25)
+
+
+
     # 절기 출력
     '''if previous_term:
         print(f"이전 절기: {previous_term[0]} - {previous_term[1].strftime('%Y-%m-%d %H:%M:%S')}")
@@ -116,10 +130,10 @@ def get_solar_term(eightchar):
     # 날짜 차이 계산 및 대운수 결정
     days_difference = None
     if location == 'back' and previous_term:
-        days_difference = (target_date - previous_term[1]).days
+        days_difference = (target_date - previous_term).days
         #print(f"이전 절기와의 날짜 차이: {days_difference}일")
     elif location == 'forward' and next_term:
-        days_difference = (next_term[1] - target_date).days
+        days_difference = (next_term - target_date).days
         #print(f"다음 절기와의 날짜 차이: {days_difference}일")
 
 
@@ -155,6 +169,8 @@ def get_solar_term(eightchar):
         result_indices = [(start_index + i) % 60 for i in range(1, 11)]
 
         # 인덱스에 해당하는 갑자 조합과 대운수 추가
+
+
     result_terms_with_daewon = {}
     for i, index in enumerate(result_indices):
         term_name = list(SixtyData.keys())[index]
@@ -162,12 +178,15 @@ def get_solar_term(eightchar):
         result_terms_with_daewon[term_name] = daewon_value
 
 
-    #print(result_terms_with_daewon)
+
 
     # foreach 방식으로 딕셔너리를 순회하며 출력
 
     ganji_year_combination = eightchar['KorHeavenlyYearText'] + eightchar['KorEarthlyYearText']
     start_index = SixtyData.get(ganji_year_combination, None)
+
+    ganji_month_combination = eightchar['KorHeavenlyMonthText'] + eightchar['KorEarthlyMonthText']
+    start_month_index = SixtyData.get(ganji_month_combination, None)
 
     result = {}
     for ganji, daewon in result_terms_with_daewon.items():
