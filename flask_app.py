@@ -10,7 +10,7 @@ from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 �
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
 from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
 from process.eightzodiac.eightzodiac_process import get_eightzodiac_data
-from process.mansae.mansae_process import get_mansae_data_parallel
+from process.mansae.mansae_process import get_mansae_data
 
 
 
@@ -46,7 +46,7 @@ def mansae_process():
 
     data = request.get_json()  # 클라이언트에서 보낸 JSON 데이터를 받음
 
-    result = get_mansae_data_parallel(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
+    result = get_mansae_data(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
 
 
 
