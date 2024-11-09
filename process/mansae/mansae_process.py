@@ -4,7 +4,7 @@ import calendar
 from process.common.eightchar_ver2 import get_eightchar2
 
 
-def get_mansaecalendar_data(year, month):
+def get_mansae_data(year, month):
     results = {}
     # 해당 월의 마지막 날짜 계산
     last_day = calendar.monthrange(year, month)[1]

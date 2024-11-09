@@ -264,7 +264,7 @@
                const data = { year: year, month: month };
 
                $.ajax({
-                    url: '/mansaecalendar_process',
+                    url: '/mansae_process',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(data),
@@ -330,7 +330,7 @@
                 table.appendChild(row);
             }
             calendar.appendChild(table);
-        }
+        } 
 
 
 
