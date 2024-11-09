@@ -632,7 +632,7 @@ def getlunarfirst(syear: int, smonth: int, sday: int):
         while de > 0.01:
             d += 0.000694444
             de = moonsundegree(d)
-        ip1[0] = interpointdisp(d)
+        ip1 = interpointdisp(d)
 
         d += 0.375
         d *= 1440
@@ -859,7 +859,7 @@ def get_eightchar2(calendar,year, month, day, time):
 
 #print(get_eightchar2('양력', '1981', '10' , '7', '00'))
 
-
+'''
 
 year, month, day, hour, minute = 1981, 10, 7, 6, 25
 wd = getweekday(year,month,day)
@@ -880,6 +880,6 @@ print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
 print(f"이번달 절입 : {monthst[inginame]} 양력 + {ingiyear}년 {ingimonth}월 {ingiday}일 {ingihour}시 {ingimin} 분")
 print(f"이번달 중기 : {monthst[midname]} 양력 + {midyear}년 {midmonth}월 {midday}일 {midhour}시 {midmin} 분")
 print(f"다음달 절입 : {monthst[outginame]} 양력 + {outgiyear}년 {outgimonth}월 {outgiday}일 {outgihour}시 {outgimin} 분")
-
+'''
 
 

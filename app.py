@@ -4,10 +4,13 @@ from flask_cors import CORS
 
 from process.common.rss import generate_rss
 from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
+from process.mansaecalendar import mansaecalendar_process
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
 from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
 from process.eightzodiac.eightzodiac_process import get_eightzodiac_data
+from process.mansaecalendar.mansaecalendar_process import get_mansaecalendar_data
+
 
 
 
@@ -25,6 +28,38 @@ def index():
 @app.route('/intro')
 def intro():
     return render_template('intro/intro.html')
+
+
+
+#########################################
+#               hexagram                #
+#########################################
+@app.route('/mansaecalendar')
+def mansaecalendar_intro():
+    return render_template('mansaecalendar/mansaecalendar_intro.html')
+
+
+# AJAX POST 요청을 처리할 라우트
+@app.route('/mansaecalendar_process', methods=['POST'])
+def mansaecalendar_process():
+    data = request.get_json()  # 클라이언트에서 보낸 JSON 데이터를 받음
+
+
+    result = get_mansaecalendar_data(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
+
+
+
+
+    # 간단한 응답 메시지를 JSON 형식으로 반환
+    response = {
+        'data': result
+    }
+    return jsonify(response)
+
+
+#########################################
+#               hexagram                #
+#########################################
 
 
 #########################################
