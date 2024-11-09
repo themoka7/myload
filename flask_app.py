@@ -1,6 +1,6 @@
 import time
 
-from flask import Flask, render_template, jsonify, session, url_for,request,Response, send_from_directory
+from flask import Flask, render_template, jsonify, session, url_for, request, Response, send_from_directory
 
 from flask_cors import CORS
 
@@ -12,9 +12,6 @@ from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # 
 from process.eightzodiac.eightzodiac_process import get_eightzodiac_data
 from process.mansae.mansae_process import get_mansae_data
 
-
-
-
 # CORS(app)
 
 
@@ -22,14 +19,15 @@ from process.mansae.mansae_process import get_mansae_data
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = '1qa2ws3ed4rf5tg&&'  # 세션을 사용하려면 필요합니다
 
+
 @app.route('/')
 def index():
     return render_template('intro/intro.html')
 
+
 @app.route('/intro')
 def intro():
     return render_template('intro/intro.html')
-
 
 
 #########################################
@@ -43,12 +41,9 @@ def mansae_intro():
 # AJAX POST 요청을 처리할 라우트
 @app.route('/mansae_process', methods=['POST'])
 def mansae_process():
-
     data = request.get_json()  # 클라이언트에서 보낸 JSON 데이터를 받음
 
     result = get_mansae_data(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
-
-
 
     # 간단한 응답 메시지를 JSON 형식으로 반환
     response = {
@@ -69,6 +64,7 @@ def mansae_process():
 def hexagram():
     return render_template('hexagram/hexagram_index.html')
 
+
 @app.route('/hexagram/result')
 def hexagram_result():
     # 세션에 저장된 처리된 데이터 불러오기
@@ -76,6 +72,7 @@ def hexagram_result():
     data = session.get('data', {})
 
     return render_template('hexagram/hexagram_result.html', data=data)  # 결과 페이지에서 데이터 표시
+
 
 @app.route('/hexagram_process', methods=['POST'])
 def hexagram_process():
@@ -90,7 +87,6 @@ def hexagram_process():
 #########################################
 
 
-
 #########################################
 #            chizodiac(당사주)           #
 #########################################
@@ -98,6 +94,7 @@ def hexagram_process():
 @app.route('/chizodiac_intro')
 def chizodiac_intro():
     return render_template('chizodiac/chizodiac_intro.html')
+
 
 @app.route('/chizodiac')
 def chizodiac():
@@ -111,11 +108,11 @@ def chizodiac_result():
     data = session.get('data', {})
     return render_template('chizodiac/chizodiac_result.html', chizodiac_result=chizodiac_result)  # 결과 페이지에서 데이터 표시
 
+
 @app.route('/chizodiac_process', methods=['POST'])
 def chizodiac_process():
     # 클라이언트로부터 JSON 데이터를 받음
     chizodiac_data = request.get_json()
-
 
     if not chizodiac_data:
         return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
@@ -133,7 +130,6 @@ def chizodiac_process():
 #########################################
 
 
-
 #########################################
 #            chizodiac(자평)           #
 #########################################
@@ -142,7 +138,6 @@ def chizodiac_process():
 @app.route('/eightzodiac_intro')
 def eightzodiac_intro():
     return render_template('eightzodiac/eightzodiac_intro.html')
-
 
 
 @app.route('/eightzodiac')
@@ -155,7 +150,9 @@ def eightzodiac_result():
     eightzodiac_result = session.get('eightzodiac_result', None)
 
     data = session.get('data', {})
-    return render_template('eightzodiac/eightzodiac_result.html', eightzodiac_result=eightzodiac_result)  # 결과 페이지에서 데이터 표시
+    return render_template('eightzodiac/eightzodiac_result.html',
+                           eightzodiac_result=eightzodiac_result)  # 결과 페이지에서 데이터 표시
+
 
 @app.route('/eightzodiac_process', methods=['POST'])
 def eightzodiac_process():
@@ -187,9 +184,12 @@ def eightzodiac_process():
 @app.route('/tarot_intro')
 def tarot_intro():
     return render_template('tarot/tarot_intro.html')
+
+
 @app.route('/tarot')
 def tarot():
     return render_template('tarot/tarot_index.html')
+
 
 @app.route('/tarot/result')
 def tarot_result():
@@ -198,11 +198,11 @@ def tarot_result():
     data = session.get('data', {})
     return render_template('tarot/tarot_result.html', tarot_result=tarot_result)  # 결과 페이지에서 데이터 표시
 
+
 @app.route('/tarot_process', methods=['POST'])
 def tarot_process():
     # 클라이언트로부터 JSON 데이터를 받음
     card_data = request.get_json()
-
 
     if not card_data:
         return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
@@ -214,10 +214,10 @@ def tarot_process():
     session['tarot_result'] = data
     return jsonify({'redirect': url_for('tarot_result')})
 
+
 #########################################
 #                  타로                 #
 #########################################
-
 
 
 #########################################
@@ -233,12 +233,10 @@ def dailystarzodiac():
 
     return render_template('dailystarzodiac/dailystarzodiac_index.html')
 
+
 #########################################
 #                 별자리                 #
 #########################################
-
-
-
 
 
 #########################################
@@ -248,20 +246,24 @@ def dailystarzodiac():
 def sitemap():
     # 사이트의 URL 목록
     urls = [
-        {'loc': url_for('', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 1.0},
+
         {'loc': url_for('index', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 1.0},
         {'loc': url_for('intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.9},
         {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
 
-
         {'loc': url_for('tarot', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
-        {'loc': url_for('tarot_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
+        {'loc': url_for('tarot_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
+         'priority': 0.7},
         {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
-        {'loc': url_for('chizodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
-        {'loc': url_for('eightzodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily','priority': 0.7},
-        {'loc': url_for('eightzodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily','priority': 0.7},
+        {'loc': url_for('chizodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
+         'priority': 0.7},
+        {'loc': url_for('eightzodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
+         'priority': 0.7},
+        {'loc': url_for('eightzodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
+         'priority': 0.7},
 
-        {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily','priority': 0.7}
+        {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily',
+         'priority': 0.7}
 
         # 추가 URL을 여기에 추가
     ]
@@ -282,11 +284,10 @@ def sitemap():
     xml += '''</urlset>'''
     return Response(xml, mimetype='application/xml')
 
+
 #########################################
 #                사이트맵                #
 #########################################
-
-
 
 
 #########################################
@@ -295,6 +296,7 @@ def sitemap():
 @app.route('/robots.txt')
 def serve_robots():
     return send_from_directory('', 'robots.txt')  # '' means the current directory
+
 
 #########################################
 #                robots                 #
@@ -308,10 +310,10 @@ def rss():
     rss_feed = generate_rss()
     return Response(rss_feed, mimetype="application/rss+xml")
 
+
 #########################################
 #                rss                 #
 #########################################
-
 
 
 if __name__ == '__main__':
