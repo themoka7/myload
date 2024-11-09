@@ -310,13 +310,12 @@
             $(document).ready(function() {
 
                 $(".swiper-pagination").prependTo(".mySwiper"); // 페이지네이션을 Swiper 컨테이너 상단으로 이동
-                showLoadingModal();
+
                 var tarotResult = {{ tarot_result | tojson | safe }};
 
-                setTimeout(function() {
-                    closeLoadingModal();
-                    tarotResultSetting(tarotResult);
-                }, 500); // 10000ms = 10초
+
+                tarotResultSetting(tarotResult);
+
             })
 
 

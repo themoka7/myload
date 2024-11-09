@@ -519,13 +519,13 @@
 {% block scripts %}
 <script>
         $(document).ready(function() {
-            showLoadingModal();
+            //showLoadingModal();
 
             // 10초 후 모달을 닫는 함수
-            setTimeout(function() {
-                closeLoadingModal();
+            //setTimeout(function() {
+            //    closeLoadingModal();
                 chizodiacSetting();
-            }, 500); // 10000ms = 10초
+            //}, 500); // 10000ms = 10초
 
 
         });
@@ -820,32 +820,6 @@
                 });
 
             });
-
-            const targetElement = $(`.cell-content .bottom[deawon="${currentKey1}"]`);
-
-            if (targetElement.length) {
-                // 스크롤 컨테이너로 부드럽게 이동
-                targetElement.parent().addClass('active');
-                targetElement.parent().trigger('mousedown');
-                $('#scrolling_heaven').animate({
-                    scrollLeft: targetElement.position().left + $('#scrolling_heaven').scrollLeft()
-                }, 100); // 800ms 동안 스크롤
-
-            }
-
-            const targetElement2 = $(`.cell-content .bottom[year="${currentKey2}"]`);
-                console.log(targetElement2.position().left);
-                if (targetElement2.length) {
-                // 스크롤 컨테이너로 부드럽게 이동
-                    targetElement2.parent().addClass('active');
-
-
-                    var scrollPosition2 = targetElement2.offset().left - $('#scrolling_earth').offset().left + $('#scrolling_earth').scrollLeft();
-                    $('#future_10_earth_tens').off('mouseenter');
-                    $('#scrolling_earth').animate({
-                         scrollLeft: scrollPosition2
-                    }, 100); // 800ms 동안 스크롤
-                }
 
         }
 

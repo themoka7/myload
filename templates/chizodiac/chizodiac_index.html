@@ -164,7 +164,7 @@
     {% block scripts %}
     <script >
         $(document).ready(function() {
-            showLoadingModal();
+            //showLoadingModal();
 
 
             const yearSelect = $('#year');
@@ -192,9 +192,9 @@
             }
 
             // 10초 후 모달을 닫는 함수
-            setTimeout(function() {
-                closeLoadingModal();
-            }, 500); // 10000ms = 10초
+            //setTimeout(function() {
+            //    closeLoadingModal();
+            //}, 500); // 10000ms = 10초
 
             $('#process').on('click', function() {
 

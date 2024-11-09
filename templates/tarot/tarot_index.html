@@ -178,13 +178,6 @@
 
 
         $(document).ready(function() {
-            console.log('1');
-            showLoadingModal();
-
-            // 10초 후 모달을 닫는 함수
-            setTimeout(function() {
-                closeLoadingModal();
-            }, 500); // 10000ms = 10초
 
 
             $('#process').on('click', function() {
@@ -339,8 +332,7 @@
 
 
 
-                console.log(cardData);
-                console.log(cardData);
+
                 $.ajax({
                     type: 'POST',
                     url: '/tarot_process',
