@@ -1,5 +1,5 @@
 import datetime
-
+import time as ttm
 # Constants
 montharray = [0, 21355, 42843, 64498, 86335, 108366, 130578, 152958,
               175471, 198077, 220728, 243370, 265955, 288432, 310767, 332928,
@@ -815,20 +815,17 @@ def get_julian_date_point(syear: int, smonth: int, sday: int, shour: int, smin: 
 
 
 def get_eightchar2(calendar,year, month, day, time):
+
+
+
     lyear, lmonth, lday, lmoonyun, largemonth = solortolunar(int(year), int(month), int(day))
+
+
     if calendar != '양력':
         year = lyear
         month = lmonth
         day = lday
-
-
-
-
     so24, so24year, so24month, so24day, so24hour = sydtoso24yd(int(year),int(month),int(day),int(time),30)
-
-
-
-
     new_data = {
         "Lunar": str(lyear)+'-'+str(lmonth)+'-'+str(lday),
         "Solar": str(year)+'-'+str(month)+'-'+str(day),
@@ -854,13 +851,14 @@ def get_eightchar2(calendar,year, month, day, time):
 
     }
 
+
     return new_data
 
 
 #print(get_eightchar2('양력', '1981', '10' , '7', '00'))
 
-'''
 
+'''
 year, month, day, hour, minute = 1981, 10, 7, 6, 25
 wd = getweekday(year,month,day)
 
@@ -875,11 +873,18 @@ print(f"양력 {year}년 {month}월 {day}일 {weekday[wd]}")
 print(f"s28 -> {s28}")
 print(f"음력 {lyear}년 {lmonth}월 {lday}일")
 
-print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
 
 print(f"이번달 절입 : {monthst[inginame]} 양력 + {ingiyear}년 {ingimonth}월 {ingiday}일 {ingihour}시 {ingimin} 분")
 print(f"이번달 중기 : {monthst[midname]} 양력 + {midyear}년 {midmonth}월 {midday}일 {midhour}시 {midmin} 분")
 print(f"다음달 절입 : {monthst[outginame]} 양력 + {outgiyear}년 {outgimonth}월 {outgiday}일 {outgihour}시 {outgimin} 분")
+
 '''
 
+
+year, month, day, hour, minute = 2024, 11, 1, 6, 25
+so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25,)
+
+print(so24day)
+
+print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
 

@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, render_template, jsonify, session, url_for,request,Response, send_from_directory
 
 from flask_cors import CORS
@@ -8,7 +10,7 @@ from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 �
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
 from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
 from process.eightzodiac.eightzodiac_process import get_eightzodiac_data
-from process.mansae.mansae_process import get_mansae_data
+from process.mansae.mansae_process import get_mansae_data_parallel
 
 
 
@@ -41,11 +43,10 @@ def mansae_intro():
 # AJAX POST 요청을 처리할 라우트
 @app.route('/mansae_process', methods=['POST'])
 def mansae_process():
+
     data = request.get_json()  # 클라이언트에서 보낸 JSON 데이터를 받음
 
-
-    result = get_mansae_data(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
-
+    result = get_mansae_data_parallel(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
 
 
 
@@ -247,6 +248,7 @@ def dailystarzodiac():
 def sitemap():
     # 사이트의 URL 목록
     urls = [
+        {'loc': url_for('', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 1.0},
         {'loc': url_for('index', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 1.0},
         {'loc': url_for('intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.9},
         {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
