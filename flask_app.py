@@ -4,10 +4,13 @@ from flask_cors import CORS
 
 from process.common.rss import generate_rss
 from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
+from process.mansaecalendar import mansaecalendar_process
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
 from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
 from process.eightzodiac.eightzodiac_process import get_eightzodiac_data
+from process.mansaecalendar.mansaecalendar_process import get_mansaecalendar_data
+
 
 
 
@@ -25,6 +28,38 @@ def index():
 @app.route('/intro')
 def intro():
     return render_template('intro/intro.html')
+
+
+
+#########################################
+#               hexagram                #
+#########################################
+@app.route('/mansaecalendar')
+def mansaecalendar_intro():
+    return render_template('mansaecalendar/mansaecalendar_intro.html')
+
+
+# AJAX POST 요청을 처리할 라우트
+@app.route('/mansaecalendar_process', methods=['POST'])
+def mansaecalendar_process():
+    data = request.get_json()  # 클라이언트에서 보낸 JSON 데이터를 받음
+
+
+    result = get_mansaecalendar_data(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
+
+
+
+
+    # 간단한 응답 메시지를 JSON 형식으로 반환
+    response = {
+        'data': result
+    }
+    return jsonify(response)
+
+
+#########################################
+#               hexagram                #
+#########################################
 
 
 #########################################
@@ -217,19 +252,15 @@ def sitemap():
         {'loc': url_for('intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.9},
         {'loc': url_for('hexagram', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
 
-        {'loc': url_for('tarot', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
-        {'loc': url_for('tarot_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
-         'priority': 0.7},
-        {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
-        {'loc': url_for('chizodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
-         'priority': 0.7},
-        {'loc': url_for('eightzodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
-         'priority': 0.7},
-        {'loc': url_for('eightzodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily',
-         'priority': 0.7},
 
-        {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily',
-         'priority': 0.7}
+        {'loc': url_for('tarot', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
+        {'loc': url_for('tarot_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
+        {'loc': url_for('chizodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
+        {'loc': url_for('chizodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily', 'priority': 0.7},
+        {'loc': url_for('eightzodiac', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily','priority': 0.7},
+        {'loc': url_for('eightzodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily','priority': 0.7},
+
+        {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily','priority': 0.7}
 
         # 추가 URL을 여기에 추가
     ]
