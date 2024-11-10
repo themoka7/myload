@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 import time as ttm
 # Constants
 montharray = [0, 21355, 42843, 64498, 86335, 108366, 130578, 152958,
@@ -64,9 +64,6 @@ moonlength = 42524  # 42524 minutes 2.9 seconds
 from typing import Tuple
 
 def disptimeday(year: int, month: int, day: int) -> int:
-    """
-    Calculate the number of days from January 1st of the given year to the specified date.
-    """
     e = 0
     for i in range(1, month):
         e += 31
@@ -83,6 +80,7 @@ def disptimeday(year: int, month: int, day: int) -> int:
             if year % 4000 == 0:
                 e -= 1
     return e + day
+
 
 
 
@@ -197,8 +195,6 @@ def getminbytime(uy, umm, ud, uh, umin, y1, mo1, d1, h1, mm1):
     dispday = disp2days(uy, umm, ud, y1, mo1, d1)
     t = dispday * 24 * 60 + (uh - h1) * 60 + (umin - mm1)
     return t
-
-
 
 
 
@@ -322,24 +318,36 @@ def get28sday(syear, smonth, sday):
 
 def sydtoso24yd(soloryear, solormonth, solorday, solorhour, solormin):
 
+
     displ2min = getminbytime(unityear, unitmonth, unitday, unithour, unitmin,
                               soloryear, solormonth, solorday, solorhour, solormin)
+    print(displ2min)
     displ2day = disp2days(unityear, unitmonth, unitday, soloryear, solormonth, solorday)
 
+    print(displ2day)
 
-    so24 = displ2min // 525949  # 무인년(1996)입춘시점부터 해당일시까지 경과년수
+    so24 =  int(displ2min / 525949)
+    print(so24)
+
 
     if displ2min >= 0:
         so24 += 1
-    so24year = -1 * (so24 % 60)
+    print('so24-1:' + str(so24))
+    remainder = so24 % 60 if so24 >= 0 else -(abs(so24) % 60)
+
+    so24year = -1 * remainder
+    print('so24year-1:'+str(so24year))
     so24year += 12
+
+    print(so24year)
+    print(ganji[so24year])
+
     if so24year < 0:
         so24year += 60
     if so24year > 59:
         so24year -= 60  # 년주 구함 끝
 
-    #print('so24year')
-    #print(so24year)
+
 
     monthmin100 = displ2min % 525949
     monthmin100 = 525949 - monthmin100
@@ -825,6 +833,7 @@ def get_eightchar2(calendar,year, month, day, time):
         year = lyear
         month = lmonth
         day = lday
+
     so24, so24year, so24month, so24day, so24hour = sydtoso24yd(int(year),int(month),int(day),int(time),30)
     new_data = {
         "Lunar": str(lyear)+'-'+str(lmonth)+'-'+str(lday),
@@ -852,40 +861,37 @@ def get_eightchar2(calendar,year, month, day, time):
 
     }
 
-
+    print(new_data)
     return new_data
 
 
-#print(get_eightchar2('양력', '1981', '10' , '7', '00'))
+#print(get_eightchar2('양력', '2025', '2' , '1', '05'))
+#print(get_eightchar2('양력', '2025', '2' , '5', '00'))
 
 
 '''
-year, month, day, hour, minute = 1981, 10, 7, 6, 25
-wd = getweekday(year,month,day)
+year, month, day = 2025, 2, 2
+so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25)
 
-s28 = get28sday(year,month,day)
-
-lyear, lmonth, lday,lmoonyun, largemonth = solortolunar(year,month,day)
-so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25,)
-
-inginame,ingiyear,ingimonth,ingiday,ingihour,ingimin,midname,midyear,midmonth,midday,midhour,midmin,outginame,outgiyear,outgimonth,outgiday,outgihour,outgimin = solortoso24(year,month,day,23,25)
-
-print(f"양력 {year}년 {month}월 {day}일 {weekday[wd]}")
-print(f"s28 -> {s28}")
-print(f"음력 {lyear}년 {lmonth}월 {lday}일")
+print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
 
 
-print(f"이번달 절입 : {monthst[inginame]} 양력 + {ingiyear}년 {ingimonth}월 {ingiday}일 {ingihour}시 {ingimin} 분")
-print(f"이번달 중기 : {monthst[midname]} 양력 + {midyear}년 {midmonth}월 {midday}일 {midhour}시 {midmin} 분")
-print(f"다음달 절입 : {monthst[outginame]} 양력 + {outgiyear}년 {outgimonth}월 {outgiday}일 {outgihour}시 {outgimin} 분")
+year, month, day = 2025, 2, 4
 
+so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25)
+
+print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
 '''
+'''
+year = 2024
+month = 2
+day = 4
+hour = 6
+minute = 25
 
 
-#year, month, day, hour, minute = 2024, 11, 1, 6, 25
-#so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25,)
-
-#print(so24day)
-
-#print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
+so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,hour,minute)
+print(so24, so24year, so24month, so24day, so24hour)
+'''
+#print(get_eightchar2('양력', '2024', '2' , '4', '00'))
 

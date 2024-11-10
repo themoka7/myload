@@ -75,4 +75,4 @@ def get_mansae_data(year, month):
 
     return data
 
-print(get_mansae_data(2025,2))
+print(get_mansae_data(2024,11))

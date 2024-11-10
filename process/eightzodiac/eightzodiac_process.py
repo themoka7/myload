@@ -72,7 +72,7 @@ def get_eightzodiac_data(data):
     eightchar.update({'EarthlyTimeElement': Earthly_Five_Elements.get(eightchar['KorEarthlyTimeText'], "")})
     # 오행과 음양 추가
 
-    print(eightchar)
+    #print(eightchar)
 
     # 지장간
     time_units = ['Time', 'Day', 'Month', 'Year']
@@ -182,9 +182,9 @@ def get_eightzodiac_data(data):
 
     # 세운, 대운 계산하기
     get_solar_term_data = get_solar_term(eightchar)
-    print('----------------------------------------get_solar_term_data')
-    print(get_solar_term_data)
-    print('----------------------------------------get_solar_term_data')
+    #print('----------------------------------------get_solar_term_data')
+    #print(get_solar_term_data)
+    #print('----------------------------------------get_solar_term_data')
 
     result = {}
     for ganji, info in get_solar_term_data.items():
@@ -226,7 +226,7 @@ def get_eightzodiac_data(data):
 
     eightchar.update({'future_10_tens': result})
 
-    print(eightchar)
+    #print(eightchar)
     return eightchar
 
 
@@ -291,7 +291,7 @@ def evaluate_strength(month_branch, day_branch, year_branch, hour_branch):
 # data = {'gender': '남자', 'calendar': '양력', 'year': '2016', 'month': '8', 'day': '30', 'time': '16'}
 
 # 정목
-data = {'gender': '여성', 'calendar': '양력', 'year': '1981', 'month': '10', 'day': '7', 'time': '02'}
+#data = {'gender': '여성', 'calendar': '양력', 'year': '2024', 'month': '2', 'day': '4', 'time': '02'}
 
 # 함수 호출
-get_eightzodiac_data(data)
+#get_eightzodiac_data(data)
