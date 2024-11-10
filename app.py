@@ -47,9 +47,6 @@ def mansae_process():
     data = request.get_json()  # 클라이언트에서 보낸 JSON 데이터를 받음
 
     result = get_mansae_data(data.get('year', 'Unknown'), data.get('month', 'Unknown'))
-
-
-
     # 간단한 응답 메시지를 JSON 형식으로 반환
     response = {
         'data': result
@@ -144,35 +141,34 @@ def eightzodiac_intro():
     return render_template('eightzodiac/eightzodiac_intro.html')
 
 
-
 @app.route('/eightzodiac')
 def eightzodiac():
     return render_template('eightzodiac/eightzodiac_index.html')
 
+@app.route('/eightzodiac/result', methods=['GET'])
+def eightzodiac_result_get():
 
-@app.route('/eightzodiac/result')
+    return render_template('eightzodiac/eightzodiac_result.html')  # 결과 페이지에서 데이터 표시
+
+@app.route('/eightzodiac/result', methods=['POST'])
 def eightzodiac_result():
-    eightzodiac_result = session.get('eightzodiac_result', None)
 
-    data = session.get('data', {})
-    return render_template('eightzodiac/eightzodiac_result.html', eightzodiac_result=eightzodiac_result)  # 결과 페이지에서 데이터 표시
+    session['eightzodiac_data'] = request.get_json()
+
+    return jsonify({'redirect': url_for('eightzodiac_result')})
+    #return render_template('eightzodiac/eightzodiac_result.html', eightzodiac_data=eightzodiac_data)  # 결과 페이지에서 데이터 표시
 
 @app.route('/eightzodiac_process', methods=['POST'])
 def eightzodiac_process():
     # 클라이언트로부터 JSON 데이터를 받음
-    eightzodiac_data = request.get_json()
 
-    print(eightzodiac_data)
-
-    if not eightzodiac_data:
-        return jsonify({'error': 'No data provided'}), 400  # 데이터가 없으면 400 에러 반환
-
-    data = get_eightzodiac_data(eightzodiac_data)
-
-    session.clear()
-    # 받은 card_data를 처리 (여기서는 단순 출력)
-    session['eightzodiac_result'] = data
-    return jsonify({'redirect': url_for('eightzodiac_result')})
+    eightzodiac_data = session.get('eightzodiac_data', None)
+    result = get_eightzodiac_data(eightzodiac_data)
+    # 간단한 응답 메시지를 JSON 형식으로 반환
+    response = {
+        'data': result
+    }
+    return jsonify(response)
 
 
 #########################################

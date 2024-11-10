@@ -519,13 +519,22 @@
 {% block scripts %}
 <script>
         $(document).ready(function() {
-            //showLoadingModal();
 
-            // 10초 후 모달을 닫는 함수
-            //setTimeout(function() {
-            //    closeLoadingModal();
-                chizodiacSetting();
-            //}, 500); // 10000ms = 10초
+                $.ajax({
+                    type: 'POST',
+                    url: '/eightzodiac_process',
+                    success: function(response) {
+                        console.log(response);
+                        chizodiacSetting(response.data);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("에러가 발생했습니다.");
+                        console.log("에러 상태 코드: " + jqXHR.status);
+                        console.log("에러 상태 텍스트: " + textStatus);
+                        console.log("서버로부터 받은 응답: " + jqXHR.responseText);
+                        console.log("에러 메시지: " + errorThrown);
+                    }
+                });
 
 
         });
@@ -593,9 +602,10 @@
         var elementText = '';
         var elementRatios = {};
 
-        function chizodiacSetting(){
 
-            var eightzodiacResult = {{ eightzodiac_result | tojson | safe }};
+        function chizodiacSetting(data){
+
+            var eightzodiacResult = data;
             console.log(eightzodiacResult);
 
 
@@ -812,17 +822,26 @@
 
 
                 eightzodiacResult['future_10_tens'][key]['array'].forEach((item, index) => {
+
                     const [[key2, value]] = Object.entries(item);
                     if(key2 == currentYear){
                         currentKey1 = key;
                         currentKey2 = key2;
+
+                        console.log(currentKey1);
+                        console.log(currentKey2);
+                        const $targetElement1 = $(`[deawon="${currentKey1}"][datatype="deawon"]`);
+                        $targetElement1.trigger("mousedown");
+
+                        const $targetElement2 = $(`[year="${currentKey2}"]`);
+                        $targetElement2.trigger("mousedown");
+
                     }
                 });
 
             });
 
         }
-
 
 
 
