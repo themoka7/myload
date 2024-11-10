@@ -280,7 +280,7 @@
                     data: JSON.stringify(data),
                     success: function(response) {
                         console.log(response);
-                        $('#mansaeinfo').text(response['data']['info']);
+                        $('#mansaeinfo').text(response['data']['info']+' (1일기준)');
                         generateCalendar(year, month, response['data']['results']);
 
 
