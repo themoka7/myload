@@ -150,7 +150,7 @@ def eightzodiac_result_get():
 
     return render_template('eightzodiac/eightzodiac_result.html')  # 결과 페이지에서 데이터 표시
 
-@app.route('/eightzodiac/result', methods=['POST'])
+@app.route('/eightzodiac/pre', methods=['POST'])
 def eightzodiac_result():
 
     session['eightzodiac_data'] = request.get_json()
