@@ -861,7 +861,7 @@ def get_eightchar2(calendar,year, month, day, time):
 
     }
 
-    print(new_data)
+
     return new_data
 
 
