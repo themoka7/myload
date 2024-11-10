@@ -829,6 +829,7 @@ def get_eightchar2(calendar,year, month, day, time):
     new_data = {
         "Lunar": str(lyear)+'-'+str(lmonth)+'-'+str(lday),
         "Solar": str(year)+'-'+str(month)+'-'+str(day),
+        "day_index" : so24day,
         "KorHeavenlyYearText": kor_ganji[so24year][0],
         "KorEarthlyYearText": kor_ganji[so24year][1],
         "ChiHeavenlyYearText": ganji[so24year][0],
@@ -881,10 +882,10 @@ print(f"다음달 절입 : {monthst[outginame]} 양력 + {outgiyear}년 {outgimo
 '''
 
 
-year, month, day, hour, minute = 2024, 11, 1, 6, 25
-so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25,)
+#year, month, day, hour, minute = 2024, 11, 1, 6, 25
+#so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25,)
 
-print(so24day)
+#print(so24day)
 
-print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
+#print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
 

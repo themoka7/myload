@@ -164,11 +164,14 @@
 
 
     <div id="calendar" class="calender" style="padding-top: 20px; text-align: center; display: flex; flex-direction: column; align-items: center;">
-    <div class="sub2_title" style="display: flex;justify-content: center;align-items: center;gap: 10px;">
-        <button class="month-btn" type="button" onclick="prevMonth()"> &lt; </button>
-        <span id="year_month">2024년 11월</span>
-        <button class="month-btn" type="button" onclick="nextMonth()"> &gt; </button>
-    </div>
+        <div class="sub2_title" style="display: flex;justify-content: center;align-items: center;gap: 10px;flex-direction: column;">
+            <div>
+                <button class="month-btn" type="button" onclick="prevMonth()"> &lt; </button>
+                <span id="year_month">2024년 8월</span>
+                <button class="month-btn" type="button" onclick="nextMonth()"> &gt; </button>
+            </div>
+            <div id='mansaeinfo' style="    font-size: 17px;    color: #000;    font-weight: 600;">乙巳年 辛巳月</div> <!-- 이 부분을 아래로 내리기 -->
+        </div>
     <table style="/* margin-top: 20px; */border-collapse: collapse;" id="calendar-table">
         <!-- 요일 헤더 -->
         <tbody>
@@ -229,6 +232,14 @@
             getCalendarInfo(currentYear, currentMonth);
 
 
+            $('#year, #month').change(function() {
+
+                var selectedYear = parseInt($('#year').val(), 10);  // 선택된 연도를 정수로 변환
+                var selectedMonth = parseInt($('#month').val(), 10);  // 선택된 월을 정수로 변환
+
+                getCalendarInfo(selectedYear, selectedMonth);
+            });
+
 
         })
 
@@ -268,8 +279,9 @@
                     contentType: 'application/json',
                     data: JSON.stringify(data),
                     success: function(response) {
-
-                        generateCalendar(year, month, response['data']);
+                        console.log(response);
+                        $('#mansaeinfo').text(response['data']['info']);
+                        generateCalendar(year, month, response['data']['results']);
 
 
                     },
@@ -284,7 +296,12 @@
         function generateCalendar(year, month, arrayInfo){
 
 
+             var yearExists = $('#year option[value="' + year + '"]').length > 0;
 
+                if (!yearExists) {
+                    // year 값이 없다면 새로운 option을 추가
+                    $('#year').append('<option value="' + year + '">' + year + '</option>');
+                }
             $('#year').val(year);
             $('#month').val(month);
 
