@@ -795,6 +795,8 @@
             currentKey2 = 0 ;
             $('#future_10_heaven_tens tr').empty();
             const currentYear = new Date().getFullYear(); // 현재 연도 가져오기
+
+            selected = false;
             Object.keys(eightzodiacResult['future_10_tens']).forEach(key => {
 
                //console.log(`Key: ${key}, Value:`, eightzodiacResult['future_10_tens'][key]);
@@ -822,24 +824,38 @@
 
 
                 eightzodiacResult['future_10_tens'][key]['array'].forEach((item, index) => {
-
                     const [[key2, value]] = Object.entries(item);
+
+
                     if(key2 == currentYear){
                         currentKey1 = key;
                         currentKey2 = key2;
 
-                        console.log(currentKey1);
-                        console.log(currentKey2);
-                        const $targetElement1 = $(`[deawon="${currentKey1}"][datatype="deawon"]`);
+
+                        $targetElement1 = $(`[deawon="${currentKey1}"][datatype="deawon"]`);
                         $targetElement1.trigger("mousedown");
 
-                        const $targetElement2 = $(`[year="${currentKey2}"]`);
+                        $targetElement2 = $(`[year="${currentKey2}"]`);
                         $targetElement2.trigger("mousedown");
 
+                        selected = true;
                     }
                 });
 
             });
+
+
+            if(selected == false){
+                firstKey = Math.min(...Object.keys(eightzodiacResult['future_10_tens']).map(Number));
+                $targetElement1 = $(`[deawon="${firstKey}"][datatype="deawon"]`);
+                $targetElement1.trigger("mousedown");
+
+                secondKey = Math.min(...Object.keys(eightzodiacResult['future_10_tens'][firstKey]['array'][0]).map(Number));
+                $targetElement2 = $(`[year="${secondKey}"]`);
+                $targetElement2.trigger("mousedown");
+            }
+
+
 
         }
 
