@@ -24,7 +24,7 @@ app.secret_key = '1qa2ws3ed4rf5tg&&'  # 세션을 사용하려면 필요합니�
 
 @app.route('/')
 def index():
-    return render_template('intro/intro.html')
+    return render_template('index.html')
 
 @app.route('/intro')
 def intro():

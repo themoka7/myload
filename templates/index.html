@@ -1,99 +1,262 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% extends 'base.html' %}
 
-   <script>
-        $(document).ready(function() {
+    {% block title %}세상의 모든 점 올점{% endblock %}
+    {% block description %}올점은 사주, 타로, 점성술, 성명학, 주역 점괘 등 세상의 모든 점술 서비스를 무료로 제공하는 웹사이트입니다. 개인 맞춤형 상담으로 여러분의 운세를 안내합니다.{% endblock %}
 
-           $('#myForm').submit(function(event) {
+    {% block styles %}
+      <style>
+        :root {
+          --jumbotron-padding-y: 3rem;
+        }
+        .main{
+          z-index:5;
+          padding-bottom: 20px;
+        }
+        .container{
+          max-width:900px;
+        }
+        .jumbotron {
+          padding-top: var(--jumbotron-padding-y);
+          padding-bottom: var(--jumbotron-padding-y);
+          margin-bottom: 0;
 
-                event.preventDefault();  // 폼의 기본 제출 동작을 막음
-                // 여기에 폼 데이터를 비동기식으로 처리하는 로직을 추가
-                $('#result').text('Form submitted without page reload!');
-            });
+        }
 
 
-            $('#submit').click(function() {
+        .jumbotron p:last-child {
+          margin-bottom: 0;
+        }
+
+        .jumbotron-heading {
+          font-weight: 300;
+        }
+
+        .jumbotron .container {
+          max-width: 40rem;
+        }
+
+        .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+        .text-muted{
+           font-size: 17px;
+          line-height: 1.8;
+          color: #000!important;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+        .text-strong{
+            font-size: 20px;
+            color: #741414;
+            /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); */
+            transition: text-shadow 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
 
-            });
-        });
-    </script>
-</head>
-<body>
-<div class="main"><!-- 1 -->
-<div class="card-k card--1"> <!-- 2 -->
+        .card-img-placeholder {
+          height: 225px;
+          width: 100%;
+          background-color: #55595c;
+          color: #741414;
+          font-weight: bold;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 17pt;
+          border-top-left-radius: var(--bs-card-inner-border-radius);
+          border-top-right-radius: var(--bs-card-inner-border-radius);
+        }
 
-<div class="container"> <!-- 3 -->
+        .custom-btn-small {
+          padding: 5px 30px 5px 30px;
+          font-size: 1.15rem;
+        }
 
-  <!-- Login 8 - Bootstrap Brain Component -->
-<section class="p-3 p-md-4 p-xl-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-xxl-11">
-        <div class="card border-light-subtle shadow-sm">
-          <div class="row g-0">
-            <div class="col-12 col-md-6">
-              <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="static/img/logo-img-1.webp" alt="Welcome back you've been missed!">
-            </div>
-            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-              <div class="col-12 col-lg-11 col-xl-10">
-                <div class="card-body p-3 p-md-4 p-xl-5">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="mb-5">
 
-                        <h4 class="text-center">운명은 주어지는 것이 아니라,<br> 당신이 만들어가는 것입니다.</h4>
+       .bg-light {
+          all: unset;  /* 모든 속성을 상속하거나 기본값으로 초기화 */
+      }
 
+
+     @media screen and (max-width: 768px) {
+          .jumbotron {
+            padding-top: calc(var(--jumbotron-padding-y) * 2);
+            padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+          }
+
+            .row>* {
+            padding-right: calc(var(--bs-gutter-x)* 1.99);
+            padding-left: calc(var(--bs-gutter-x)* 1.99);
+          }
+
+          .card-img-placeholder {
+            height: 125px;
+            }
+
+
+        }
+
+
+      </style>
+    {% endblock %}
+
+
+    {% block content %}
+     <div class="contain intropage">
+
+        <main role="main" class="main">
+
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">올점</h1>
+            <p class="lead text-muted">올점에 오신 것을 환영합니다.<br> 주역, 사주, 타로 등 전통적인 지혜로 인생의 중요한 선택에 통찰을 제공합니다. 하늘과 땅의 이치를 탐구하며, 당신만의 운명을 발견하세요. <br>올점과 함께 삶의 모든 가능성을 열어가세요.<br><br> <span class="text-strong">지금, 당신의 이야기가 시작됩니다.</span></p>
+
+          </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+          <div class="container" id="container">
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d1%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d1%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <div class="card-img-placeholder d-flex justify-content-center align-items-center">
+                    <span>주역 점괘</span>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary custom-btn-small">시작</button>
                       </div>
                     </div>
                   </div>
-
-                  <form id="myForm">
-                    <div class="text-center mb-4">
-                          생년월일과 시간을 입력하세요.
-                        </div>
-                    <div class="row gy-3 overflow-hidden">
-                      <div class="col-12">
-                        <div class="form-floating mb-3">
+                </div>
+              </div>
 
 
-                          <input type="text" id="birthdate" class="form-control"
-                           pattern="^(19|20)\d{6}$"
-                           placeholder="예: 19810328"
-                           required>
-                          <label for="birthdate" class="form-label">생년월일 (ex 19810328)</label>
-
-                        </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d2%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
                       </div>
-                      <div class="col-12">
-                        <div class="form-floating mb-3">
-                             <input type="text" id="birthtime" class="form-control"
-                             pattern="^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$"
-                             placeholder="예: 0600"
-                             required>
-                            <label for="birthtime" class="form-label">시간 (ex 0600)</label>
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="d-grid">
-                          <button id="submit" class="btn btn-dark btn-lg" type="submit">조회</button>
-                        </div>
-                      </div>
+                      
                     </div>
-                  </form>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-5">
-                        <a href="#!" class="link-secondary text-decoration-none">to 正木</a>
-                        <a href="#!" class="link-secondary text-decoration-none">to KaKao</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d2%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
                       </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d2%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d2%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d3%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d3%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d3%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d3%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22349%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20349%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_19319c387d4%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_19319c387d4%22%3E%3Crect%20width%3D%22349%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22117.203125%22%20y%3D%22120.10000019073486%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">시작</button>
+                        
+                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -101,13 +264,80 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-</section>
-</div><!-- 3 -->
-</div><!-- 2 -->
-</div><!-- 1 -->
-</body>
-</html>
+      </main>
+
+
+
+    </div>
+
+    {% endblock %}
+
+    {% block scripts %}
+    <script >
+
+        hex_colors = [
+            "#AECBEC", "#7997C5", "#DABDB8", "#DCDFF0", "#9789BA",
+            "#6878A5", "#CAB5D0", "#F4E3DE", "#C4A382", "#AE9FCA",
+            "#D1D5E8", "#887CA7"
+        ]
+
+        $(document).ready(function() {
+
+        $('#container .row').empty();
+          const data = [
+                          { "title": "올점이란?", "desc": "올점은 누가 왜 만들었을까? 세상의 모든 점을 탐구할 수 있는 공간, 올점에 오신 것을 환영합니다. 여러분의 삶에 더 나은 방향을 제시하고, 중요한 결정을 내리는 데 도움을 드릴 것입니다.", "href": "/intro" },
+                          { "title": "주역 점괘", "desc": "주역의 점괘는 64개의 괘로 구성되며, 각 괘는 여섯 개의 효(爻)로 이루어져 있습니다. 각각의 효는 음(陰)과 양(陽)으로 표현되며, 이들의 조합을 통해 각기 다른 의미를 가진 점괘가 만들어집니다.", "href": "/hexagram" },
+                          { "title": "만세력", "desc": "만세력(萬歲曆)은 동아시아 전통에서 사용되는 달력으로, 음력과 양력, 절기 등을 모두 포함하며 사람의 운명과 사주팔자를 분석하는 데 자주 사용됩니다. ", "href": "/mansae" },
+                          { "title": "나의 사주명리", "desc": "사주명리(四柱命理)는 사람의 태어난 연(年), 월(月), 일(日), 시(時)를 각각 천간(天干)과 지지(地支)로 표현하여, 이 네 가지 기둥을 통해 개인의 성격, 건강, 적성, 관계, 재물, 운명 등의 인생 전반을 분석하는 동아시아 전통 운명학입니다", "href": "/eightzodiac" },
+                          { "title": "나의 당사주", "desc": "당사주(唐四柱)는 중국 당나라에서 유래한 운명학으로, 생년월일을 바탕으로 인생의 큰 흐름과 주요 사건을 예측합니다. 사주명리와 달리 연주(年柱)를 중심으로 12운성의 흐름을 통해 연령대의 중요한 사건을 예측하는 특징이 있습니다.", "href": "/chizodiac" },
+                          { "title": "타로란", "desc": "타로(Tarot)는 중세 유럽에서 시작된 카드 점술로, 78장의 카드를 통해 사람의 현재 상황, 내면 상태, 미래의 가능성을 탐구하는 도구입니다.", "href": "/tarot_intro" },
+                          { "title": "타로카드(3장)", "desc": "3장 스프레드는 과거, 현재, 미래의 카드로 문제의 원인과 상황을 파악하고, 앞으로의 가능성을 예측하는 간단하고 효과적인 타로 배열입니다.", "href": "/tarot" },
+                          { "title": "오늘의 별자리 운세", "desc": "오늘의 별자리 운세는 각 별자리의 성향과 행성의 움직임에 따라 오늘 하루의 기운, 주의할 점, 좋은 기회 등을 알려주는 일일 운세입니다. 이를 통해 사랑, 일, 금전, 건강 등 삶의 여러 분야에서 도움이 될 조언과 방향을 제시받을 수 있습니다.", "href": "/dailystarzodiac" }
+                      ];
+
+
+          var shuffledColors = hex_colors.sort(() => 0.5 - Math.random());
+          data.forEach((item, index) => {
+            color = shuffledColors[index % shuffledColors.length];
+            $('#container .row').append(
+            `<div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <div class="card-img-placeholder d-flex justify-content-center align-items-center" style="background-color: ${color}59;">
+                    <span>${item.title}</span>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">${item.desc}</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group">
+                        <a href="${item.href}" class="btn btn-sm btn-outline-secondary custom-btn-small">보기</a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>`
+            );
+          });
+
+            card_height_setting();
+        });
+
+
+        function card_height_setting(){
+          let maxHeight = 0;
+
+          // 각 .card-body 요소의 높이를 확인하여 가장 큰 높이를 찾음
+          $('.card-text').each(function() {
+            const height = $(this).outerHeight();
+            if (height > maxHeight) {
+              maxHeight = height;
+            }
+          });
+
+          // 모든 .card-body 요소의 높이를 최대 높이로 설정
+          $('.card-text').css('height', maxHeight);
+        }
+
+    </script>
+    {% endblock %}
