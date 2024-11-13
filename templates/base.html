@@ -8,12 +8,14 @@
     <meta name="google-site-verification" content="FedKpaqD_YMVirBy5GMYUlTEd3OfIFS912DHOnMWMOg" />
     <meta name="naver-site-verification" content="d0a3510034916363d2b23348fa67ce380dd8b320" />
 
-
-    <title>{% block title %}기본 제목{% endblock %}</title>
+    {% block title %}
+    <title>기본 제목</title>
+    <meta property="og:title" content="올점 소개 페이지">
+    {% endblock %}
     <meta name="description" content="{% block description %}기본 설명{% endblock %}">
-    <meta name="keywords" content="{% block keywords %}올점, 무료 운세,사주 팔자, 주역, 점괘, 사주, 타로, 점성술, 성명학, 운세, 별자리, 오늘 의 운세,오늘 의 운세 무료{% keywords %}" />
+    <meta name="keywords" content="{% block keywords %}올점, 무료 운세,사주 팔자, 주역, 점괘, 사주, 타로, 점성술, 성명학, 운세, 별자리, 오늘 의 운세,오늘 의 운세 무료{% endblock %}" />
     <meta property="og:type" content="website">
-    <meta property="og:title" content="올점">
+
     <meta property="og:image" content="https://www.alljum.com/static/img/logo.jpg">
     <meta property="og:url" content="www.alljum.com">
 
