@@ -284,7 +284,9 @@ def sitemap():
         {'loc': url_for('eightzodiac_intro', _external=True), 'lastmod': '2024-11-05', 'changefreq': 'daily','priority': 0.7},
 
         {'loc': url_for('dailystarzodiac', _external=True), 'lastmod': '2024-10-28', 'changefreq': 'daily','priority': 0.7},
-        {'loc': url_for('mansae_intro', _external=True), 'lastmod': '2024-11-11', 'changefreq': 'daily','priority': 0.2}
+        {'loc': url_for('mansae_intro', _external=True), 'lastmod': '2024-11-11', 'changefreq': 'daily','priority': 0.2},
+
+        {'loc': url_for('dreamzodiac', _external=True), 'lastmod': '2024-11-13', 'changefreq': 'daily','priority': 0.2},
 
         # 추가 URL을 여기에 추가
     ]
