@@ -868,30 +868,29 @@ def get_eightchar2(calendar,year, month, day, time):
 #print(get_eightchar2('양력', '2025', '2' , '1', '05'))
 #print(get_eightchar2('양력', '2025', '2' , '5', '00'))
 
-
-'''
-year, month, day = 2025, 2, 2
-so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25)
-
-print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
-
-
-year, month, day = 2025, 2, 4
-
-so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25)
-
-print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
-'''
-'''
-year = 2024
+year = 1974
 month = 2
-day = 4
+day = 1
 hour = 6
 minute = 25
 
 
+
+so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25)
+
+print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
+
+
+
+so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,23,25)
+
+print(f"간지  {ganji[so24year]}년 {ganji[so24month]}월 {ganji[so24day]}일")
+
+
 so24, so24year, so24month, so24day, so24hour = sydtoso24yd(year,month,day,hour,minute)
 print(so24, so24year, so24month, so24day, so24hour)
-'''
+
+print(solortoso24(year,month,day,hour,minute))
+
 #print(get_eightchar2('양력', '2024', '2' , '4', '00'))
 

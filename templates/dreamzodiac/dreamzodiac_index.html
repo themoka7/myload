@@ -1,0 +1,246 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>올점의 꿈해몽</title>
+    <meta property="og:title" content="올점의 꿈해몽">
+    {% endblock %}
+
+    {% block description %}올점의 꿈해몽을 통해 여러분의 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+
+    .content {
+
+    }
+ .table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.responsive-table {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    gap: 10px;
+}
+
+.table-cell {
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 160px;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zodiac-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.horoscope {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    padding: 3px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* 같은 행의 카드 높이 자동 맞춤 */
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+.card-text{
+    /* display: none; */
+    /* background-color: rgb(250 248 232); */
+    /* background-color: rgb(255 255 255 / 80%); */
+    /* padding: 20px; */
+    /* border-radius: 10px; */
+    /* max-width: 500px; */
+    width: 100%;
+    margin: 20px auto;
+    font-size: 17px;
+
+    white-space: pre-wrap;
+    z-index: 5;
+    /* border: solid #9b4545 2px; */
+    text-align: left;
+    font-weight: 600;
+}
+.card-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* 세로 중앙 정렬 */
+    border: solid #9b4545 2px;
+    background-color: rgb(247 241 231);
+}
+.card-img-top {
+
+   width: 20%;
+}
+.card-title{
+    font-weight: 600;
+}
+
+
+
+
+
+
+.card-horizontal {
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+}
+
+.dream-category {
+    width: 10%;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.dream-subject {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap; /* 너비가 부족하면 다음 줄로 이동 */
+    gap: 10px;
+    padding: 10px;
+}
+
+.dream-subject a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    /*background-color: #f2f2f2;
+    border: 1px solid #ddd;*/
+    text-align: center;
+    min-width: 40px; /* 최소 너비 */
+    color: #741414;
+}
+
+.row>* {
+
+    padding-right: calc(var(--bs-gutter-x)* .0);
+    padding-left: calc(var(--bs-gutter-x)* .0);
+        margin-bottom: 20px;
+
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+.card-img-top {
+
+    height: auto; /* 이미지 비율을 유지합니다 */
+    display: block; /* 블록 요소로 변경 */
+    margin: 0 auto; /* 가로 중앙 정렬 */
+}
+
+    .card-title2{
+        font-size: 17px;
+    }
+
+    .row>* {
+        padding-right: calc(var(--bs-gutter-x)* 0.2);
+        padding-left: calc(var(--bs-gutter-x)* 0.2);
+
+    }
+}
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+{% block content %}
+
+
+<div class="contain dreamzodiac">
+
+    <div class="content">
+        <div class="intro" style="margin-bottom: 100px;">
+            <!-- JSON 데이터 출력 -->
+            <h1 class="intro_title">꿈해몽</h1>
+            <p id="second_title">사람들은 평균 하루밤에 4~6번의 꿈을 꾸며, 이 중 약 5% 정도만을 기억한다고 합니다.</p>
+            <p class="fourth_title">꿈은 우리의 무의식 속에서 떠오르는 다양한 이미지와 이야기들로,<br>때로는 우리의 감정, 걱정, 희망, 혹은 미래에 대한 암시를 담고 있다고 여겨집니다.</p>
+
+            <p class="third_title">PS: 꿈해몽에 너무 큰 의미를 부여하진 마세요.</p>
+
+
+
+
+           <div id="dailystarzodiac_container" class="container mt-6">
+
+                <div class="row"><div class="">
+                        <div class="card text-center card-horizontal">
+                            <div class="dream-category" >동물</div>
+                            <div class="dream-subject">
+                                <a href="/dreamzodiac/animal/eagle">독수리</a>
+                                <a href="/dreamzodiac/animal/eagle">박쥐</a>
+                                <a href="/dreamzodiac/animal/mouse">쥐</a>
+                                <a href="/dreamzodiac/animal/cat">고양이</a>
+                                <a href="/dreamzodiac/animal/chicken">닭</a>
+                                <a href="/dreamzodiac/animal/dog">개</a>
+                                <a href="/dreamzodiac/animal/baby_dog">강아지</a>
+                                <a href="/dreamzodiac/animal/rabbit">토끼</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="fourth_title">계속 업데이트 예정입니다 </p>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+        });
+
+    </script>
+     {% endblock %}

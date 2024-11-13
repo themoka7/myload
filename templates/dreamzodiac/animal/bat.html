@@ -1,0 +1,130 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>올점의 꿈해몽</title>
+    <meta property="og:title" content="올점의 꿈해몽">
+    {% endblock %}
+
+    {% block description %}올점의 꿈해몽을 통해 여러분의 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+        <div class="content">
+            <div class="intro" style="margin-bottom: 100px;">
+                    <!-- JSON 데이터 출력 -->
+                    <h1 class="intro_title">꿈에서 본 박쥐의 상징</h1>
+                    <p id="second_title">박쥐는 보통 밤에 활동하는 동물로, 꿈에서 어두움, 무의식적인 두려움, 재난 등을 상징합니다. 이와 더불어 직감적인 지혜를 의미하기도 합니다. 특히, 박쥐는 눈이 거의 보이지 않아도 어두운 공간에서 자유롭게 이동할 수 있으므로 직감이나 내면의 감각을 의미할 수도 있습니다.</p>
+                    <p></p>
+                    <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+                       <div>
+                            <div class="sub_box">
+                                <div class="sub2_title">박쥐가 우는 꿈:</div>
+                                <p>박쥐가 우는 소리를 듣는 꿈은 운명이 험난해지고, 어려움을 겪을 수 있음을 의미합니다.</p>
+
+                                <div class="sub2_title">박쥐가 나에게 다가오는 꿈:</div>
+                                <p>이는 작은 갈등이나 누군가의 방해를 받을 수 있음을 경고하며 주의를 요구하는 꿈입니다.</p>
+
+                                <div class="sub2_title">무리 지어 날아다니는 박쥐 꿈:</div>
+                                <p>연속적인 문제나 곤란한 일들이 일어날 가능성을 암시합니다.</p>
+
+                                <div class="sub2_title">하얀 박쥐 꿈:</div>
+                                <p>하얀 박쥐는 불길한 징조로, 특히 어린아이의 건강이나 생명을 걱정해야 할 상황이 올 수 있음을 나타냅니다.</p>
+
+                                <div class="sub2_title">박쥐가 동굴로 들어가는 꿈:</div>
+                                <p>이 꿈은 어려움을 극복하고 곧 좋은 일이 생길 것임을 암시합니다.</p>
+
+                                <div class="sub2_title">하늘에서 박쥐가 내려오는 꿈:</div>
+                                <p>이는 하늘에서 복이 내려오는 것을 의미하여, 모든 일이 원만하게 이루어지고 자손이 훌륭할 것임을 상징합니다.</p>
+
+
+                            </div>
+
+                        </div>
+
+
+                      <div class="intro_title2">전통적인 해몽</div>
+
+                        <div>
+                            <div class="sub_box">
+                                <div class="sub2_title">박쥐 무리가 날아다니는 꿈:</div>
+                                <p>음산한 기운이 있을 수 있음을 의미합니다.</p>
+
+                                 <div class="sub2_title">박쥐를 보는 꿈:</div>
+                                 <p>흉운이 다가올 수 있음을 암시합니다.</p>
+
+
+                                 <div class="sub2_title">박쥐가 하늘에서 내려오는 꿈:</div>
+                                 <p>신이 복을 내려주는 상징으로, 좋은 일이 생길 징조입니다.</p>
+
+                                <div class="sub2_title">박쥐가 모기를 잡아먹는 꿈:</div>
+                                 <p>인을 만나 어려움을 극복할 수 있는 좋은 기회를 의미합니다.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="intro_title2">심리적 해석</div>
+
+                        <div>
+                            <div class="sub_box">
+
+                                <p>박쥐를 보는 꿈은 정신적 불안감이나 혼란을 의미합니다. 박쥐가 공격하는 꿈은 자신이 두려워하는 감정의 근원을 찾아내어 극복할 필요가 있음을 시사합니다.</p>
+                            </div>
+                        </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}
