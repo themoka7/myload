@@ -234,6 +234,32 @@ def dailystarzodiac():
 #########################################
 
 
+#########################################
+#                 꿈해몽                 #
+#########################################
+@app.route('/dreamzodiac')
+def dreamzodiac():
+    #data = get_dailystarzodiac_data()
+
+    # 받은 card_data를 처리 (여기서는 단순 출력)
+    #session.clear()
+    #session['dreamzodiac'] = data
+
+    return render_template('dreamzodiac/dreamzodiac_index.html')
+
+@app.route('/dreamzodiac/<category>/<sub_category>')
+def animal_page(category, sub_category):
+    # 템플릿 파일을 동적으로 렌더링합니다.
+    try:
+        return render_template(f'dreamzodiac/{category}/{sub_category}.html')
+    except Exception:
+        return f"dreamzodiac/{category}/{sub_category}.html 페이지를 찾을 수 없습니다.", 404
+
+#########################################
+#                 꿈해몽                 #
+#########################################
+
+
 
 
 
