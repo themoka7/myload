@@ -85,8 +85,8 @@ class SolarCalculator:
 
 
 def get_solar_term(eightchar):
-    print('****')
-    print(eightchar)
+    #print('****')
+    #print(eightchar)
     #print(eightchar['gender'])
     #print(eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0])
 
@@ -98,7 +98,7 @@ def get_solar_term(eightchar):
     if eightchar['gender'] == '여성' and eightchar['HeavenlyYearElement'].split(',')[1].split('=')[0] == '양':
         location = 'back'
 
-    print('location : ' + location)
+    #print('location : ' + location)
 
 
     # SolarCalculator 인스턴스 생성 및 날짜 변환
@@ -204,7 +204,7 @@ def get_solar_term(eightchar):
         result.update({ganji :{ 'daewon' : daewon , 'array' : array }})
 
 
-    print(result)
+    #print(result)
 
 
 

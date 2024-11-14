@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 import json
 
-from process.common.eightchar import get_eightchar
+from process.common.eightchar import get_eightchar, evaluate_strength, determine_support
 from process.common.eightchar_ver2 import get_eightchar2
 from process.eightzodiac.solar_term_process import get_solar_term
 
@@ -144,7 +144,6 @@ def get_eightzodiac_data(data):
     eightchar.update({'KorEarthlySumResult': EarthlyMergedResult})
 
     # 살추출
-
     eight_list = [eightchar['KorHeavenlyDayText'],
 
                   eightchar['KorEarthlyTimeText'], eightchar['KorEarthlyDayText'],
@@ -156,6 +155,37 @@ def get_eightzodiac_data(data):
     kill_data_result = {pair: kill_data[pair] for pair in using_eight_list if pair in kill_data}
 
     eightchar.update({'kill_data_result': kill_data_result})
+
+
+
+    #도화살..
+    flower_kill_dict = {
+        "신": "유", "자": "유", "진": "유",  # 신, 자, 진년에 유가 도화살
+        "인": "묘", "오": "묘", "술": "묘",  # 인, 오, 술년에 묘가 도화살
+        "사": "오", "유": "오", "축": "오",  # 사, 유, 축년에 오가 도화살
+        "해": "자", "묘": "자", "미": "자"  # 해, 묘, 미년에 자가 도화살
+    }
+
+    flower_kill_year = flower_kill_dict.get(eightchar['KorEarthlyYearText'])
+    print(flower_kill_year)
+    flower_kill_day = flower_kill_dict.get(eightchar['KorEarthlyDayText'])
+    print(flower_kill_day)
+
+    branches = [eightchar['KorEarthlyTimeText'], eightchar['KorEarthlyDayText'], eightchar['KorEarthlyMonthText'], eightchar['KorEarthlyYearText']]
+
+    if flower_kill_year in branches:
+        kill_data_result[eightchar['KorEarthlyYearText']+flower_kill_year] = {'살': '도화살', '설명': f"년지의 '{eightchar['ChiEarthlyYearText']}'의 경우 '{Earthly_Five_Elements.get(flower_kill_year).split(',')[2].split('=')[1]}'가 도화살이 됨, 이성이 끊이지 않고 유혹에 약함."}
+
+
+    if flower_kill_day in branches:
+
+        kill_data_result[eightchar['KorEarthlyDayText']+flower_kill_day] = {'살': '도화살', '설명': f"일지의 '{eightchar['ChiEarthlyDayText']}'의 경우 '{Earthly_Five_Elements.get(flower_kill_day).split(',')[2].split('=')[1]}'가 도화살이 됨, 이성이 끊이지 않고 유혹에 약함."}
+
+
+    eightchar.update({'kill_data_result': kill_data_result})
+
+    # 도화살..
+
 
 
     # 처음 입력값 추가
@@ -224,74 +254,24 @@ def get_eightzodiac_data(data):
 
 
 
+
     eightchar.update({'future_10_tens': result})
 
-    #print(eightchar)
+    print(eightchar)
+
+    print(eightchar['KorHeavenlyTimeText'], eightchar['KorHeavenlyDayText'], eightchar['KorHeavenlyMonthText'], eightchar['KorHeavenlyYearText'])
+    print(eightchar['KorEarthlyTimeText'], eightchar['KorEarthlyDayText'], eightchar['KorEarthlyMonthText'],eightchar['KorEarthlyYearText'])
     return eightchar
 
 
-# 오행 상생/상극 관계 설정
-element_relationships = {
-    "목": {"생": "화", "극": "토"},
-    "화": {"생": "토", "극": "금"},
-    "토": {"생": "금", "극": "수"},
-    "금": {"생": "수", "극": "목"},
-    "수": {"생": "목", "극": "화"}
-}
-
-
-def determine_support(day_element, branch_element):
-    # 일간과 지지가 같은 오행이거나, 일간을 생해주는 오행일 경우 지원함
-    if branch_element == day_element:
-        return True
-    elif element_relationships[day_element]["생"] == branch_element:
-        return True
-    else:
-        return False
-
-
-# 신강 신약 판단 함수 (이전 코드)
-def evaluate_strength(month_branch, day_branch, year_branch, hour_branch):
-    month_status = "O" if month_branch else "X"
-    day_status = "O" if day_branch else "X"
-    year_status = "O" if year_branch else "X"
-    hour_status = "O" if hour_branch else "X"
-
-    # 최강 조건 - 월지와 일지에서 힘을 얻고, 년지나 시지에서도 힘을 얻음
-    if month_branch and day_branch and (year_branch or hour_branch):
-        return f"최강|월지와 일지에서 힘을 얻고, 년지나 시지에서도 도움을 받음|시지={hour_status},일지={day_status},월지={month_status},년지={year_status}"
-
-    # 중강 조건 - 월지와 일지에서 힘을 얻고, 년지와 시지에서는 힘을 얻지 못함
-    elif month_branch and day_branch:
-        return f"중강|월지와 일지에서 힘을 얻고, 년지와 시지에서 추가적인 도움을 받지 못함|시지={hour_status},일지={day_status}, 월지={month_status},년지={year_status}"
-
-    # 강 조건 - 월지에서 힘을 얻고, 년지 또는 시지에서도 도움을 받음
-    elif month_branch and (year_branch or hour_branch):
-        return f"강|월지에서 힘을 얻고, 년지 또는 시지에서 추가적인 힘을 받음|시지={hour_status}, 일지={day_status},월지={month_status},년지={year_status}"
-
-    # 최약 조건 - 월지와 일지 모두에서 힘을 얻지 못하고, 년지와 시지에서도 도움을 받지 못함
-    elif not month_branch and not day_branch and not (year_branch or hour_branch):
-        return f"최약|월지와 일지 모두에서 힘을 얻지 못하며, 년지와 시지에서도 지원이 없음|시지={hour_status},일지={day_status},월지={month_status},년지={year_status}"
-
-    # 중약 조건 - 월지에서는 힘을 얻지 못하지만, 일지 또는 년지/시지에서 부분적인 도움을 받음
-    elif not month_branch and (day_branch or year_branch or hour_branch):
-        return f"중약|월지에서 힘을 얻지 못하지만, 일지 또는 년지/시지에서 일부 도움을 받음|시지={hour_status},일지={day_status},월지={month_status},년지={year_status}"
-
-    # 약 조건 - 월지에서 힘을 얻으나, 일지, 년지, 시지에서 추가적인 도움을 받지 못함
-    elif month_branch and not (day_branch or year_branch or hour_branch):
-        return f"약|월지에서만 힘을 얻고, 다른 지지에서는 도움을 받지 못함|시지={hour_status},일지={day_status},월지={month_status},년지={year_status}"
-
-    # 기타 경우
-    else:
-        return f"없음|조건에 맞지 않는 경우|시지={hour_status},일지={day_status},월지={month_status},년지={year_status})"
 
 
 # 예시 데이터
-# 환희
-# data = {'gender': '남자', 'calendar': '양력', 'year': '2016', 'month': '8', 'day': '30', 'time': '16'}
+
+#data = {'gender': '남자', 'calendar': '양력', 'year': '1981', 'month': '11', 'day': '22', 'time': '16'}
 
 # 정목
-#data = {'gender': '여성', 'calendar': '양력', 'year': '2024', 'month': '2', 'day': '4', 'time': '02'}
+#data = {'gender': '여성', 'calendar': '양력', 'year': '2024', 'month': '3', 'day': '28', 'time': '04'}
 
 # 함수 호출
 #get_eightzodiac_data(data)

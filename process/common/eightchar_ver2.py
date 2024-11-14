@@ -321,26 +321,27 @@ def sydtoso24yd(soloryear, solormonth, solorday, solorhour, solormin):
 
     displ2min = getminbytime(unityear, unitmonth, unitday, unithour, unitmin,
                               soloryear, solormonth, solorday, solorhour, solormin)
-    print(displ2min)
+    #print(displ2min)
     displ2day = disp2days(unityear, unitmonth, unitday, soloryear, solormonth, solorday)
 
-    print(displ2day)
+    #print(displ2day)
 
     so24 =  int(displ2min / 525949)
-    print(so24)
+    #print(so24)
+
 
 
     if displ2min >= 0:
         so24 += 1
-    print('so24-1:' + str(so24))
+    #print('so24-1:' + str(so24))
     remainder = so24 % 60 if so24 >= 0 else -(abs(so24) % 60)
 
     so24year = -1 * remainder
-    print('so24year-1:'+str(so24year))
+    #print('so24year-1:'+str(so24year))
     so24year += 12
 
-    print(so24year)
-    print(ganji[so24year])
+    #print(so24year)
+    #print(ganji[so24year])
 
     if so24year < 0:
         so24year += 60
@@ -868,6 +869,7 @@ def get_eightchar2(calendar,year, month, day, time):
 #print(get_eightchar2('양력', '2025', '2' , '1', '05'))
 #print(get_eightchar2('양력', '2025', '2' , '5', '00'))
 
+'''
 year = 1974
 month = 2
 day = 1
@@ -893,4 +895,5 @@ print(so24, so24year, so24month, so24day, so24hour)
 print(solortoso24(year,month,day,hour,minute))
 
 #print(get_eightchar2('양력', '2024', '2' , '4', '00'))
+'''
 

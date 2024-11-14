@@ -426,6 +426,14 @@
             </div>
              <!-- 천간/지지합-->
 
+            <!-- 살-->
+            <div class="table-container">
+                    <h2 class="intro_title sub2_title" id="kill_title">살(煞)</h2>
+                    <div class="additional-info" id="kill_text"></div>
+
+            </div>
+             <!-- 살-->
+
 
 
 
@@ -792,6 +800,20 @@
                 });
 
             }
+
+
+
+
+            //살..
+
+                Object.keys(eightzodiacResult['kill_data_result']).forEach(key => {
+
+                    htmlContent = `<div class='sub3_title'>${eightzodiacResult['kill_data_result'][key]['살']} </div>
+                    <div class='sub3_text'>${eightzodiacResult['kill_data_result'][key]['설명']}</div>`;
+
+                    $('#kill_text').append(htmlContent);
+                });
+
 
 
 
