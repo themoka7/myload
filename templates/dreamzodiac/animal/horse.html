@@ -1,0 +1,158 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>올점의 꿈해몽</title>
+    <meta property="og:title" content="올점의 꿈해몽">
+    {% endblock %}
+
+    {% block description %}올점의 꿈해몽을 통해 여러분의 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+        <div class="content">
+            <div class="intro" style="margin-bottom: 100px;">
+                    <!-- JSON 데이터 출력 -->
+                    <h1 class="intro_title">꿈에서 본 말의 상징</h1>
+                    <p id="second_title">꿈에서 말을 보는 것은 대체로 행운, 힘, 자유 또는 긍정적인 변화를 상징합니다. 상황에 따라 다양한 해석이 있습니다.</p>
+                    <p></p>
+                    <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+                       <div>
+                            <div class="sub_box">
+                                <div class="sub2_title">말이 행운을 가져다준다:</div>
+                                <p>꿈에서 말을 보는 것은 보통 행운을 상징하며, 외부적인 요인으로 인해 기쁜 일이 생길 수 있음을 나타냅니다.</p>
+
+                                <div class="sub2_title">말이 마당에서 춤춘다:</div>
+                                <p>최근의 불운이 해결되고 운세가 좋아질 것을 암시합니다. 인생의 저점을 지나 높은 곳으로 올라갈 기회가 찾아올 것입니다.</p>
+
+                                <div class="sub2_title">말이 천 리를 달린다:</div>
+                                <p>기쁜 일이 다가오고 있다는 신호입니다. 시험이나 면접에서 합격 소식을 들을 가능성이 큽니다.</p>
+
+                                <div class="sub2_title">말이 드나드는 것을 본다:</div>
+                                <p>좋은 소식이 올 징조로, 밝은 미래가 열릴 것을 암시합니다.</p>
+
+                                <div class="sub2_title">말이 방 안으로 들어온다:</div>
+                                <p>외도나 불륜을 경고하는 꿈으로, 감정 문제에서 신중할 필요가 있음을 시사합니다.</p>
+
+                                <div class="sub2_title">말이 무리지어 달린다:</div>
+                                <p>적극적으로 문제를 해결하려는 노력을 나타내며, 곧 어려움을 극복하고 밝은 미래를 맞이하게 될 것입니다.</p>
+
+                                <div class="sub2_title">집 안에서 말이 태어나는 꿈:</div>
+                                <p>매우 좋은 징조로, 최근 운이 매우 좋고 걱정거리 없이 순조로운 시기를 보내고 있음을 나타냅니다.</p>
+
+                                <div class="sub2_title">흰 말을 탄다:</div>
+                                <p>불길한 징조로 건강에 문제가 생길 수 있음을 암시하므로, 몸 상태를 유심히 관찰하고 조기 치료가 필요합니다.</p>
+
+                                <div class="sub2_title">말에게 물린다:</div>
+                                <p>직장에서 승진할 가능성을 상징하며, 노력에 대한 인정과 성과가 뒤따를 것입니다.</p>
+
+                                <div class="sub2_title">말이 사납게 굴거나 폭주한다:</div>
+                                <p>불길한 징조로, 집 안의 화재와 같은 위험을 주의해야 합니다.</p>
+
+                                <div class="sub2_title">말에서 떨어진다:</div>
+                                <p>직장이나 사회에서 실수로 인한 어려움을 겪을 수 있음을 암시하며, 이를 방지하기 위해 타인을 배려하는 자세가 필요합니다.</p>
+
+                                <div class="sub2_title">말을 거꾸로 탄다:</div>
+                                <p>불운이 찾아올 가능성을 시사하며, 현실에서 집중력 부족으로 인한 문제가 생길 수 있음을 경고합니다.</p>
+
+                                <div class="sub2_title">말이 죽는 꿈:</div>
+                                <p>행운이 끝나고 시련이 찾아올 가능성을 나타내므로, 미래에 대한 대비가 필요합니다.</p>
+
+                                <div class="sub2_title">말이 발길질한다:</div>
+                                <p>힘든 시기에 친구가 떠날 가능성을 암시하며, 인간관계에서 신중함을 권고하는 꿈입니다.</p>
+
+                                <div class="sub2_title">말이 뒤따라오는 꿈:</div>
+                                <p>명예와 지위를 얻게 될 가능성을 암시합니다.</p>
+
+                                <div class="sub2_title">말을 타고 달리는 꿈:</div>
+                                <p>고민이 해결되고 친구와의 관계가 회복될 것을 나타내며, 미래에 더 나은 관계를 기대할 수 있습니다.</p>
+
+                                <div class="sub2_title">오랜 병에서 회복 중인 환자가 말 타는 꿈:</div>
+                                <p>건강이 곧 회복될 징조로, 몸 상태가 호전될 것임을 예고합니다.</p>
+
+                                <div class="sub2_title">말을 훈련하는 꿈:</div>
+                                <p>특별한 임무를 맡거나 특정 분야에서 인정을 받을 수 있음을 암시합니다.</p>
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="intro_title2">심리적 해석</div>
+
+                        <div>
+                            <div class="sub_box">
+
+                                <p>힘과 에너지: 말은 강력한 힘과 에너지를 상징합니다. 꿈에서 말이 나오는 것은 자신의 내면에 잠재된 힘과 원동력을 나타낼 수 있습니다. 이것은 개인의 성장, 도전 과제에 대한 자신감, 또는 억눌렸던 에너지가 표출되는 것을 상징할 수 있습니다.
+
+<br><br>자유와 독립: 말은 자유와 독립의 상징이기도 합니다. 특히 야생마는 속박되지 않고 자유로운 상태를 상징하며, 꿈에서의 말은 꿈꾸는 사람이 현재 삶에서 자유롭고 독립적인 상태를 갈망하고 있음을 나타낼 수 있습니다.
+
+<br><br>본능과 욕구: 꿈에서 말은 인간의 본능적이고 원초적인 욕구를 상징합니다. 감정이나 욕망이 억눌려 있거나 표출되지 않은 상태일 때, 꿈에서 말이 나타날 수 있습니다. 이것은 자신의 감정이나 욕구에 더 귀 기울여야 한다는 신호일 수 있습니다.
+
+<br><br>성공과 성취 욕구: 말이 전속력으로 달리는 꿈은 목표 달성에 대한 열망을 나타낼 수 있습니다. 이는 꿈꾸는 사람이 개인적인 성취나 성공을 이루고자 하는 강한 열망을 상징하며, 앞을 향해 달려 나가고 싶은 욕망을 드러낼 수 있습니다.
+
+<br><br>통제와 자제: 꿈에서 말이 길들여지거나 훈련되는 것은 자신의 감정과 행동을 통제하고자 하는 욕구를 나타낼 수 있습니다. 이는 자신이 통제할 수 없다고 느끼는 상황에서 안정과 질서를 찾고자 하는 심리적 필요를 반영하기도 합니다.
+
+<br><br>두려움과 불안: 꿈속에서 말이 사납거나 위협적인 모습으로 나타난다면, 이는 현재 삶에서 겪고 있는 두려움이나 불안을 반영할 수 있습니다. 이는 과거의 억압된 감정이나 스트레스 상황이 반영된 것일 수 있습니다.</p>
+                            </div>
+                        </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}
