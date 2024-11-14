@@ -186,6 +186,23 @@ def get_eightzodiac_data(data):
 
     # 도화살..
 
+    # 12운성
+
+    star12 = json.loads(Path(current_dir, 'json/stars12.json').read_text(encoding='utf-8'))
+    print(star12)
+    star12forday = star12[eightchar['KorHeavenlyDayText']]
+    print(star12forday)
+
+    eightchar.update({'KorEarthTimeStar12': star12[eightchar['KorHeavenlyDayText']][eightchar['KorEarthlyTimeText']]})
+    eightchar.update({'KorEarthDayStar12': star12[eightchar['KorHeavenlyDayText']][eightchar['KorEarthlyDayText']]})
+    eightchar.update({'KorEarthMonthStar12': star12[eightchar['KorHeavenlyDayText']][eightchar['KorEarthlyMonthText']]})
+    eightchar.update({'KorEarthYearStar12': star12[eightchar['KorHeavenlyDayText']][eightchar['KorEarthlyYearText']]})
+
+
+
+
+    # 12운성
+
 
 
     # 처음 입력값 추가
@@ -268,7 +285,7 @@ def get_eightzodiac_data(data):
 
 # 예시 데이터
 
-#data = {'gender': '남자', 'calendar': '양력', 'year': '1981', 'month': '11', 'day': '22', 'time': '16'}
+#data = {'gender': '남자', 'calendar': '양력', 'year': '1981', 'month': '3', 'day': '28', 'time': '06'}
 
 # 정목
 #data = {'gender': '여성', 'calendar': '양력', 'year': '2024', 'month': '3', 'day': '28', 'time': '04'}

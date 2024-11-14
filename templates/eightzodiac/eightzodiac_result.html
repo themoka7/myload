@@ -371,6 +371,14 @@
 
                         </tr>
 
+                        <tr id="EarthlyStars12">
+                            <td ><div id="KorEarthTimeStar12" class="EarthlyHeavenElement"></div></td>
+                             <td ><div id="KorEarthDayStar12" class="EarthlyHeavenElement"></div></td>
+                             <td ><div id="KorEarthMonthStar12" class="EarthlyHeavenElement"></div></td>
+                             <td ><div id="KorEarthYearStar12" class="EarthlyHeavenElement"></div></td>
+
+                        </tr>
+
 
                     </tbody>
                 </table>
@@ -711,6 +719,10 @@
                     `;
                     $(`#EarthlyHeaven${text}Element`).append(html);
                 }
+
+
+                //12운성도 넣기
+                $(`#KorEarth${text}Star12`).html(eightzodiacResult[`KorEarth${text}Star12`]);
 
 
 
