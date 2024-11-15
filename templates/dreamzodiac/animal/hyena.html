@@ -1,0 +1,118 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>하이에나 꿈해몽</title>
+    <meta property="og:title" content="하이에나 꿈해몽">
+    {% endblock %}
+
+    {% block description %}하이에나 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}하이에나꿈, 하이에나해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 하이에나의 상징</h1>
+        <p id="second_title">꿈에서 하이에나는 위협, 교활함, 그리고 생존 본능을 상징합니다. 꿈의 상황에 따라 다양한 해석이 가능합니다. 아래는 하이에나와 관련된 다양한 상황을 바탕으로 한 꿈 해석입니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">하이에나를 보는 꿈:</div>
+                <p>하이에나는 위험과 교활함을 상징하며, 꿈에서 하이에나를 보는 것은 당신이 주변의 불안 요소나 부정적인 영향에 주의해야 함을 나타냅니다.</p>
+
+                <div class="sub2_title">하이에나가 당신을 따라다니는 꿈:</div>
+                <p>당신의 주변에 신뢰할 수 없는 사람이 있거나, 당신을 위협하는 상황이 있을 가능성을 암시합니다.</p>
+
+                <div class="sub2_title">하이에나가 먹이를 찾는 꿈:</div>
+                <p>생존 본능과 자원을 찾으려는 욕구를 반영하며, 이는 당신이 현재 문제를 해결하기 위해 필요한 자원을 탐색하고 있음을 나타냅니다.</p>
+
+                <div class="sub2_title">하이에나가 공격하는 꿈:</div>
+                <p>당신이 현재 겪고 있는 갈등이나 어려움이 격화될 가능성을 나타냅니다. 신중한 대처와 강한 결단력이 필요합니다.</p>
+
+                <div class="sub2_title">하이에나와 싸우는 꿈:</div>
+                <p>외부의 위협이나 부정적인 영향을 극복하려는 당신의 의지를 반영합니다. 이는 긍정적인 변화를 위한 도전을 나타냅니다.</p>
+
+                <div class="sub2_title">하이에나 무리를 보는 꿈:</div>
+                <p>당신이 여러 갈등 요소나 복잡한 관계 속에 있음을 나타냅니다. 신중한 판단과 행동이 필요합니다.</p>
+
+                <div class="sub2_title">죽은 하이에나를 보는 꿈:</div>
+                <p>현재의 위협이나 갈등이 곧 사라질 것을 나타내며, 당신의 상황이 안정되고 평화로워질 가능성을 의미합니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 하이에나는 위험, 교활함, 그리고 생존 본능을 상징하며, 꿈의 상황에 따라 다음과 같은 심리적 상태를 반영할 수 있습니다.
+
+                <br><br>위협과 경계: 하이에나는 위험과 불신을 상징하며, 꿈속에서 하이에나는 당신이 신중하게 주위를 살펴보고 경계해야 할 필요가 있음을 나타냅니다.
+
+                <br><br>생존과 도전: 하이에나가 먹이를 찾는 꿈은 당신이 생존 본능과 문제 해결을 위해 필요한 자원을 찾고 있음을 의미합니다.
+
+                <br><br>갈등과 극복: 하이에나와 싸우거나 공격당하는 꿈은 당신이 갈등이나 어려움에 직면하고 있음을 나타내며, 이를 극복하기 위한 결단력이 필요함을 반영합니다.
+
+                <br><br>안정과 해소: 죽은 하이에나를 보는 꿈은 현재의 위협이나 갈등이 끝나고, 새로운 안정과 평화로운 시기가 다가올 것을 나타냅니다.
+
+                <br><br>종합적으로, 하이에나가 꿈에 나타나는 것은 외부의 위협과 내면의 두려움을 극복하고, 안정된 상태로 나아가려는 당신의 심리적 상태를 반영합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}

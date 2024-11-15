@@ -1,0 +1,115 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>게 꿈해몽</title>
+    <meta property="og:title" content="게 꿈해몽">
+    {% endblock %}
+
+    {% block description %}게 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}게꿈, 게꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 게의 상징</h1>
+        <p id="second_title">꿈에서 게는 보호, 집착, 그리고 우회적 접근을 상징합니다. 꿈의 상황에 따라 다양한 해석이 가능합니다. 아래는 게와 관련된 다양한 상황을 바탕으로 한 꿈 해석입니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">게를 보는 꿈:</div>
+                <p>게는 보호와 신중함을 상징하며, 꿈에서 게를 보는 것은 당신이 현재 조심스럽게 행동하거나 자신을 보호하려는 마음을 반영합니다.</p>
+
+                <div class="sub2_title">게가 움직이는 꿈:</div>
+                <p>우회적인 접근이나 간접적인 대처를 상징합니다. 이는 당신이 현재 문제를 직면하기보다는 다른 방법으로 해결하려는 경향을 나타냅니다.</p>
+
+                <div class="sub2_title">게를 잡는 꿈:</div>
+                <p>어려운 상황을 통제하려는 의지를 반영하며, 이는 도전적인 문제를 극복할 가능성을 나타냅니다.</p>
+
+                <div class="sub2_title">게가 도망가는 꿈:</div>
+                <p>기회를 놓칠 가능성을 경고하며, 더 적극적인 접근과 대처가 필요함을 암시합니다.</p>
+
+                <div class="sub2_title">게에 물리는 꿈:</div>
+                <p>현재 직면한 문제나 사람들로 인해 스트레스를 받고 있음을 나타냅니다. 이는 감정적 갈등을 반영할 수 있습니다.</p>
+
+                <div class="sub2_title">죽은 게를 보는 꿈:</div>
+                <p>현재의 문제나 집착이 사라지고, 새로운 시작과 평화로운 상태로 나아갈 가능성을 암시합니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 게는 보호 본능, 감정적 갈등, 그리고 우회적 접근을 상징하며, 꿈의 상황에 따라 다음과 같은 심리적 상태를 반영할 수 있습니다.
+
+                <br><br>보호와 집착: 게의 단단한 껍질은 당신이 자신을 보호하려는 방어적 태도를 나타내며, 동시에 어떤 것에 집착하고 있을 가능성을 반영합니다.
+
+                <br><br>우회적 접근: 게가 옆으로 움직이는 모습은 당신이 문제를 직접 해결하기보다는 간접적이고 우회적인 방식을 선호하고 있음을 나타냅니다.
+
+                <br><br>스트레스와 갈등: 게에 물리는 꿈은 현재 주변의 갈등이나 스트레스로 인해 당신이 어려움을 겪고 있음을 나타냅니다.
+
+                <br><br>문제 해결과 해소: 죽은 게를 보는 꿈은 현재의 집착이나 문제가 곧 해결되고, 더 안정된 상태로 나아갈 것을 암시합니다.
+
+                <br><br>종합적으로, 게가 꿈에 나타나는 것은 자신을 보호하며, 문제에 대해 신중하고 유연하게 접근하려는 당신의 심리적 상태를 반영합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}

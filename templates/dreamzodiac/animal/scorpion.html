@@ -1,0 +1,115 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>전갈 꿈해몽</title>
+    <meta property="og:title" content="전갈 꿈해몽">
+    {% endblock %}
+
+    {% block description %}전갈 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}전갈꿈, 전갈 꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 전갈의 상징</h1>
+        <p id="second_title">꿈에서 전갈은 위협, 내면의 두려움, 그리고 자기 보호 본능을 상징합니다. 꿈의 상황에 따라 다양한 해석이 가능합니다. 아래는 전갈과 관련된 다양한 상황을 바탕으로 한 꿈 해석입니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">전갈을 보는 꿈:</div>
+                <p>전갈은 위협과 경고를 상징하며, 꿈에서 전갈을 보는 것은 당신이 현재 직면하고 있는 불안이나 갈등을 반영합니다.</p>
+
+                <div class="sub2_title">전갈이 당신을 쏘는 꿈:</div>
+                <p>내면의 두려움이나 외부로부터의 갈등으로 인해 스트레스를 받고 있음을 나타냅니다. 이는 신중하고 조심스러운 행동이 필요하다는 경고일 수 있습니다.</p>
+
+                <div class="sub2_title">전갈을 잡는 꿈:</div>
+                <p>위협적이거나 어려운 상황을 극복하려는 결단력과 용기를 상징합니다. 이는 당신이 현재의 갈등에서 승리할 가능성을 암시합니다.</p>
+
+                <div class="sub2_title">전갈이 도망가는 꿈:</div>
+                <p>당신의 문제나 위협이 곧 사라질 것을 나타냅니다. 이는 긍정적인 변화와 안정된 상태를 암시합니다.</p>
+
+                <div class="sub2_title">전갈 무리를 보는 꿈:</div>
+                <p>여러 갈등 요소나 어려움이 당신 주변에 있음을 나타냅니다. 이는 신중한 판단과 행동이 필요함을 의미합니다.</p>
+
+                <div class="sub2_title">죽은 전갈을 보는 꿈:</div>
+                <p>현재의 위협이나 갈등이 끝나고, 평화와 안정이 찾아올 가능성을 암시합니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 전갈은 위협, 내면의 두려움, 그리고 자기 보호 본능을 상징하며, 꿈의 상황에 따라 다음과 같은 심리적 상태를 반영할 수 있습니다.
+
+                <br><br>위협과 경고: 전갈은 위험의 상징으로, 당신이 현재 직면한 갈등이나 문제에서 스트레스를 받고 있음을 나타냅니다.
+
+                <br><br>자기 보호 본능: 전갈이 당신을 쏘는 꿈은 외부의 위협으로부터 자신을 방어하려는 마음을 반영하며, 동시에 감정적으로 민감한 상태를 나타낼 수 있습니다.
+
+                <br><br>문제 해결과 극복: 전갈을 잡는 꿈은 당신이 어려운 상황에서 용기와 결단력을 발휘하고 있음을 의미합니다.
+
+                <br><br>안정과 평화: 죽은 전갈을 보는 꿈은 현재의 갈등이 곧 해결되고, 안정된 상태로 나아갈 것을 암시합니다.
+
+                <br><br>종합적으로, 전갈이 꿈에 나타나는 것은 당신이 내면의 두려움이나 외부의 위협을 극복하고, 새로운 안정과 성취를 이루려는 심리적 상태를 반영합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}
