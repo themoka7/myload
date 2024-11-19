@@ -299,21 +299,25 @@ body {
 
 /* 기본 스타일 (PC용) */
 .hidden {
-    display: none;
-    /*background-color: rgb(250 248 232);*/
-    background-color: rgb(255 255 255 / 80%);
+
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     padding: 20px;
     border-radius: 10px;
-    max-width: 600px; /* 최대 너비 설정 */
-    width: 100%; /* 모바일에서는 전체 너비 사용 */
-    margin: 20px auto;
-    font-size: 17px;
-
-    white-space: pre-wrap;
-    z-index: 5;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    font-weight: 500;
     border: solid #9b4545 2px;
-    text-align: left;
+    background-color: rgb(255 255 255 / 80%);
+    color: #333;
+    background-color: rgb(247 241 231);
+    font-size: 17px;
     font-weight: 600;
+}
 }
 
 /* 모바일용 스타일 (화면 너비가 600px 이하인 경우) */
@@ -397,8 +401,27 @@ body {
     --bs-btn-hover-bg: #21252900;
     --bs-btn-hover-color: #212529;
     --bs-btn-disabled-bg: #000000;
+     padding: 10px 20px;
 
 }
+.kakao-btn {
+    border-radius: 100px;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 17px 39px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.14);
+    text-transform: uppercase;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2);
+    background-color: #f7e400   ;
+    --bs-btn-color: #ffffff;
+    --bs-btn-hover-bg: #21252900;
+    --bs-btn-hover-color: #212529;
+    --bs-btn-disabled-bg: #000000;
+    padding: 10px 20px;
+
+}
+
 .content .intro .sub2_title {
     font-size: 20px;
     color: #741414;
