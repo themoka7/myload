@@ -6,6 +6,7 @@ from flask_cors import CORS
 
 from process.common.rss import generate_rss
 from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
+from process.hexagram.hexagram import get_hexagram_all_data  # process 폴더에서 모듈 불러오기
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
 from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
@@ -33,7 +34,7 @@ def intro():
 
 
 #########################################
-#               hexagram                #
+#               mansae                #
 #########################################
 @app.route('/mansae')
 def mansae_intro():
@@ -55,7 +56,7 @@ def mansae_process():
 
 
 #########################################
-#               hexagram                #
+#               mansae                #
 #########################################
 
 
@@ -80,6 +81,12 @@ def hexagram_process():
     session.clear()
     session['data'] = data
     return jsonify({'redirect': url_for('hexagram_result')})  # 리디렉션 URL을 AJAX로 반환
+
+
+@app.route('/hexagram_intro')
+def hexagram_intro():
+    data = get_hexagram_all_data()
+    return render_template('hexagram/hexagram_intro.html', data=data)
 
 
 #########################################
