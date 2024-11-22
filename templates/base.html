@@ -63,6 +63,9 @@
 
          {% block content %}
             <!-- 각 페이지에서 이 블록을 채우게 됨 -->
+
+
+
          {% endblock %}
 
 
@@ -76,6 +79,27 @@
 
 
      {% block scripts %}{% endblock %}
+
+<script>
+    $(document).ready(function () {
+        // 현재 URL에서 dreamzodiac 뒤에 추가 경로가 있는지 확인
+        if (window.location.pathname.startsWith('/dreamzodiac/') && window.location.pathname.split('/').length > 2) {
+            // 버튼 추가할 HTML
+            const buttonHTML = `
+                <div id="startBtn" class="lastBtn">
+                    <button id="process" type="button" class="btn btn-outline-dark" onclick="location.href='/eightzodiac';">
+                        사주보기
+                    </button>
+                </div>
+            `;
+            // content 안에 버튼 추가
+            $('.contain.dreamzodiac .content').append(buttonHTML);
+            // .intro의 style 속성에서 margin-bottom 제거
+            $('.contain.dreamzodiac .content .intro').removeAttr('style');
+        }
+    });
+</script>
+
 
 
 </body>
