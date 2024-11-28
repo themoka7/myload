@@ -1,0 +1,120 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>레몬 꿈해몽</title>
+    <meta property="og:title" content="레몬 꿈해몽">
+    {% endblock %}
+
+    {% block description %}레몬 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}레몬꿈, 레몬꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 레몬의 상징</h1>
+        <p id="second_title">꿈에서 레몬은 새로움, 정화, 그리고 활력을 상징합니다. 레몬의 신맛과 선명한 색은 감정적, 신체적 상태의 정화를 나타내며, 꿈의 상황에 따라 다양한 의미를 가질 수 있습니다. 아래는 레몬과 관련된 다양한 꿈 해석입니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">레몬을 먹는 꿈:</div>
+                <p>신선한 시작과 정화를 상징하며, 새로운 기회를 잡거나 문제를 해결하려는 의지를 나타냅니다. 이는 건강과 활력을 의미할 수 있습니다.</p>
+
+                <div class="sub2_title">레몬을 따는 꿈:</div>
+                <p>노력의 결실을 얻는 것을 상징합니다. 이는 새로운 기회를 잡고 긍정적인 변화를 맞이할 가능성을 나타냅니다.</p>
+
+                <div class="sub2_title">레몬을 사는 꿈:</div>
+                <p>자신을 치유하거나 새로운 경험을 통해 만족감을 얻으려는 욕구를 나타냅니다. 이는 당신의 성장과 변화에 대한 준비를 상징합니다.</p>
+
+                <div class="sub2_title">썩은 레몬을 보는 꿈:</div>
+                <p>계획이나 기대가 좌절될 가능성을 나타냅니다. 이는 신중한 접근과 준비가 필요하다는 경고일 수 있습니다.</p>
+
+                <div class="sub2_title">레몬 주스를 마시는 꿈:</div>
+                <p>내면의 정화와 활력을 회복하는 것을 상징합니다. 이는 스트레스 해소와 더 나은 건강 상태를 암시할 수 있습니다.</p>
+
+                <div class="sub2_title">레몬을 나누어주는 꿈:</div>
+                <p>타인과의 관계에서 도움과 지지를 상징합니다. 이는 당신이 주변 사람들과 긍정적인 에너지를 공유하고 있음을 나타냅니다.</p>
+
+                <div class="sub2_title">레몬을 심는 꿈:</div>
+                <p>미래를 위한 준비와 장기적인 계획을 의미합니다. 이는 지속적인 노력이 긍정적인 결과를 가져올 것을 암시합니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 레몬은 정화와 활력, 그리고 새로운 시작을 상징하며, 다양한 심리적 상태를 반영할 수 있습니다:
+
+                <br><br>정화와 활력: 레몬을 먹거나 주스를 마시는 꿈은 당신이 내면의 정화와 활력을 되찾으려는 상태를 나타냅니다.
+
+                <br><br>성취와 변화: 레몬을 따는 꿈은 노력의 결실을 맺고 긍정적인 변화를 맞이할 준비가 되었음을 의미합니다.
+
+                <br><br>관계와 나눔: 레몬을 나누어주는 꿈은 당신이 타인과의 관계에서 긍정적인 에너지를 공유하려는 의지를 나타냅니다.
+
+                <br><br>실망과 경고: 썩은 레몬을 보는 꿈은 계획의 실패나 준비 부족에 대한 경고를 암시하며, 신중함이 필요합니다.
+
+                <br><br>미래 계획: 레몬을 심는 꿈은 장기적인 계획을 세우고 성장을 준비하는 상태를 반영합니다.
+
+                <br><br>종합적으로, 레몬이 꿈에 나타나는 것은 정화, 새로움, 그리고 당신의 삶에 긍정적인 변화를 상징하며, 성장과 활력을 의미합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}

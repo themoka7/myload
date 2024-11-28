@@ -1,0 +1,120 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>망고 꿈해몽</title>
+    <meta property="og:title" content="망고 꿈해몽">
+    {% endblock %}
+
+    {% block description %}망고 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}망고꿈, 망고꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 망고의 상징</h1>
+        <p id="second_title">꿈에서 망고는 달콤한 성취, 사랑, 그리고 풍요로움을 상징합니다. 망고는 열대 과일로서 긍정적이고 기분 좋은 경험을 암시하며, 꿈의 상황에 따라 다양한 해석이 가능합니다. 아래는 망고와 관련된 다양한 꿈 해석입니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">망고를 먹는 꿈:</div>
+                <p>달콤한 기쁨과 성취감을 상징하며, 당신이 현재 삶에서 만족스러운 시기를 경험하고 있음을 나타냅니다. 이는 사랑과 행복을 의미할 수도 있습니다.</p>
+
+                <div class="sub2_title">망고를 따는 꿈:</div>
+                <p>성공과 목표 달성을 나타냅니다. 이는 노력의 결실을 얻고 긍정적인 결과를 마주할 것을 의미합니다.</p>
+
+                <div class="sub2_title">망고를 사는 꿈:</div>
+                <p>새로운 관계나 즐거운 경험을 추구하는 것을 상징합니다. 이는 감정적으로나 물질적으로 만족을 얻으려는 욕구를 나타냅니다.</p>
+
+                <div class="sub2_title">망고가 썩은 꿈:</div>
+                <p>계획이나 관계에서의 실망을 나타낼 수 있습니다. 이는 지나친 기대나 준비 부족에 대한 경고를 의미합니다.</p>
+
+                <div class="sub2_title">망고를 나누어주는 꿈:</div>
+                <p>사랑과 행복을 나누고자 하는 마음을 상징합니다. 이는 타인과의 관계에서 긍정적인 연결과 유대를 강화하려는 의도를 나타냅니다.</p>
+
+                <div class="sub2_title">망고가 가득 쌓여 있는 꿈:</div>
+                <p>풍요와 행운을 상징하며, 당신의 삶에 긍정적인 변화와 성공이 찾아올 것을 암시합니다.</p>
+
+                <div class="sub2_title">망고를 심는 꿈:</div>
+                <p>장기적인 계획과 미래를 위한 준비를 나타냅니다. 이는 지속적인 노력과 성장이 결실을 맺을 가능성을 의미합니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 망고는 달콤한 성과와 풍요, 그리고 사랑과 행복을 상징하며, 다양한 심리적 상태를 반영할 수 있습니다:
+
+                <br><br>만족과 기쁨: 망고를 먹는 꿈은 당신의 삶에서 만족과 행복을 경험하고 있음을 나타냅니다.
+
+                <br><br>성취와 성공: 망고를 따는 꿈은 노력의 결실을 맺고 긍정적인 결과를 얻는 것을 의미합니다.
+
+                <br><br>관계와 나눔: 망고를 나누어주는 꿈은 사랑과 행복을 주변 사람들과 나누고자 하는 마음을 반영합니다.
+
+                <br><br>실망과 경고: 썩은 망고를 보는 꿈은 지나친 기대나 준비 부족에 대한 경고를 의미하며, 신중한 판단이 필요함을 암시합니다.
+
+                <br><br>미래 계획: 망고를 심는 꿈은 장기적인 목표를 세우고 지속적인 노력을 통해 성취를 이루려는 의지를 나타냅니다.
+
+                <br><br>종합적으로, 망고가 꿈에 나타나는 것은 사랑, 행복, 그리고 풍요로운 성취를 반영하며, 당신의 삶에 긍정적인 변화를 상징합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}

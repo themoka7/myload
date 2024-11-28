@@ -1,0 +1,120 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>진달래 꿈해몽</title>
+    <meta property="og:title" content="진달래 꿈해몽">
+    {% endblock %}
+
+    {% block description %}진달래 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}진달래꿈, 진달래꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 진달래의 상징</h1>
+        <p id="second_title">꿈에서 진달래는 희망, 사랑, 그리고 새로운 시작을 상징합니다. 진달래는 봄을 알리는 꽃으로, 따뜻함과 활력을 나타내며, 꿈의 상황에 따라 다양한 의미를 가질 수 있습니다. 아래는 진달래와 관련된 다양한 꿈 해석입니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">진달래가 활짝 피어 있는 꿈:</div>
+                <p>희망과 기쁨을 상징하며, 당신의 삶에서 긍정적인 변화와 행운이 찾아올 것을 예고합니다.</p>
+
+                <div class="sub2_title">진달래 꽃잎이 떨어지는 꿈:</div>
+                <p>일시적인 어려움이나 감정적인 아쉬움을 나타낼 수 있습니다. 이는 지나간 일이나 과거의 상황에 대한 미련을 암시할 수 있습니다.</p>
+
+                <div class="sub2_title">진달래를 꺾는 꿈:</div>
+                <p>새로운 인연이나 기회를 잡는 것을 상징합니다. 이는 사랑이나 관계에서 긍정적인 발전을 나타낼 수 있습니다.</p>
+
+                <div class="sub2_title">진달래 꽃밭을 걷는 꿈:</div>
+                <p>행복과 평화를 느끼는 시기를 의미하며, 당신의 삶에서 긍정적인 분위기가 조성될 것을 나타냅니다.</p>
+
+                <div class="sub2_title">진달래를 선물 받는 꿈:</div>
+                <p>누군가로부터의 사랑과 관심을 상징합니다. 이는 중요한 관계에서 따뜻한 감정을 느낄 가능성을 나타냅니다.</p>
+
+                <div class="sub2_title">진달래가 시들어가는 꿈:</div>
+                <p>기회나 열정이 줄어들고 있는 상황을 나타낼 수 있습니다. 이는 삶에서의 전환점이나 휴식이 필요함을 암시할 수 있습니다.</p>
+
+                <div class="sub2_title">진달래를 심는 꿈:</div>
+                <p>새로운 시작과 미래를 위한 준비를 상징합니다. 이는 당신의 계획이 결실을 맺을 것을 암시합니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 진달래는 따뜻함과 희망, 그리고 사랑을 상징하며, 다양한 심리적 상태를 반영할 수 있습니다:
+
+                <br><br>희망과 변화: 진달래가 활짝 피어 있는 꿈은 삶의 긍정적인 변화를 암시하며, 새로운 시작과 희망을 나타냅니다.
+
+                <br><br>감정적인 연결: 진달래를 선물 받거나 꺾는 꿈은 사람들과의 관계에서 따뜻함과 사랑을 느끼는 상태를 반영합니다.
+
+                <br><br>휴식과 회복: 진달래 꽃밭을 걷는 꿈은 당신이 평화로운 상태를 찾고 있음을 나타내며, 내면의 안정감을 상징합니다.
+
+                <br><br>위기와 극복: 진달래가 시드는 꿈은 현재의 어려움을 극복하고 새로운 기회를 찾을 필요성을 나타냅니다.
+
+                <br><br>새로운 시작: 진달래를 심는 꿈은 당신의 노력과 준비가 결실을 맺을 것을 암시하며, 희망적인 미래를 상징합니다.
+
+                <br><br>종합적으로, 진달래가 꿈에 나타나는 것은 희망, 사랑, 그리고 삶의 긍정적인 전환점을 반영합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}
