@@ -442,7 +442,7 @@
             </div>
              <!-- 살-->
 
-
+            <p class="card-text">대운/세운을 클릭하시면 연간 운세가 출력됩니다.</p>
 
 
             <div class="table-container">
@@ -539,6 +539,8 @@
 
 {% block scripts %}
 <script>
+
+var eightzodiacResult;
         $(document).ready(function() {
 
                 $.ajax({
@@ -610,6 +612,68 @@
 
             $('#future_10_earth_tens .cell-content.active').removeClass('active');
             $(this).addClass('active');
+
+
+            console.log(eightzodiacResult['ChiHeavenlyTimeText']);
+            console.log(eightzodiacResult['ChiHeavenlyDayText']);
+            console.log(eightzodiacResult['ChiHeavenlyMonthText']);
+            console.log(eightzodiacResult['ChiHeavenlyYearText']);
+
+            console.log(eightzodiacResult['ChiEarthlyTimeText']);
+            console.log(eightzodiacResult['ChiEarthlyDayText']);
+            console.log(eightzodiacResult['ChiEarthlyMonthText']);
+            console.log(eightzodiacResult['ChiEarthlyYearText']);
+
+
+            temZodiacData = {
+                ChiHeavenlyTimeText : eightzodiacResult['ChiHeavenlyTimeText'],
+                KorHeavenlyTimeTextTenGod : eightzodiacResult['KorHeavenlyTimeTextTenGod'],
+
+                ChiHeavenlyDayText : eightzodiacResult['ChiHeavenlyDayText'],
+                KorHeavenlyDayTextTenGod : eightzodiacResult['KorHeavenlyDayTextTenGod'],
+
+                ChiHeavenlyMonthText : eightzodiacResult['ChiHeavenlyMonthText'],
+                KorHeavenlyMonthTextTenGod : eightzodiacResult['KorHeavenlyMonthTextTenGod'],
+
+                ChiHeavenlyYearText : eightzodiacResult['ChiHeavenlyYearText'],
+                KorHeavenlyYearTextTenGod : eightzodiacResult['KorHeavenlyYearTextTenGod'],
+
+                ChiEarthlyTimeText : eightzodiacResult['ChiEarthlyTimeText'],
+                KorEarthlyTimeTextTenGod : eightzodiacResult['KorEarthlyTimeTextTenGod'],
+
+                ChiEarthlyDayText : eightzodiacResult['ChiEarthlyDayText'],
+                KorEarthlyDayTextTenGod : eightzodiacResult['KorEarthlyDayTextTenGod'],
+
+                ChiEarthlyMonthText : eightzodiacResult['ChiEarthlyMonthText'],
+                KorEarthlyMonthTextTenGod : eightzodiacResult['KorEarthlyMonthTextTenGod'],
+
+                ChiEarthlyYearText : eightzodiacResult['ChiEarthlyYearText'],
+                KorEarthlyYearTextTenGod : eightzodiacResult['KorEarthlyYearTextTenGod']
+            }
+
+
+
+            $('.cell-content.active').each(function(index, element) {
+                const textContent = $(element).text().split('\n')
+                const cleanedLines = textContent.map(line => line.trim()).filter(line => line !== "");
+                console.log(cleanedLines);
+                if(index == 0){
+                    temZodiacData['KorHeavenlyDeawonTextTenGod'] = cleanedLines[1];
+                    temZodiacData['ChiHeavenlyDeawonText'] = cleanedLines[2];
+
+                    temZodiacData['ChiEarthlyDeawonText'] = cleanedLines[3];
+                    temZodiacData['KorEarthlyDeawonTextTenGod'] = cleanedLines[4];
+                }else{
+                    temZodiacData['KorHeavenlySeawonTextTenGod'] = cleanedLines[1];
+                    temZodiacData['ChiHeavenlySeawonText'] = cleanedLines[2];
+
+                    temZodiacData['ChiEarthlySeawonText'] = cleanedLines[3];
+                    temZodiacData['KorEarthlySeawonTextTenGod'] = cleanedLines[4];
+                }
+            });
+
+
+            console.log(temZodiacData);
         });
 
         $(document).mouseup(function() {
@@ -626,7 +690,7 @@
 
         function chizodiacSetting(data){
 
-            var eightzodiacResult = data;
+            eightzodiacResult = data;
             console.log(eightzodiacResult);
 
 
@@ -818,13 +882,17 @@
 
             //살..
 
+            if (eightzodiacResult['kill_data_result'] && Object.keys(eightzodiacResult['kill_data_result']).length > 0) {
                 Object.keys(eightzodiacResult['kill_data_result']).forEach(key => {
-
-                    htmlContent = `<div class='sub3_title'>${eightzodiacResult['kill_data_result'][key]['살']} </div>
-                    <div class='sub3_text'>${eightzodiacResult['kill_data_result'][key]['설명']}</div>`;
-
+                    const htmlContent = `<div class='sub3_title'>${eightzodiacResult['kill_data_result'][key]['살']} </div>
+                                         <div class='sub3_text'>${eightzodiacResult['kill_data_result'][key]['설명']}</div>`;
                     $('#kill_text').append(htmlContent);
                 });
+            } else {
+                // 값이 없거나 비어있는 경우
+                const emptyMessage = "<div class='sub3_text'>없음</div>";
+                $('#kill_text').append(emptyMessage);
+            }
 
 
 
