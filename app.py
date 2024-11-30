@@ -5,7 +5,7 @@ from flask import Flask, render_template, jsonify, session, url_for,request,Resp
 from flask_cors import CORS
 
 from process.common.rss import generate_rss
-from process.hexagram.hexagram_process import get_hexagram_data  # process 폴더에서 모듈 불러오기
+from process.hexagram.hexagram_process import get_hexagram_random_data, get_hexagram_data  # process 폴더에서 모듈 불러오기
 from process.hexagram.hexagram import get_hexagram_all_data  # process 폴더에서 모듈 불러오기
 from process.tarot.tarot_process import get_tarot_data  # process 폴더에서 모듈 불러오기
 from process.chizodiac.chizodiac_process import get_chizodiac_data  # process 폴더에서 모듈 불러오기
@@ -67,17 +67,25 @@ def mansae_process():
 def hexagram():
     return render_template('hexagram/hexagram_index.html')
 
-@app.route('/hexagram/result')
-def hexagram_result():
+@app.route('/hexagram/result', defaults={'path': ''})
+@app.route('/hexagram/result/<path:path>')
+def hexagram_result(path):
     # 세션에 저장된 처리된 데이터 불러오기
 
+    if path != '':
+        data = get_hexagram_data(path)
+        if data:
+            # 세션에 데이터 저장
+            session['data'] = data
+
+    print(f"Received path: {path}")
     data = session.get('data', {})
 
     return render_template('hexagram/hexagram_result.html', data=data)  # 결과 페이지에서 데이터 표시
 
 @app.route('/hexagram_process', methods=['POST'])
 def hexagram_process():
-    data = get_hexagram_data()
+    data = get_hexagram_random_data()
     session.clear()
     session['data'] = data
     return jsonify({'redirect': url_for('hexagram_result')})  # 리디렉션 URL을 AJAX로 반환

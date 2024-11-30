@@ -36,6 +36,12 @@
     border-radius: 10px;
     overflow: hidden;
 }
+.table tbody tr td{
+
+        cursor: pointer; /* 마우스 포인터를 손 모양으로 변경 */
+        transition: background-color 0.3s ease; /* 부드러운 효과 추가 */
+
+}
 
 .hexa{
     all: unset;
@@ -47,7 +53,11 @@
     font-family: 'Playfair Display', serif;
     color: #2c3e50;
     padding: 2px;
-    transform: scaleX(2.5);
+
+}
+
+.type_1, .type_2{
+transform: scaleX(2.5);
 }
 
 
@@ -130,6 +140,7 @@
     {% block scripts %}
     <script >
         $(document).ready(function() {
+
             var data = {{ data | tojson | safe }};
             console.log(data);
 
@@ -148,7 +159,7 @@
                 const cell = document.createElement('td');
                 cell.innerHTML = `
                     <div class="hexa"> <span class="type_1">${hexagram.type[0]}</span><span class="type_2">${hexagram.type[1]}</span></div>
-                    <div>${hexagram.desc.split('(')[0]}</div>
+                    <div>${hexagram.name}</div>
                 `;
                 row.appendChild(cell);
             });
@@ -158,6 +169,30 @@
 
                 window.location.href = "/hexagram";
             });
+
+
+
+             // 마우스 오버 및 마우스 아웃 이벤트
+            $('#hexagramTable td').on('mouseover', function() {
+                $(this).css('background-color', '#f0f0f0'); // 마우스 오버 시 배경색 변경
+            });
+
+            $('#hexagramTable td').on('mouseout', function() {
+                $(this).css('background-color', ''); // 마우스 아웃 시 배경색 복원
+            });
+
+            // 클릭 이벤트 처리
+            $('#hexagramTable td').on('click', function() {
+                // td 내부의 두 번째 <div>의 텍스트를 가져옴
+                const text = $(this).find('div').last().text();
+
+                if (text) {
+                    window.location.href = '/hexagram/result/'+text; // URL 이동
+                }
+            });
+
+
+
         })
 
     </script>
