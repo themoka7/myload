@@ -65,9 +65,15 @@
                 <div id="startBtn" class="lastBtn">
                     <button id="process" type="button" class="btn btn-outline-dark">처음으로</button>
                     <!--<a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>-->
+
+                        <button id="kakaoInitAndShareBtnHexagram" type="button" class="btn btn-outline-dark" style="    background-color: #F7E600; --bs-btn-color: #000000;">
+                        카톡공유
+                    </button>
                 </div>
 
-                <button id="sendMessage">나에게 메시지 보내기</button>
+
+
+                <!--<button id="sendMessage">나에게 메시지 보내기</button>-->
 
             </div>
         </div>
@@ -76,6 +82,8 @@
 
      {% block scripts %}
     <script >
+
+
         $(document).ready(function() {
             //showLoadingModal();
 
@@ -92,6 +100,15 @@
                 window.location.href = "/hexagram"; // Replace with your target URL
             });
 
+
+              document.getElementById('kakaoInitAndShareBtnHexagram').addEventListener('click', function () {
+                    // 메시지 전송 호출
+                    name = `{{ data['hexagram']|safe }}`;
+                    console.log(name);
+                    url =  window.location.pathname;
+                    textContent = '당사주 - '+name;
+                    sendKakaoTemplateMessage(114538, '당사주',textContent ,url+'/'+name); // 템플릿 ID를 숫자로 전달
+                });
 
         })
 
@@ -118,6 +135,7 @@
 
 
             var hexagram_value = "{{ data['hexagram'] }}";
+
             $('#hexagram_value').text(hexagram_value);
 
             var desc_value = "{{ data['desc'] }}";
@@ -125,7 +143,7 @@
 
             // 정규식을 사용하여 한글과 한자를 분리
 
-            console.log(desc_value);
+
             var hanja = desc_value.match(/\(([^)]+)\)/)[1];  // 괄호 안의 한자를 추출
             var hangeul = desc_value.split('(')[0];  // 괄호 앞의 한글 부분 추출
 
@@ -148,80 +166,6 @@
                 setTimeout(typeWriter, 100);  // 글자 나오는 속도 조정 (50ms)
             }
         }
-    </script>
-
-    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-     <script>
-                const KakaoTalkAPI = {
-            init: function(appKey) {
-                if (!Kakao.isInitialized()) {
-                    Kakao.init(appKey);
-                    console.log('Kakao SDK initialized successfully');
-                }
-            },
-
-            login: function(callback) {
-                // 필요한 스코프 추가 요청
-                Kakao.Auth.login({
-                    scope: 'talk_message', // 나에게 보내기 권한
-                    success: function(authObj) {
-                        console.log('Login successful:', authObj);
-                        if (callback) callback(true);
-                    },
-                    fail: function(err) {
-                        console.error('Login failed:', err);
-                        if (callback) callback(false);
-                    }
-                });
-            },
-
-            sendMessageToMyself: function(message, callback) {
-                // 메시지 전송
-                Kakao.API.request({
-                    url: '/v2/api/talk/memo/default/send',
-                    data: {
-                        template_object: {
-                            object_type: 'text',
-                            text: message,
-                            link: {
-                                web_url: 'http://localhost',
-                                mobile_web_url: 'http://localhost'
-                            }
-                        }
-                    },
-                    success: function(response) {
-                        console.log('Message sent successfully:', response);
-                        if (callback) callback(true, response);
-                    },
-                    fail: function(error) {
-                        console.error('Message sending failed:', error);
-                        if (callback) callback(false, error);
-                    }
-                });
-            }
-        };
-
-        // 초기화
-        KakaoTalkAPI.init('236fa6d1dee42d47b9360604c5252c15'); // YOUR_APP_KEY를 실제 JavaScript 키로 변경
-
-        // 버튼 클릭 이벤트
-        document.getElementById('sendMessage').addEventListener('click', function() {
-            KakaoTalkAPI.login(function(isLoggedIn) {
-                if (isLoggedIn) {
-                    KakaoTalkAPI.sendMessageToMyself('안녕하세요! 수정된 코드로 보낸 메시지입니다.', function(success, response) {
-                        if (success) {
-                            alert('메시지가 성공적으로 전송되었습니다!');
-                        } else {
-                            alert('메시지 전송에 실패했습니다.');
-                        }
-                    });
-                } else {
-                    alert('로그인에 실패했습니다.');
-                }
-            });
-        });
-
     </script>
 
      {% endblock %}
