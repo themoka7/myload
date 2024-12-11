@@ -31,6 +31,8 @@ if dream_subject_divs:
                 file_to_check = href.replace("/dreamzodiac/food/", "food/") + ".html"
             elif "/dreamzodiac/factor/" in href:
                 file_to_check = href.replace("/dreamzodiac/factor/", "factor/") + ".html"
+            elif "/dreamzodiac/place/" in href:
+                file_to_check = href.replace("/dreamzodiac/place/", "place/") + ".html"
             else:
                 print(f"Skipping unsupported href: {href}")
                 continue
