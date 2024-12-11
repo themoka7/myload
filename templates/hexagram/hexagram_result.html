@@ -106,8 +106,8 @@
                     name = `{{ data['hexagram']|safe }}`;
                     console.log(name);
                     url =  window.location.pathname;
-                    textContent = '당사주 - '+name;
-                    sendKakaoTemplateMessage(114538, '당사주',textContent ,url+'/'+name); // 템플릿 ID를 숫자로 전달
+                    textContent = '주역 점괘 - '+name;
+                    sendKakaoTemplateMessage(114538, '점괘',textContent ,url+'/'+name); // 템플릿 ID를 숫자로 전달
                 });
 
         })
