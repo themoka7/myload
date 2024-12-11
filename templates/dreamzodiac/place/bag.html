@@ -1,0 +1,117 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>가방 꿈해몽</title>
+    <meta property="og:title" content="가방 꿈해몽">
+    {% endblock %}
+
+    {% block description %}가방 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}가방꿈, 가방꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+
+
+        <div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 가방의 상징</h1>
+        <p id="second_title">가방은 꿈에서 책임, 준비, 그리고 개인적인 소유를 상징합니다. 꿈의 상황에 따라 다양한 해석이 가능하며, 가방과 관련된 다양한 상황을 바탕으로 꿈의 의미를 해석할 수 있습니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">가방을 잃어버리는 꿈:</div>
+                <p>가방을 잃어버리는 꿈은 당신이 중요한 책임이나 기회를 놓치고 있다고 느낄 수 있음을 나타냅니다. 이는 당신의 현재 상황에 대한 불안감과 준비 부족을 상징할 수 있습니다.</p>
+
+                <div class="sub2_title">가방을 사는 꿈:</div>
+                <p>가방을 사는 꿈은 새로운 시작이나 책임을 받아들일 준비를 하고 있음을 나타냅니다. 이는 성장과 변화의 기회를 상징합니다.</p>
+
+                <div class="sub2_title">가방을 선물로 받는 꿈:</div>
+                <p>가방을 선물로 받는 꿈은 당신이 누군가로부터 도움이나 기회를 받을 가능성을 나타냅니다. 이는 신뢰와 감사의 의미를 담고 있습니다.</p>
+
+                <div class="sub2_title">가방을 열어보는 꿈:</div>
+                <p>가방을 열어보는 꿈은 당신이 자신의 능력과 잠재력을 탐구하고 있음을 나타냅니다. 이는 스스로를 새롭게 발견하는 기회를 의미합니다.</p>
+
+                <div class="sub2_title">가방이 너무 무거운 꿈:</div>
+                <p>무거운 가방은 당신이 현재 너무 많은 책임을 지고 있거나 스트레스를 받고 있음을 나타냅니다. 이는 휴식이 필요하다는 신호일 수 있습니다.</p>
+
+                <div class="sub2_title">가방이 비어 있는 꿈:</div>
+                <p>비어 있는 가방은 당신이 현재 자원이나 동기가 부족하다고 느끼고 있음을 상징합니다. 이는 새로운 목표를 설정하거나 동기를 찾을 필요성을 나타냅니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 가방은 책임과 준비, 그리고 당신의 개인적 심리 상태를 반영합니다.
+
+                <br><br>책임과 부담: 무거운 가방을 드는 꿈은 현재의 책임감이 당신에게 무겁게 느껴질 수 있음을 나타냅니다.
+
+                <br><br>새로운 시작: 가방을 사거나 선물로 받는 꿈은 새로운 기회와 변화에 대한 열망을 나타냅니다.
+
+                <br><br>자신의 능력 탐구: 가방을 열어보는 꿈은 자신이 가진 능력과 자원을 탐구하고 활용하려는 의지를 상징합니다.
+
+                <br><br>불안과 준비 부족: 가방을 잃어버리는 꿈은 준비가 부족하거나 현재의 상황에 대해 불안을 느끼고 있음을 반영할 수 있습니다.
+
+                <br><br>종합적으로, 가방이 꿈에 나타나는 것은 당신의 책임감, 준비 상태, 그리고 개인적인 성장을 탐구하는 과정을 상징합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}

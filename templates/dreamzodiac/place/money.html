@@ -1,0 +1,117 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>돈 꿈해몽</title>
+    <meta property="og:title" content="돈 꿈해몽">
+    {% endblock %}
+
+    {% block description %}돈 꿈해몽을 해석하세요{% endblock %}
+    {% block keywords %}돈꿈, 돈꿈해몽, 꿈, 꿈해몽, 꿈해석{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+    .sub_box{
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        border: solid #9b4545 2px;
+        font-weight: 600;
+    }
+    .intro_title2{
+        font-size: 17px;
+        color: #741414;
+
+        transition: text-shadow 0.3s ease;
+
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+
+    {% block content %}
+
+
+    <div class="contain dreamzodiac">
+
+
+<div class="content">
+    <div class="intro" style="margin-bottom: 100px;">
+        <!-- JSON 데이터 출력 -->
+        <h1 class="intro_title">꿈에서 본 돈의 상징</h1>
+        <p id="second_title">돈은 꿈에서 가치, 기회, 그리고 자원을 상징합니다. 꿈의 상황에 따라 다양한 해석이 가능하며, 돈과 관련된 다양한 상황을 바탕으로 꿈의 의미를 해석할 수 있습니다.</p>
+        <p></p>
+
+        <div class="intro_title2">다양한 상황에서의 해몽</div>
+
+        <div>
+            <div class="sub_box">
+                <div class="sub2_title">돈을 잃어버리는 꿈:</div>
+                <p>돈을 잃어버리는 꿈은 중요한 기회를 놓치거나 자신감을 상실했음을 암시할 수 있습니다. 이는 재정적 불안감이나 자신에 대한 불만을 반영할 수도 있습니다.</p>
+
+                <div class="sub2_title">돈을 찾는 꿈:</div>
+                <p>잃어버린 돈을 찾는 꿈은 새로운 기회를 발견하거나, 과거의 실수를 만회하려는 의지를 나타냅니다. 이는 긍정적인 변화의 신호일 수 있습니다.</p>
+
+                <div class="sub2_title">누군가에게 돈을 주는 꿈:</div>
+                <p>돈을 주는 꿈은 당신의 이타적인 성향이나 누군가를 돕고 싶어하는 마음을 상징합니다. 하지만 지나친 희생에 대한 경고일 수도 있습니다.</p>
+
+                <div class="sub2_title">돈을 받는 꿈:</div>
+                <p>돈을 받는 꿈은 당신이 보상받거나 인정받을 가능성을 나타냅니다. 이는 기회와 성공을 의미할 수 있습니다.</p>
+
+                <div class="sub2_title">돈을 세는 꿈:</div>
+                <p>돈을 세는 꿈은 현재의 자원과 능력을 평가하려는 당신의 마음을 나타냅니다. 이는 계획적인 행동이 필요함을 상징합니다.</p>
+
+                <div class="sub2_title">가짜 돈을 받는 꿈:</div>
+                <p>가짜 돈을 받는 꿈은 기만이나 잘못된 선택을 경고하는 신호일 수 있습니다. 이는 신중한 결정을 요구합니다.</p>
+
+                <div class="sub2_title">돈이 쌓여 있는 꿈:</div>
+                <p>돈이 쌓여 있는 꿈은 성공과 번영의 가능성을 암시합니다. 이는 당신의 노력과 계획이 결실을 맺을 것임을 나타낼 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="intro_title2">심리적 해석</div>
+
+        <div>
+            <div class="sub_box">
+                <p>꿈에서 돈은 자원, 가치, 그리고 자신감을 반영합니다.
+
+                <br><br>기회의 상징: 돈을 찾는 꿈은 새로운 가능성을 발견하고 활용하려는 당신의 심리를 나타냅니다.
+
+                <br><br>자원과 평가: 돈을 세는 꿈은 현재의 자원을 평가하고, 미래를 계획하려는 당신의 마음을 반영합니다.
+
+                <br><br>불안과 경고: 돈을 잃거나 가짜 돈을 받는 꿈은 현재 상황에 대한 불안을 나타내며, 신중한 선택이 필요하다는 경고일 수 있습니다.
+
+                <br><br>성취와 보상: 돈을 받거나 쌓아두는 꿈은 노력의 결과로 성공과 보상을 받을 가능성을 암시합니다.
+
+                <br><br>종합적으로, 돈이 꿈에 나타나는 것은 당신의 가치관, 자신감, 그리고 기회를 탐구하는 심리적 상태를 상징합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+    {% endblock %}
+
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function() {
+
+
+
+        });
+    </script>
+    {% endblock %}
