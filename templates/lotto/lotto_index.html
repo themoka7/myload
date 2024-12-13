@@ -1,0 +1,148 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>로또 숫자 만들기</title>
+    <meta property="og:title" content="로또 숫자 만들기">
+    {% endblock %}
+
+    {% block description %}로또 숫자 만들기를 통해 로또를 꿈꾸세요{% endblock %}
+    {% block keywords %}로또,로또 번호,로또 추첨, 로또 1등, 로또 2등{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+
+
+
+/* 645 ball */
+.ball_645 {display:inline-block; border-radius:100%; text-align:center; vertical-align:middle; color:#fff; font-weight:500; /* text-shadow: 0px 0px 2px rgba(0, 0, 0, 1); */}
+.ball_645.lrg {width:60px; height:60px; line-height:56px; font-size:28px}
+.ball_645.sml {width:24px; height:24px; line-height:22px; font-size:13px}
+.ball_645.not {color:#777}
+.ball_645.sml.not {font-weight:300}
+.ball_645.ball1 {background:#fbc400; text-shadow: 0px 0px 3px rgba(73, 57, 0, .8) ;border: 1px solid #1a807a;}
+.ball_645.ball2 {background:#69c8f2; text-shadow: 0px 0px 3px rgba(0, 49, 70, .8);border: 1px solid #1a807a;}
+.ball_645.ball3 {background:#ff7272; text-shadow: 0px 0px 3px rgba(64, 0, 0, .8);border: 1px solid #1a807a;}
+.ball_645.ball4 {background:#aaa; text-shadow: 0px 0px 3px rgba(61, 61, 61, .8);border: 1px solid #1a807a;}
+.ball_645.ball5 {background:#b0d840; text-shadow: 0px 0px 3px rgba(41, 56, 0, .8);border: 1px solid #1a807a;}
+
+.num {font-size: 19px !important;
+max-width: 600px;
+padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    border: solid #1a807a 2px;
+    background-color: #39aaa3;
+
+    color: #fff;
+
+        }
+.num .ball_645 {width:28px;height:28px;line-height:30px;}
+.num span:nth-child(2) {margin-left:0;}
+.num span ~ span {margin-left:4px;}
+.num .bonus {height:26px;background-size:14px 14px;}
+
+.num .txt{
+    font-size: 23px;
+    text-decoration: none;
+    font-family: 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, sans-serif;
+}
+.num .date{display: block;
+
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    opacity: 1;}
+
+.result {width:230px;margin:22px auto 30px;border:1px solid #3d8fc9;}
+.result dt {height:40px;line-height:38px;color:#fff;font-size:18px;background:#11629c;border-bottom:1px solid #3d8fc9;}
+.result dd {height:68px;line-height:68px;color:#fff;font-size:14px;}
+.result dd strong {display:inline-block;margin-right:5px;font-size:24px;}
+
+.bonus {
+    height: 26px;
+    background-size: 14px 14px;
+}
+
+.num > div {
+    margin-bottom: 10px; /* 각 div 사이에 10px 간격 추가 */
+}
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+
+        <div class="contain lotto">
+            <div class="content">
+                <div class="intro">
+                    <div id="hi" class="intro_title">행운 로또 번호 추출</div>
+                    <p class="first_type">올점의 기운으로 로또 번호를 추천드립니다.</p>
+
+                        <!-- 추가된 문구 -->
+                    <p>귀하의 운세를 기반으로, 과거 당첨 번호와 함께 추천 번호를 제공합니다. 매주 업데이트되는 당첨 번호를 참고하여, 행운을 가져가세요!</p>
+                    <p>매일 새로운 번호를 추천하며, 로또에 대한 다양한 정보와 분석도 제공됩니다. 추천된 번호를 사용하여 로또를 즐기고, 큰 행운을 만끽하세요.</p>
+
+
+                    <div class="num">
+                        <div class="txt"> <strong id="drwNo">xxx</strong>회차 당첨결과</div>
+                        <div class="date">(<span id="drwNoDate">xxx</span> 추첨)</div>
+                        <div >
+
+                            <span id="drwtNo1" class="ball_645 ball1">8</span>
+                            <span id="drwtNo2" class="ball_645 ball2">15</span>
+                            <span id="drwtNo3" class="ball_645 ball2">19</span>
+                            <span id="drwtNo4" class="ball_645 ball3">21</span>
+                            <span id="drwtNo5" class="ball_645 ball4">32</span>
+                            <span id="drwtNo6" class="ball_645 ball4">36</span>
+                            <span class="bonus">+</span>
+                            <span id="bnusNo" class="ball_645 ball4">38</span>
+                        </div>
+                        <div class="txt">1등 총당첨금 : <span id="firstAccumamnt">xxx</span>억원 , 1명당 : <span id="firstWinamnt">xxx</span>억원</div>
+
+                    </div>
+                </div>
+
+                <div id="startBtn" class="lastBtn">
+                    <button id="process" type="button" class="btn btn-outline-dark">시작하기</button>
+                    <!--<a href="javascript:void(0);" class="ghost-button ui-link">시작하기</a>-->
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script >
+
+
+
+    var lotto_data = {{ lotto_data | tojson | safe }};
+    console.log(lotto_data);
+
+    $('#drwNo').text(lotto_data[0]['drwNo']);
+    $('#drwNoDate').text(lotto_data[0]['drwNoDate']);
+
+    const billion = 100000000;
+    const formattedValue = Math.floor(lotto_data[0]['firstAccumamnt'] / billion);  // 10억 단위로 나누고 소수점은 버립니다.
+
+
+    $('#firstAccumamnt').text(Math.floor(lotto_data[0]['firstAccumamnt'] / billion));
+    $('#firstWinamnt').text(Math.floor(lotto_data[0]['firstWinamnt'] / billion));
+
+
+        $(document).ready(function() {
+
+        })
+
+    </script>
+     {% endblock %}

@@ -18,7 +18,6 @@ def get_lotto_data():
     try:
         conn = dbConn()
         cursor = conn.cursor()
-        print(conn.ping())  # Check if the connection is alive
 
         # SQL query to fetch the latest lotto results
         query = """
