@@ -12,6 +12,8 @@ from process.chizodiac.chizodiac_process import get_chizodiac_data  # process �
 from process.dailystarzodiac.dailystarzodiac import get_dailystarzodiac_data  # process 폴더에서 모듈 불러오기
 from process.eightzodiac.eightzodiac_process import get_eightzodiac_data
 from process.mansae.mansae_process import get_mansae_data
+from process.lotto.lotto import get_lotto_data
+
 
 
 
@@ -186,6 +188,9 @@ def eightzodiac_process():
     return jsonify(response)
 
 
+
+
+
 #########################################
 #            eightzodiac_process(자평)           #
 #########################################
@@ -273,6 +278,24 @@ def animal_page(category, sub_category):
 #########################################
 #                 꿈해몽                 #
 #########################################
+
+
+
+#########################################
+#                 로또                 #
+#########################################
+
+@app.route('/lotto')
+def lotto():
+    lotto_data = get_lotto_data()
+
+    return render_template('lotto/lotto_index.html', lotto_data=lotto_data)  # 결과 페이지에서 데이터 표시
+
+
+#########################################
+#                 로또                 #
+#########################################
+
 
 
 
