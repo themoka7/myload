@@ -14,9 +14,6 @@ base_round = 1149  # 기준 회차
 
 #로컬 이건로컬
 
-is_local = False
-#서버
-#is_local = True
 
 def calculate_lotto_round(target_date=None):
     """
@@ -64,9 +61,5 @@ url = f"https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo={curre
 response = requests.get(url)
 data = response.json()
 
-if is_local:
-    print('dbinsert_local')
-    dbinsert_local(data)
-else:
-    print('dbinsert_server')
-    dbinsert_server(data)
+print('dbinsert_server')
+dbinsert_server(data)
