@@ -13,9 +13,10 @@ base_date = datetime(2024, 12, 7)  # 기준 토요일 날짜 (1149회차)
 base_round = 1149  # 기준 회차
 
 #로컬 이건로컬
-#is_local = False
+
+is_local = False
 #서버
-is_local = True
+#is_local = True
 
 def calculate_lotto_round(target_date=None):
     """
