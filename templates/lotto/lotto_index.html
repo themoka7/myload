@@ -97,14 +97,14 @@ padding: 20px;
                         <div class="date">(<span id="drwNoDate">xxx</span> 추첨)</div>
                         <div >
 
-                            <span id="drwtNo1" class="ball_645 ball1">8</span>
-                            <span id="drwtNo2" class="ball_645 ball2">15</span>
-                            <span id="drwtNo3" class="ball_645 ball2">19</span>
-                            <span id="drwtNo4" class="ball_645 ball3">21</span>
-                            <span id="drwtNo5" class="ball_645 ball4">32</span>
-                            <span id="drwtNo6" class="ball_645 ball4">36</span>
+                            <span id="drwtNo1" class="ball_645 ">X</span>
+                            <span id="drwtNo2" class="ball_645 ">X</span>
+                            <span id="drwtNo3" class="ball_645 ">X</span>
+                            <span id="drwtNo4" class="ball_645 ">X</span>
+                            <span id="drwtNo5" class="ball_645 ">X</span>
+                            <span id="drwtNo6" class="ball_645 ">X</span>
                             <span class="bonus">+</span>
-                            <span id="bnusNo" class="ball_645 ball4">38</span>
+                            <span id="bnusNo" class="ball_645 ">X</span>
                         </div>
                         <div class="txt">1등 총당첨금 : <span id="firstAccumamnt">xxx</span>억원 , 1명당 : <span id="firstWinamnt">xxx</span>억원</div>
 
@@ -139,10 +139,45 @@ padding: 20px;
     $('#firstAccumamnt').text(Math.floor(lotto_data[0]['firstAccumamnt'] / billion));
     $('#firstWinamnt').text(Math.floor(lotto_data[0]['firstWinamnt'] / billion));
 
+    $('#drwtNo1').text(lotto_data[0]['drwtNo1']);
+    $('#drwtNo1').addClass(classifyBall(lotto_data[0]['drwtNo1']));
+    $('#drwtNo2').text(lotto_data[0]['drwtNo2']);
+    $('#drwtNo2').addClass(classifyBall(lotto_data[0]['drwtNo2']));
+    $('#drwtNo3').text(lotto_data[0]['drwtNo3']);
+    $('#drwtNo3').addClass(classifyBall(lotto_data[0]['drwtNo3']));
+    $('#drwtNo4').text(lotto_data[0]['drwtNo4']);
+    $('#drwtNo4').addClass(classifyBall(lotto_data[0]['drwtNo4']));
+    $('#drwtNo5').text(lotto_data[0]['drwtNo5']);
+    $('#drwtNo5').addClass(classifyBall(lotto_data[0]['drwtNo5']));
+    $('#drwtNo6').text(lotto_data[0]['drwtNo6']);
+    $('#drwtNo6').addClass(classifyBall(lotto_data[0]['drwtNo6']));
 
-        $(document).ready(function() {
+    $('#bnusNo').text(lotto_data[0]['bnusNo']);
+    $('#bnusNo').addClass(classifyBall(lotto_data[0]['bnusNo']));
 
-        })
+
+
+    function classifyBall(number) {
+        if (number >= 1 && number <= 9) {
+            return 'ball1';
+        } else if (number >= 10 && number <= 19) {
+            return 'ball2';
+        } else if (number >= 20 && number <= 29) {
+            return 'ball3';
+        } else if (number >= 30 && number <= 39) {
+            return 'ball4';
+        } else if (number >= 40 && number <= 45) {
+            return 'ball5';
+        }
+        return ''; // 해당하지 않으면 빈 문자열 반환
+    }
+
+    $(document).ready(function() {
+
+    })
+
+
+
 
     </script>
      {% endblock %}
