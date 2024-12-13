@@ -6,7 +6,7 @@ sys.path.append('/home/kimjungmok/mysite')
 
 
 from batch.lotto.db.dbinsert import dbinsert_server
-from batch.lotto.db.dbinsert_local import dbinsert_local
+
 
 # 기준 날짜 및 회차
 base_date = datetime(2024, 12, 7)  # 기준 토요일 날짜 (1149회차)
