@@ -4,11 +4,16 @@ import os
 
 def dbConn():
     # 환경 변수에 따라 로컬 및 서버 설정 분기
-    IS_LOCAL = os.environ.get('IS_LOCAL', 'true').lower() == 'true'
+    if os.name == 'nt':
+        IS_LOCAL = True
+    else:
+        IS_LOCAL = False
 
+    print(IS_LOCAL)
     # MySQL 데이터베이스 연결 설정
-    if IS_LOCAL:
+    if IS_LOCAL == True:
         # 로컬 환경의 MySQL 연결 정보
+        print('local')
         connection = MySQLdb.connect(
             user='root',
             passwd='oo1351oo^^',
@@ -17,6 +22,7 @@ def dbConn():
             db='localmyload',
         )
     else:
+        print('server')
         # 서버 환경의 MySQL 연결 정보
         connection = MySQLdb.connect(
             user='kimjungmok',

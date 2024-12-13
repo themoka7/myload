@@ -5,7 +5,7 @@ import requests
 sys.path.append('/home/kimjungmok/mysite')
 
 
-from batch.lotto.db.dbinsert import dbinsert_server
+from batch.lotto.db.dbinsert import dbinsert
 
 
 # 기준 날짜 및 회차
@@ -62,4 +62,4 @@ response = requests.get(url)
 data = response.json()
 
 print('dbinsert_server')
-dbinsert_server(data)
+dbinsert(data)

@@ -2,23 +2,17 @@ import logging
 import mysql.connector
 import requests
 
+from process.common.dbCon import dbConn
+
 # 로그 설정
 logging.basicConfig(level=logging.DEBUG)
 
-def dbinsert_server(data):
+def dbinsert(data):
     """
     SSH 터널 없이 MySQL 서버에 직접 연결하여 데이터 삽입.
     """
     try:
-        # MySQL 직접 연결
-        logging.debug("Connecting to MySQL directly...")
-        conn = mysql.connector.connect(
-            user='kimjungmok',  # MySQL 사용자명
-            password='oo1351oo^^',  # MySQL 비밀번호
-            host='kimjungmok.mysql.pythonanywhere-services.com',  # MySQL 호스트 (예: localhost 또는 IP 주소)
-            port=3306,  # MySQL 포트 (기본값: 3306)
-            database='kimjungmok$myload'  # MySQL 데이터베이스명
-        )
+        conn = dbConn()
 
         logging.debug("Connected to MySQL directly.")
 
@@ -57,3 +51,22 @@ def dbinsert_server(data):
         logging.error(f"MySQL connection error: {e}")
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
+
+'''data = {
+    "totSellamnt": 112146718000,
+    "returnValue": "success",
+    "drwNoDate": "2024-12-07",
+    "firstWinamnt": 1613380765,
+    "drwtNo6": 36,
+    "drwtNo4": 21,
+    "firstPrzwnerCo": 17,
+    "drwtNo5": 32,
+    "bnusNo": 38,
+    "firstAccumamnt": 27427473005,
+    "drwNo": 1149,
+    "drwtNo2": 15,
+    "drwtNo3": 19,
+    "drwtNo1": 8
+}
+
+dbinsert(data)'''
