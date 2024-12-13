@@ -13,11 +13,11 @@ def dbinsert_server(data):
         # MySQL 직접 연결
         logging.debug("Connecting to MySQL directly...")
         conn = mysql.connector.connect(
-            user='your_mysql_user',  # MySQL 사용자명
-            password='your_mysql_password',  # MySQL 비밀번호
-            host='your_mysql_host',  # MySQL 호스트 (예: localhost 또는 IP 주소)
+            user='kimjungmok',  # MySQL 사용자명
+            password='oo1351oo^^',  # MySQL 비밀번호
+            host='kimjungmok.mysql.pythonanywhere-services.com',  # MySQL 호스트 (예: localhost 또는 IP 주소)
             port=3306,  # MySQL 포트 (기본값: 3306)
-            database='your_mysql_database'  # MySQL 데이터베이스명
+            database='kimjungmok$myload'  # MySQL 데이터베이스명
         )
 
         logging.debug("Connected to MySQL directly.")
