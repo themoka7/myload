@@ -1,0 +1,120 @@
+    {% extends 'base.html' %}
+
+
+    {% block title %}
+    <title>주변 점집 찾기</title>
+    <meta property="og:title" content="주변 점집 찾기">
+    {% endblock %}
+
+    {% block description %}점집 찾기{% endblock %}
+    {% block keywords %}점집 찾기, 철학원{% endblock %}
+
+
+    {% block styles %}
+
+    <style>
+
+
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+    {% block content %}
+    <!-- 콘텐츠 영역 -->
+
+        <div class="contain lotto" style="background: none;padding-top: 0px;">
+            <div class="content">
+                <div class="intro">
+                    <div id="hi" class="intro_title">주변 점집 찾기</div>
+
+                    <div id="map" style="max-width: 600px;height:400px;"></div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+
+    {% block scripts %}
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e9c5767d8ee779e382f134c8b69abf1d&libraries=services"></script>
+    <script>
+
+// HTML5 Geolocation API를 사용하여 사용자 위치 가져오기
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        const lat = position.coords.latitude; // 현재 위치의 위도
+        const lng = position.coords.longitude; // 현재 위치의 경도
+
+        // 지도 생성 옵션에 사용자 위치 설정
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(lat, lng), // 사용자 위치를 중심으로 설정
+                level: 4 // 지도 확대 레벨
+            };
+
+        // 지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 장소 검색 객체를 생성합니다
+        var ps = new kakao.maps.services.Places();
+
+        // 키워드로 장소를 검색합니다 (현위치를 기준으로)
+        ps.keywordSearch('철학원', placesSearchCB, {
+            location: new kakao.maps.LatLng(lat, lng), // 검색 기준 위치
+            radius: 5000 // 검색 반경 (미터 단위)
+        });
+
+        // 마커를 클릭하면 장소명을 표출할 인포윈도우입니다
+        var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+        // 키워드 검색 완료 시 호출되는 콜백 함수입니다
+        function placesSearchCB(data, status, pagination) {
+            if (status === kakao.maps.services.Status.OK) {
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기 위해
+                // LatLngBounds 객체에 좌표를 추가합니다
+                var bounds = new kakao.maps.LatLngBounds();
+
+                for (var i = 0; i < data.length; i++) {
+                    displayMarker(data[i]);
+                    bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                }
+
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                map.setBounds(bounds);
+            } else {
+                alert('검색 결과가 없습니다.');
+            }
+        }
+
+        // 지도에 마커를 표시하는 함수입니다
+        function displayMarker(place) {
+            // 마커를 생성하고 지도에 표시합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(place.y, place.x)
+            });
+
+            // 마커에 클릭 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'click', function () {
+                // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+                //infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+                infowindow.setContent('<div style="padding:5px;font-size:12px;">' +
+                  '<a href="https://map.naver.com/p/search/' + encodeURIComponent(place.place_name) + '?searchType=place" target="_blank">' + place.place_name + '</a>' +
+                  '</div>');
+
+
+                infowindow.open(map, marker);
+            });
+        }
+    }, function (error) {
+        alert('현재 위치를 가져올 수 없습니다.');
+    });
+} else {
+    alert('브라우저에서 Geolocation을 지원하지 않습니다.');
+}
+
+</script>
+     {% endblock %}
